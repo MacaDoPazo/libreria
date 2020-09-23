@@ -29,7 +29,7 @@
       <h3>Editorial:</h3><p>adadsads</p>
       <h3>Precio:</h3><span style="font-size:40px">$120</span>
       <div class="container-fluid">
-      <form>
+      <form action="carrito-compras">
       <label for="cantidad">Cantidad</label>
       <input type="number" name="cantidad" style="width:50px" min=1>
       <input type="submit" value="Añadir al carrito">

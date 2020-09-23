@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,22 +12,7 @@
 		<title>Inicio - Cumelén</title>
 	</head>
 	<body>
-	<div class="sticky-top">
-	<nav class="navbar navbar-light bg-light sticky-float">
-	  	<a class="navbar-brand" href="#">
-	    	<img src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-	    	Cumelén
-	  	</a>
-		<ul class="nav justify-content-end">
-	  	<li class="nav-item">
-	    	<a class="nav-link" href="#">Iniciar Sesión</a>
-	  	</li>
-	  	<li class="nav-item">
-	    	<a class="nav-link" href="#">Registrarse</a>
-	  	</li>
-		</ul>
-	</nav>
-	</div>
+	
 		<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -68,7 +54,7 @@
       <a href="#" style="text-decoration:none"><h3>Cadaver Exquisito</h3></a>
       <a href="#" style="text-decoration:none"><h6>Agustina Bazterrica</h6></a>
       <p>$890<p>
-      <a href="#"></a><button type="button" class="btn btn-outline-dark">Comprar</button></a>
+      <a href="detalle-producto"><button type="button" class="btn btn-outline-dark">Comprar</button></a>
       </div>
     </div>
     <div class="w3-quarter col">

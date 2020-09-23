@@ -81,7 +81,7 @@
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
-                    <button class="btn btn-block btn-light">Continuar comprando</button>
+                   <a href="pantalla-inicial"><button class="btn btn-lg btn-block btn-outline-dark">Continuar comprando</button></a> 
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
                     <button class="btn btn-lg btn-block btn-success text-uppercase">Finalizar compra</button>

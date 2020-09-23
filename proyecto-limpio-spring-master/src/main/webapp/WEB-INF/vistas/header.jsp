@@ -13,13 +13,13 @@
 	<body>
 	<div class="sticky-top">
 	<nav class="navbar navbar-light bg-light sticky-float">
-	  	<a class="navbar-brand" href="#">
+	  	<a class="navbar-brand" href="pantalla-inicial">
 	    	<img src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
 	    	Cumelén
 	  	</a>
 		<ul class="nav justify-content-end">
 	  	<li class="nav-item">
-	    	<a class="nav-link" href="#">Iniciar Sesión</a>
+	    	<a class="nav-link" href="login">Iniciar Sesión</a>
 	  	</li>
 	  	<li class="nav-item">
 	    	<a class="nav-link" href="#">Registrarse</a>
