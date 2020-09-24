@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -39,3 +40,4 @@
 		<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	</body>
 </html>
+ <%@include file="footer.jsp" %>

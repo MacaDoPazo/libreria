@@ -60,8 +60,11 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td></td>
-                            <td></td>
+                            <td class="text-right"><b>calcular envio:</b></td>
+                            <td><form action="#" method="post">
+                            		<input type="text" placeholder=CP>
+                            		<input type="submit" value=Calcular class="btn btn-success">
+                            	</form></td>
                             <td></td>
                             <td>Envio</td>
                             <td class="text-right">0</td>

@@ -22,7 +22,7 @@
 	    	<a class="nav-link" href="login">Iniciar Sesión</a>
 	  	</li>
 	  	<li class="nav-item">
-	    	<a class="nav-link" href="#">Registrarse</a>
+	    	<a class="nav-link" href="registroUsuario">Registrarse</a>
 	  	</li>
 		</ul>
 	</nav>

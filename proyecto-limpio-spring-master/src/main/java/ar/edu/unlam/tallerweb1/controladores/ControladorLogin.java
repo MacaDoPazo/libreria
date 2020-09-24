@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -72,4 +73,34 @@ public class ControladorLogin {
 	public ModelAndView inicio() {
 		return new ModelAndView("redirect:/login");
 	}
+	@RequestMapping("/registroUsuario")
+	public ModelAndView registro() {
+		ModelMap modelo = new ModelMap();
+		return new ModelAndView("registroUsuario", modelo);
+	}
+	
+	@RequestMapping("/mostrarUsuarioRegistrado")
+	public ModelAndView usuarioRegistrado(
+			@RequestParam("nombre") String nombre,
+			@RequestParam("apellido") String apellido,
+			@RequestParam("sexo") String sexo,
+			@RequestParam("fechaNacimiento") String fechaNacimiento, //tipo date
+			@RequestParam("mail") String mail,
+			@RequestParam("password") String password,
+			@RequestParam("passwordRepetido") String passwordRepetido
+			) {
+		
+		ModelMap modelo = new ModelMap();
+		modelo.put("nombre", nombre);
+		modelo.put("apellido", apellido);
+		modelo.put("sexo", sexo);
+		modelo.put("fechaNacimiento", fechaNacimiento);
+		modelo.put("mail", mail);
+		modelo.put("password", password);
+		modelo.put("passwordRepetido", passwordRepetido);
+	
+		return new ModelAndView("mostrarUsuarioRegistrado", modelo);
+		
+	}
+	
 }

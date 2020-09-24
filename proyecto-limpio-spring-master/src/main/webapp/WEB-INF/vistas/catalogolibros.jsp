@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,14 +22,7 @@
 		</form>
 		<p>Libro encontrado es ${libro.nombre}</p>
 		
-		<p>Lista de libros</p>
-		<c:forEach items= "${listalibros }" var="libro">
-		<tr>
-		<td>${libro.id}</td>
 		
-		<td>${libro.nombre}</td>
-		</tr>
-		</c:forEach>
 	</main>
 	
 </header>
@@ -36,3 +30,4 @@
 
 </body>
 </html>
+<%@include file="footer.jsp"%>
