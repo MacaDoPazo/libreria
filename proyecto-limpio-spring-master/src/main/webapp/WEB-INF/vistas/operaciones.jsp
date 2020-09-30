@@ -44,5 +44,6 @@
 			<input type="submit" value="enviar">
 		</form>
 		<p>La division total es: ${dividir}</p>
+		<p>${error}</p>
 </body>
 </html>

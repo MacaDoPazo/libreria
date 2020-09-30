@@ -4,14 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 @Entity
-public class Autor {
+public class Farmacia {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
-	private String apellido;
-	private String sexo;
+	private String direccion;
+	
 	public Long getId() {
 		return id;
 	}
@@ -24,19 +26,12 @@ public class Autor {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getApellido() {
-		return apellido;
+	public String getDireccion() {
+		return direccion;
 	}
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 	
 	
-
 }

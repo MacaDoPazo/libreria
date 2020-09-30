@@ -27,10 +27,11 @@ public class LibroDaoImpl implements LibroDao {
 		// TODO Auto-generated method stub
 		return (Long) sesion.getCurrentSession().save(libro);
 	}
-	/*@Override
+	@SuppressWarnings("deprecation")
+	@Override
 	public List<Libro> listarLibros() {
 		
-		return (List<Libro>) sesion.getCurrentSession().createCriteria(Libro.class).createAlias("libro", "libro.id").add(Restrictions.eq("libro.id",id)).list();
-	}*/
+		return (List<Libro>) sesion.getCurrentSession().createCriteria(Libro.class).list();
+	}
 
 }

@@ -34,22 +34,27 @@ public class ControladorLibros {
 		return new ModelAndView("catalogolibros",model);
 	}
 	@RequestMapping("/guardarLibro")
-	public ModelAndView guardarLibro(@RequestParam(value="nombre")String nombre)
+	public ModelAndView guardarLibro(@RequestParam(value="nombre")String nombre/*,@RequestParam(value="nombreAutor")String nombreautor,
+			@RequestParam(value="apellidoAutor")String apellidoAutor*/)
 	{
 		Libro libro = new Libro();
 		libro.setNombre(nombre);
+		/*libro.getAutor().setNombre(nombreautor);
+		libro.getAutor().setApellido(apellidoAutor);*/
 		Long idLibro = servicioLibro.guardarlibro(libro);
 		ModelMap modelo = new ModelMap();
 		modelo.put("id",idLibro);
 		modelo.put("nombre",nombre);
+		/*modelo.put("nombreAutor",nombreautor);
+		modelo.put("apellidoAutor",apellidoAutor);*/
 		return new ModelAndView("catalogolibros",modelo);
 	}
 	
-/*	@RequestMapping("/listarLibros")
+    @RequestMapping("/listarLibros")
 	public ModelAndView listarLibros() {
 		List<Libro> listalibros = servicioLibro.listarLibros();
 		ModelMap modelo = new ModelMap();
 		modelo.put("listalibros",listalibros);
 		return new ModelAndView ("catalogolibros",modelo);
-	}*/
+	}
 }

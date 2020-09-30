@@ -45,11 +45,19 @@ public class ControladorDePaginas {
 		return new ModelAndView("operaciones",modelo);
 	}
 	@RequestMapping(path="dividir", method=RequestMethod.GET)
-	public ModelAndView dividir(@RequestParam(value="num1",required=false)Double num1,@RequestParam(value="num2",required=false)Double num2) throws Exception
+	public ModelAndView dividir(@RequestParam(value="num1",required=false)Double num1,@RequestParam(value="num2",required=false)Double num2) 
 	{
-		Double resultado=servicioOperaciones.dividir(num1, num2);
+		
+		
 		ModelMap modelo= new ModelMap();
-		modelo.put("dividir",resultado);
+		try {
+			Double resultado = servicioOperaciones.dividir(num1, num2);
+			modelo.put("dividir",resultado);
+		} catch (Exception e) {
+			String error= e.getMessage();
+			modelo.put("error",error);
+		}
+		
 		return new ModelAndView("operaciones",modelo);
 	}
 	@RequestMapping("/mostrarcontacto")//ruta que pone el usuario

@@ -13,6 +13,10 @@
 		<form action="guardarLibro">
 			<label for="nombre">Nombre: </label>
 			<input type="text" id="nombre" name="nombre">
+			<label for="nombre">Nombre Autor: </label>
+			<input type="text" id="nombreAutor" name="nombreAutor">
+			<label for="nombre">Apellido Autor: </label>
+			<input type="text" id="apellidoAutor" name="apellidoAutor">
 			<input type="submit" value="enviar">
 		</form>
 		<form action="buscarLibroPorId">
@@ -20,9 +24,7 @@
 			<input type="number" id="id" name="id">
 			<input type="submit" value="enviar">
 		</form>
-		<p>Libro encontrado es ${libro.nombre}</p>
-		
-		
+		<p>El nombre del libro encontrado es ${libro.nombre}</p>
 	</main>
 	
 </header>
