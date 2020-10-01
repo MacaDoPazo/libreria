@@ -10,7 +10,7 @@ public interface LibroDao {
 
 	Long guardarLibro(Libro libro);
 
-	//List<Libro> listarLibros();
+	List<Libro> listarLibros();
 
 	
 

@@ -14,7 +14,7 @@ public interface servicioLibro {
 
 
 
-	//List<Libro> listarLibros();
+	List<Libro> listarLibros();
 
 
 

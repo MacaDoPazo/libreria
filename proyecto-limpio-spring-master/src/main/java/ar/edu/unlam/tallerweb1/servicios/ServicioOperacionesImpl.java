@@ -29,7 +29,7 @@ public class ServicioOperacionesImpl implements ServicioOperaciones {
 
 	 public Double dividir(Double num1, Double num2) throws Exception {
 
-	 if(num2.equals(0)) {
+	 if(num2.equals(0.0)) {
 
 	 throw new Exception("No se puede dividir por cero");
 

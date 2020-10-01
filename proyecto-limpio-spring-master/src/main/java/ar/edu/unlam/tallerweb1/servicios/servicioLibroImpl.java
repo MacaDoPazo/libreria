@@ -24,10 +24,10 @@ public class servicioLibroImpl implements servicioLibro {
 		// TODO Auto-generated method stub
 		return libroDao.guardarLibro(libro);
 	}
-	/*@Override
+	@Override
 	public List<Libro> listarLibros() {
 		// TODO Auto-generated method stub
 		return libroDao.listarLibros();
-	}*/
+	}
 
 }
