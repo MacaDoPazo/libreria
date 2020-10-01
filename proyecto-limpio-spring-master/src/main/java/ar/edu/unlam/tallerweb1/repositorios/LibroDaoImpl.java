@@ -27,7 +27,7 @@ public class LibroDaoImpl implements LibroDao {
 		// TODO Auto-generated method stub
 		return (Long) sesion.getCurrentSession().save(libro);
 	}
-	@SuppressWarnings("deprecation")
+	
 	@Override
 	public List<Libro> listarLibros() {
 		

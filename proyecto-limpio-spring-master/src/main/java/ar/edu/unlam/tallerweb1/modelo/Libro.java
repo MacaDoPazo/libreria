@@ -15,6 +15,8 @@ public class Libro {
 	private String nombre;
 	private Long paginas;
 	private Long precio;
+	private Long stock;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Autor autor;
 	public Autor getAutor() {
@@ -46,6 +48,12 @@ public class Libro {
 	}
 	public void setPrecio(Long precio) {
 		this.precio = precio;
+	}
+	public Long getStock() {
+		return stock;
+	}
+	public void setStock(Long stock) {
+		this.stock = stock;
 	}
 	
 

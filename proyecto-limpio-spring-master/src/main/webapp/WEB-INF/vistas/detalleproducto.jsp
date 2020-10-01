@@ -24,10 +24,10 @@
       <img src="https://www.w3schools.com/w3images/cherries.jpg"  style=" height:400px">
     </div>
     <div class="col-sm-9 col-md-6 col-lg-8">
-      <h2>Cherries, interrupted</h2>
-      <h3>Autor:</h3><p>asdjaskdjad</p>
+      <h2>${libro.nombre }</h2>
+      <h3>Autor:</h3><p>${libro.autor.nombre} ${libro.autor.apellido }</p>
       <h3>Editorial:</h3><p>adadsads</p>
-      <h3>Precio:</h3><span style="font-size:40px">$120</span>
+      <h3>Precio:</h3><span style="font-size:40px">$${libro.precio}</span>
       <div class="container-fluid">
       <form action="carrito-compras">
       <label for="cantidad">Cantidad</label>

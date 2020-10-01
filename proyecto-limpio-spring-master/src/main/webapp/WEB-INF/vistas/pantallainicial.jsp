@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@include file="header.jsp" %>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -48,58 +50,26 @@
 	<h1 class="text-center">Libros destacados</h1>
 	<hr style="height:2px;border-width:0;color:gray;background-color:gray">
    <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
-    <div class="w3-quarter col">
-      <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="libro" style="width:100%"></a>
-      <div class="card-body">
-      <a href="#" style="text-decoration:none"><h3>Cadaver Exquisito</h3></a>
-      <a href="#" style="text-decoration:none"><h6>Agustina Bazterrica</h6></a>
-      <p>$890<p>
-      <a href="detalle-producto"><button type="button" class="btn btn-outline-dark">Comprar</button></a>
-      </div>
-    </div>
-    <div class="w3-quarter col">
-      <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Steak" style="width:100%"></a>
-      <h3>Let Me Tell You About This Steak</h3>
-      <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>
-    <div class="col w3-quarter">
-      <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Cherries" style="width:100%"></a>
-      <h3>Cherries, interrupted</h3>
-      <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      <p>What else?</p>
-    </div>
-    <div class="col w3-quarter">
-      <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Cherries" style="width:100%"></a>
-      <h3>Cherries, interrupted</h3>
-      <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      <p>What else?</p>
-    </div>
+   
+  <div class="container" id="food">
+    <c:forEach items="${lista}" var="item" >
+    	
+  		
+            
+          <div class="w3-quarter col">
+      	   <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="libro" style="width:100%"></a>
+      		<div class="card-body">
+      		
+      		<a href="#" style="text-decoration:none"><h3>${item.nombre}</h3></a>
+      		<a href="#" style="text-decoration:none"><h6>${item.autor.nombre} ${item.autor.apellido}</h6></a>
+      		<p>$${item.precio}<p>
+      		<a href="detalle-producto?idLibro=${item.id}"><button type="button" class="btn btn-outline-dark">Comprar</button></a>
+      	</div>
+      	   
+   		 </div>           
+          </c:forEach>   	
   </div>
-  <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
-    <div class="w3-quarter col">
-     <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Sandwich" style="width:100%"></a>
-      <h3>The Perfect Sandwich, A Real NYC Classic</h3>
-      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>
-    <div class="w3-quarter col">
-      <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Steak" style="width:100%"></a>
-      <h3>Let Me Tell You About This Steak</h3>
-      <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>
-    <div class="col w3-quarter">
-      <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Cherries" style="width:100%"></a>
-      <h3>Cherries, interrupted</h3>
-      <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      <p>What else?</p>
-    </div>
-    <div class="col w3-quarter">
-      <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Cherries" style="width:100%"></a>
-      <h3>Cherries, interrupted</h3>
-      <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      <p>What else?</p>
-    </div>
-  </div>
-  <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
+  <div class="container" id="food">
     <div class="w3-quarter col">
       <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Sandwich" style="width:100%"></a>
       <h3>The Perfect Sandwich, A Real NYC Classic</h3>

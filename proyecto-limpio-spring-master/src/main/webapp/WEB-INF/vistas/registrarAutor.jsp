@@ -13,7 +13,7 @@
 
     <h1 id="login-title" class="text-center">Registrar Autor</h1>
   	<div id="login-container" class="container"> 
-        <form action="registrar-autor" method="post">
+        <form action="guardar-autor" method="post">
             <label for="nombre">Nombre: </label>
             <input class="form-control col-xs-12" type="text" name="nombre" id="nombre" required>
             <br>
