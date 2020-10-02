@@ -18,6 +18,10 @@ public interface servicioLibro {
 
 
 
+	void borrarLibro(Long idLibro);
+
+
+
 	
 		
 		

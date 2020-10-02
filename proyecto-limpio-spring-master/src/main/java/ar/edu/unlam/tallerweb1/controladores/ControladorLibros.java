@@ -62,10 +62,10 @@ public class ControladorLibros {
 		modelo.put("autorLibro", autorEncontrado);
 		
 		
-		return new ModelAndView("catalogoLibros",modelo);
+		return new ModelAndView("registrarLibro",modelo);
 	}
 	
-    @RequestMapping("/listar-libros")
+    @RequestMapping("/catalogo-libros")
 	public ModelAndView listarLibros() {
 		List<Libro> listalibros = servicioLibro.listarLibros();
 		ModelMap modelo = new ModelMap();
@@ -74,5 +74,12 @@ public class ControladorLibros {
 		mivista.addAllObjects(modelo);
 		mivista.setViewName("catalogoLibros");
 		return mivista;
+	}
+    
+    @RequestMapping("/borrar-libro")
+    public ModelAndView borrarLibro(@RequestParam(value="idLibro")Long idLibro)
+	{
+		servicioLibro.borrarLibro(idLibro);
+		return new ModelAndView("registrarLibro");
 	}
 }

@@ -33,5 +33,12 @@ public class LibroDaoImpl implements LibroDao {
 		
 		return (List<Libro>) sesion.getCurrentSession().createCriteria(Libro.class).list();
 	}
+	@Override
+	public void borrarLibro(Long idLibro) {
+		// TODO Auto-generated method stub
+		Libro libro;
+		libro = sesion.getCurrentSession().get(Libro.class, idLibro);
+		sesion.getCurrentSession().delete(libro);
+	}
 
 }

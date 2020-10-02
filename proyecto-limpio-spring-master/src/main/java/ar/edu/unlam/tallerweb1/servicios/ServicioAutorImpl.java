@@ -39,4 +39,11 @@ public class ServicioAutorImpl implements ServicioAutor {
 		return repositorioAutor.buscarAutorPorId(idAutor);
 	}
 
+
+	@Override
+	public void borrarAutor(Long idAutor) {
+		// TODO Auto-generated method stub
+		 repositorioAutor.borrarAutor(idAutor);
+	}
+
 }

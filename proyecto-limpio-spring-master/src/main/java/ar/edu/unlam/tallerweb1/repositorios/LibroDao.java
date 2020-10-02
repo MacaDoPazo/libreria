@@ -12,6 +12,8 @@ public interface LibroDao {
 
 	List<Libro> listarLibros();
 
+	void borrarLibro(Long idLibro);
+
 	
 
 	

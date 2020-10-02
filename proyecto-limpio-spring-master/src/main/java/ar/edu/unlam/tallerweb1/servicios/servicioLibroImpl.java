@@ -29,5 +29,10 @@ public class servicioLibroImpl implements servicioLibro {
 		// TODO Auto-generated method stub
 		return libroDao.listarLibros();
 	}
+	@Override
+	public void borrarLibro(Long idLibro) {
+		libroDao.borrarLibro(idLibro);
+		
+	}
 
 }
