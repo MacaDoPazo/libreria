@@ -30,5 +30,11 @@ public class RepositorioAutorImpl implements RepositorioAutor {
 		// TODO Auto-generated method stub
 		return sesion.getCurrentSession().get(Autor.class, idAutor);
 	}
+	@Override
+	public void borrarAutor(Long idAutor) {
+		Autor autor;
+		autor = sesion.getCurrentSession().get(Autor.class, idAutor);
+		sesion.getCurrentSession().delete(autor);
+	}
 
 }

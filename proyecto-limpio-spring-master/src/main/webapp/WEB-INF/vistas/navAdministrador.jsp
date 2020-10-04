@@ -11,18 +11,21 @@
 		
 	</head>
 	<body>
-	<div class="sticky-top">
-	<nav class="navbar navbar-light bg-light sticky-float">
-	  	<a class="navbar-brand" href="pantalla-inicial">
-	    	<img src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-	    	Cumelén
-	  	</a>
-		<ul class="nav justify-content-end">
+	<div class="d-flex flex-row ">
+	<nav class=" p-2 navbar nav-tabs navbar-light  sticky-float">
+	  	
+		<ul class="nav justify-content-start">
 	  	<li class="nav-item">
-	    	<a class="nav-link" href="login">Iniciar Sesión</a>
+	    	<a class="nav-link" href="registrar-libro">Registrar libro</a>
 	  	</li>
 	  	<li class="nav-item">
-	    	<a class="nav-link" href="registroUsuario">Registrarse</a>
+	    	<a class="nav-link" href="registrar-autor">Registrar Autor</a>
+	  	</li>
+	  	<li class="nav-item">
+	    	<a class="nav-link" href="catalogo-libros">Catalogo libros</a>
+	  	</li>
+	  	<li class="nav-item">
+	    	<a class="nav-link" href="catalogo-autores">Catalogos autor</a>
 	  	</li>
 		</ul>
 	</nav>

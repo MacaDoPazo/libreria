@@ -35,17 +35,22 @@ public class ControladorAutor {
 		autor.setApellido(apellido);
 		autor.setSexo(sexo);
 		Long id=servicioAutor.guardarAutor(autor);
-		List<Autor> listaAutores = servicioAutor.listarAutores();
 		ModelMap modelo = new ModelMap();
 		modelo.put("nombre",nombre);
 		modelo.put("apellido",apellido);
 		modelo.put("sexo",sexo);
-		modelo.put("lista",listaAutores);
-		return new ModelAndView("catalogoAutores",modelo);
+		
+		return new ModelAndView("registrarAutor",modelo);
 		
 	}
 	
-	@RequestMapping("/listarAutor")
+	@RequestMapping("/borrar-autor")
+	public ModelAndView borrarAutor(@RequestParam(value="idAutor")Long idAutor)
+	{
+		servicioAutor.borrarAutor(idAutor);
+		return new ModelAndView("registrarAutor");
+	}
+	@RequestMapping("/catalogo-autores")
 	public ModelAndView listarLibros() {
 		List<Autor> listaAutores = servicioAutor.listarAutores();
 		ModelMap modelo = new ModelMap();

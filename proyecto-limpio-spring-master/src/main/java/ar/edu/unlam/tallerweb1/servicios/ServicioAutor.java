@@ -13,4 +13,6 @@ public interface ServicioAutor {
 
 	Autor consultarAutorPorId(Long idAutor);
 
+	void borrarAutor(Long idAutor);
+
 }

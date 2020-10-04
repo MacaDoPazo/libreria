@@ -23,17 +23,19 @@
     <div class="col-sm-3 col-md-6 col-lg-4 d-flex justify-content-center">
       <img src="https://www.w3schools.com/w3images/cherries.jpg"  style=" height:400px">
     </div>
-    <div class="col-sm-9 col-md-6 col-lg-8">
+    <div class="col-sm-9 col-md-6 col-lg-8 shadow p-4 mb-4 bg-white">
+      <div class="container">
       <h2>${libro.nombre }</h2>
       <h3>Autor:</h3><p>${libro.autor.nombre} ${libro.autor.apellido }</p>
       <h3>Editorial:</h3><p>adadsads</p>
       <h3>Precio:</h3><span style="font-size:40px">$${libro.precio}</span>
       <div class="container-fluid">
       <form action="carrito-compras">
-      <label for="cantidad">Cantidad</label>
-      <input type="number" name="cantidad" style="width:50px" min=1>
-      <input type="submit" value="Añadir al carrito">
+      <label for="cantidad">Cantidad:</label>
+      <input class="form-control" type="number" name="cantidad" placeholder="0" style="width:50px" min=1 required><br>
+      <input class="btn btn-success "type="submit" value="Añadir al carrito">
       </form>
+      </div>
       </div>
     </div>
   </div>

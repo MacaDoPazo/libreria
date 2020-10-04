@@ -13,4 +13,6 @@ public interface RepositorioAutor {
 
 	Autor buscarAutorPorId(Long idAutor);
 
+	void borrarAutor(Long idAutor);
+
 }

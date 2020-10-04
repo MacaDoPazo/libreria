@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@include file="header.jsp" %>
+  <%@include file="navAdministrador.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -31,7 +32,7 @@
 			 <label for="otro">Otro</label> 
 			
                      
-            <input id="submit-button" name="enviar" class="btn btn-success float-right mt-2" type="submit" value="Registrarse">
+            <input id="submit-button" name="enviar" class="btn btn-success float-right mt-2" type="submit" value="Registrar autor">
         </form>
 		</div>
 	</body>
