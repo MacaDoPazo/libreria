@@ -16,6 +16,7 @@ public class Libro {
 	private Long paginas;
 	private Long precio;
 	private Long stock;
+	private Integer megusta =0;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Autor autor;
@@ -55,6 +56,12 @@ public class Libro {
 	public void setStock(Long stock) {
 		this.stock = stock;
 	}
+	public Integer getMegusta() {
+		return megusta;
+	}
+	public void setMegusta(Integer megusta) {
+		this.megusta = megusta;
+	}
 	
-
+	
 }

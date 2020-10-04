@@ -11,6 +11,7 @@
 		
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 		<title>Inicio - Cumelén</title>
 	</head>
 	<body>
@@ -52,22 +53,24 @@
    <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
    
   <div class="container" id="food">
+    <div class="card-deck">
     <c:forEach items="${lista}" var="item" >
-    	
-  		
-            
+    	   
           <div class="w3-quarter col">
       	   <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="libro" style="width:100%"></a>
       		<div class="card-body">
       		
-      		<a href="#" style="text-decoration:none"><h3>${item.nombre}</h3></a>
+      		<h3 class="card-text">${item.nombre}</h3>
       		<a href="#" style="text-decoration:none"><h6>${item.autor.nombre} ${item.autor.apellido}</h6></a>
-      		<p>$${item.precio}<p>
-      		<a href="detalle-producto?idLibro=${item.id}"><button type="button" class="btn btn-outline-dark">Comprar</button></a>
+      		<p class="card-text">$${item.precio}<p> 
+      		<div class="card-text d-flex justify-content-center"><a class="" id="botonlike"><i class="far fa-heart"></i> </a><p id="cantidadlikes"> &nbsp ${item.megusta}</p></div>
+      		<a href="detalle-producto?idLibro=${item.id}"><button type="button" class="btn btn-outline-dark">Comprar</button></a>	   
+      		
       	</div>
-      	   
+      		
    		 </div>           
-          </c:forEach>   	
+          </c:forEach>  
+      </div>     	
   </div>
   <div class="container" id="food">
     <div class="w3-quarter col">
