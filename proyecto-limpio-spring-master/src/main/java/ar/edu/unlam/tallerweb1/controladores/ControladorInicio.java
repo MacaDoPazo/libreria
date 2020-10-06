@@ -20,6 +20,7 @@ public class ControladorInicio {
 	@Inject
 	private servicioLibro servicioLibro;
 	
+	
 	@RequestMapping("/pantalla-inicial")
 	public ModelAndView irAlInicio() {
 		List<Libro> listalibros = servicioLibro.listarLibros();
@@ -38,11 +39,21 @@ public class ControladorInicio {
 		model.put("libro", libroEncontrado);
 			return new ModelAndView("detalleproducto",model);
 		}
-	@RequestMapping("/carrito-compras")
-	public ModelAndView registrarUsuario()
-	{
-		return new ModelAndView("carrito");
-	}
 	
+	@RequestMapping("/carrito-compras")
+		public ModelAndView irAlCarrito(
+			@RequestParam("cantidad")Integer cantidad,
+			@RequestParam("idLibroSolicitado")Long idLibroSolicitado) {		
+		ModelMap modelo = new ModelMap();
+		
+		Libro libroSolicitado = servicioLibro.consultarLibroPorId(idLibroSolicitado);		
+		Long precioTotal = libroSolicitado.getPrecio()*cantidad;
+	
+		modelo.put("cantidad", cantidad);
+		modelo.put("libro", libroSolicitado);
+		modelo.put("precioTotal", precioTotal);
+			return new ModelAndView("carrito", modelo);
+
+	}
 
 }
