@@ -14,6 +14,8 @@ public interface LibroDao {
 
 	void borrarLibro(Long idLibro);
 
+	void actualizarMeGusta(Long idLibro, Integer suma);
+
 	
 
 	

@@ -22,6 +22,14 @@ public interface servicioLibro {
 
 
 
+	void actualizarMeGusta(Long idLibro, Integer suma);
+
+
+
+	
+
+
+
 	
 		
 		

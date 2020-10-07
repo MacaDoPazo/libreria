@@ -16,7 +16,7 @@ public class Libro {
 	private Long paginas;
 	private Long precio;
 	private Long stock;
-	private Integer megusta =0;
+	private Integer megusta;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Autor autor;

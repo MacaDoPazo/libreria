@@ -50,6 +50,7 @@ public class ControladorLibros {
 		libro.setPaginas(paginas);
 		libro.setPrecio(precio);
 		libro.setStock(stock);
+		libro.setMegusta(0);
 		Autor autorEncontrado = servicioAutor.consultarAutorPorId(idAutor);
 		libro.setAutor(autorEncontrado);
 		Long idLibro = servicioLibro.guardarlibro(libro);
@@ -82,4 +83,15 @@ public class ControladorLibros {
 		servicioLibro.borrarLibro(idLibro);
 		return new ModelAndView("registrarLibro");
 	}
+    @RequestMapping(path="/sumar-megusta", method=RequestMethod.GET)
+    public ModelAndView sumarMeGusta (@RequestParam(value="idLibro")Long idLibro)
+    {
+    	Libro libro=servicioLibro.consultarLibroPorId(idLibro);
+    	Integer suma = libro.getMegusta()+1;
+    	servicioLibro.actualizarMeGusta(idLibro,suma);
+    	List<Libro> listalibros = servicioLibro.listarLibros();
+		ModelMap modelo = new ModelMap();
+		modelo.put("lista",listalibros);
+		return new ModelAndView("pantallainicial",modelo);
+    }
 }

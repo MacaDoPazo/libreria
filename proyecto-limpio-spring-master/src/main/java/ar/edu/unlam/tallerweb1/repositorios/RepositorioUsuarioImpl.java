@@ -37,4 +37,10 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 				.uniqueResult();
 	}
 
+	@Override
+	public Long guardarUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return (Long) sessionFactory.getCurrentSession().save(usuario);
+	}
+
 }

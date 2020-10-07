@@ -65,13 +65,13 @@
                         <tr>
                             <td></td>
                             <td class="text-right"><b>calcular envio:</b></td>
-                            <td><form action="#" method="post">
-                            		<input type="text" placeholder=CP>
+                            <td><form action="buscar-localidad" method="post">
+                            		<input class="form-control" type="number" placeholder=CP name="cp">
                             		<input type="submit" value=Calcular class="btn btn-success">
                             	</form></td>
                             <td></td>
                             <td>Envio</td>
-                            <td class="text-center">0$</td>
+                            <td class="text-center">${localidad.precio }$</td>
                         </tr>
                         <tr>
                             <td></td>

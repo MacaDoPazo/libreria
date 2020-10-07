@@ -40,5 +40,13 @@ public class LibroDaoImpl implements LibroDao {
 		libro = sesion.getCurrentSession().get(Libro.class, idLibro);
 		sesion.getCurrentSession().delete(libro);
 	}
+	@Override
+	public void actualizarMeGusta(Long idLibro, Integer suma) {
+		// TODO Auto-generated method stub
+		Libro libro;
+		libro = sesion.getCurrentSession().get(Libro.class, idLibro);
+		libro.setMegusta(suma);
+		sesion.getCurrentSession().update(libro);
+	}
 
 }
