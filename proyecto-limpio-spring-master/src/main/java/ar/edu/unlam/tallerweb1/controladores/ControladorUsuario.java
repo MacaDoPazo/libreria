@@ -20,9 +20,8 @@ public class ControladorUsuario {
 	public ModelAndView cargarUsuario(
 			@RequestParam("nombre") String nombre,
 			@RequestParam("apellido") String apellido,
-			@RequestParam("sexo") String sexo,
-			@RequestParam("fechaNacimiento") Date fechaNacimiento, //tipo date
-			@RequestParam("mail") String mail,
+			@RequestParam("sexo") char sexo,
+			@RequestParam("email") String email,
 			@RequestParam("password") String password,
 			@RequestParam("passwordRepetido") String passwordRepetido
 			) {
@@ -30,16 +29,14 @@ public class ControladorUsuario {
 		usuario.setNombre(nombre);
 		usuario.setApellido(apellido);
 		usuario.setSexo(sexo);
-		usuario.setFechaNacimiento(fechaNacimiento);
-		usuario.setEmail(mail);
+		usuario.setEmail(email);
 		usuario.setPassword(password);
 		Long idUsuario = servicioUsuario.guardarUsuario(usuario);
 		ModelMap modelo = new ModelMap();
 		modelo.put("nombre", nombre);
 		modelo.put("apellido", apellido);
 		modelo.put("sexo", sexo);
-		modelo.put("fechaNacimiento", fechaNacimiento);
-		modelo.put("mail", mail);
+		modelo.put("email", email);
 		modelo.put("password", password);
 		modelo.put("passwordRepetido", passwordRepetido);
 	
