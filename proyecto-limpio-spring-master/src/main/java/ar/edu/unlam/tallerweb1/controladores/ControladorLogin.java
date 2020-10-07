@@ -84,8 +84,7 @@ public class ControladorLogin {
 			@RequestParam("nombre") String nombre,
 			@RequestParam("apellido") String apellido,
 			@RequestParam("sexo") String sexo,
-			@RequestParam("fechaNacimiento") String fechaNacimiento, //tipo date
-			@RequestParam("mail") String mail,
+			@RequestParam("email") String email,
 			@RequestParam("password") String password,
 			@RequestParam("passwordRepetido") String passwordRepetido
 			) {
@@ -94,8 +93,7 @@ public class ControladorLogin {
 		modelo.put("nombre", nombre);
 		modelo.put("apellido", apellido);
 		modelo.put("sexo", sexo);
-		modelo.put("fechaNacimiento", fechaNacimiento);
-		modelo.put("mail", mail);
+		modelo.put("email", email);
 		modelo.put("password", password);
 		modelo.put("passwordRepetido", passwordRepetido);
 	
