@@ -5,7 +5,7 @@
 		<h1>Datos del usuario registrado:</h1>
 	</header>
 	<main>
-		<p>${nombre} ${apellido}, de sexo ${sexo}, nació el ${fechaNacimiento}, y se ha registrado con el mail ${mail} </p>
+		<p>${nombre} ${apellido}, de sexo ${sexo}, se ha registrado con el mail ${email} </p>
 
 
 	</main>
