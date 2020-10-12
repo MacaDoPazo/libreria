@@ -15,16 +15,24 @@ public class Libro {
 	private String nombre;
 	private Long paginas;
 	private Long precio;
-	private Long stock;
+	private Integer megusta;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Autor autor;
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Stock stock;
 	public Autor getAutor() {
 		return autor;
 	}
+	
 	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
+	
+	public void setStock(Stock stock) {
+		this.stock = stock;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -49,12 +57,16 @@ public class Libro {
 	public void setPrecio(Long precio) {
 		this.precio = precio;
 	}
-	public Long getStock() {
+	public Stock getStock() {
 		return stock;
 	}
-	public void setStock(Long stock) {
-		this.stock = stock;
+	
+	public Integer getMegusta() {
+		return megusta;
+	}
+	public void setMegusta(Integer megusta) {
+		this.megusta = megusta;
 	}
 	
-
+	
 }

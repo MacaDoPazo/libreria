@@ -10,9 +10,9 @@
 </head>
 <body>
 	<section>
-	<div class="container mb-4">
+	<div class="container mb-5">
     <div class="row">
-        <div class="col-12">
+        <div class="col-15">
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -21,17 +21,19 @@
                             <th scope="col">Producto</th>
                             <th scope="col">Disponible</th>
                             <th scope="col" class="text-center">Cantidad</th>
-                            <th scope="col" class="text-right">Precio</th>
+                            <th scope="col" class="text-center">Precio unitario</th>
+                            <th scope="col" class="text-center">Precio total</th>
                             <th> </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Cherries, interrupted</td>
+                            <td>${libro.nombre}</td>
                             <td>en stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">120$</td>
+                            <td class="text-center">${cantidad}</td>
+                            <td class="text-center">$${libro.precio}</td>
+                            <td class="text-center">$${precioTotal}</td>
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
                         <tr>
@@ -39,7 +41,8 @@
                             <td>Cherries, interrupted</td>
                             <td>en stock</td>
                             <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">500$</td>
+                            <td class="text-center">500$</td>
+                            <td class="text-center">500$</td>
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
                         <tr>
@@ -47,7 +50,8 @@
                             <td>Cherries, interrupted</td>
                             <td>en stock</td>
                             <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">200$</td>
+                            <td class="text-center">200$</td>
+                            <td class="text-center">500$</td>
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
                         <tr>
@@ -56,18 +60,18 @@
                             <td></td>
                             <td></td>
                             <td>Sub-Total</td>
-                            <td class="text-right">820 $</td>
+                            <td class="text-center">820 $</td>
                         </tr>
                         <tr>
                             <td></td>
                             <td class="text-right"><b>calcular envio:</b></td>
-                            <td><form action="#" method="post">
-                            		<input type="text" placeholder=CP>
+                            <td><form action="buscar-localidad" method="post">
+                            		<input class="form-control" type="number" placeholder=CP name="cp">
                             		<input type="submit" value=Calcular class="btn btn-success">
                             	</form></td>
                             <td></td>
                             <td>Envio</td>
-                            <td class="text-right">0</td>
+                            <td class="text-center">${localidad.precio }$</td>
                         </tr>
                         <tr>
                             <td></td>
@@ -75,7 +79,7 @@
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>820 $</strong></td>
+                            <td class="text-center"><strong>820 $</strong></td>
                         </tr>
                     </tbody>
                 </table>

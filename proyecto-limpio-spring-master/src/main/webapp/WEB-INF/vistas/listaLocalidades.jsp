@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Catalogo Libros cargados</title>
+<title>Lista localidades</title>
 </head>
 <body>
 	<h1 id="login-title" class="text-center">Catalogo de libros cargados</h1>
@@ -17,18 +17,16 @@
     <thead>
       <tr>
         <th>Nombre</th>
-        <th>Autor</th>
-        <th>Paginas</th>
-        <th>Precio</th>
+        <th>cp</th>
+        <th>Precio envío</th>
       </tr>
     </thead>
     <tbody>
-      <c:forEach items="${lista }" var="libro">
+      <c:forEach items="${listaLocalidades }" var="localidad">
       <tr>
-        <td> ${libro.nombre }</td>
-        <td>${libro.autor.nombre } ${libro.autor.apellido }</td>
-        <td>${libro.paginas }</td>
-        <th>${libro.precio }</th>
+        <td> ${localidad.nombre }</td>
+        <td> ${localidad.cp }</td>
+        <th> ${localidad.precio }</th>
         <td class="text-right"><button class="btn btn-sm btn-secondary"><i class="fa fa-tasks"></i> </button><a href="borrar-libro?idLibro=${libro.id }"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a> </td>
       </tr>
        </c:forEach>

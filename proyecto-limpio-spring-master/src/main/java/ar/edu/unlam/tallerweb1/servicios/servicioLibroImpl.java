@@ -34,5 +34,10 @@ public class servicioLibroImpl implements servicioLibro {
 		libroDao.borrarLibro(idLibro);
 		
 	}
+	@Override
+	public void actualizarMeGusta(Long idLibro, Integer suma) {
+		// TODO Auto-generated method stub
+		libroDao.actualizarMeGusta(idLibro,suma);
+	}
 
 }

@@ -31,11 +31,9 @@
 			 <label for="otro">Otro</label> 
 			
             <br>
-            <label for="fechaNacimiento">Fecha de nacimiento: </label>
-            <input class="form-control col-xs-12" type="date" name="fechaNacimiento" id="fechaNacimiento">
-            <br>            
-            <label for="mail">Mail:</label>
-            <input class="form-control col-xs-12" type="text" name="mail" id="mail" required>
+           
+            <label for="email">Email:</label>
+            <input class="form-control col-xs-12" type="text" name="email" id="email" required>
             <br>
             <label for="password">Contraseña: </label>
             <input class="form-control col-xs-12" type="password" name="password" id="password" required>

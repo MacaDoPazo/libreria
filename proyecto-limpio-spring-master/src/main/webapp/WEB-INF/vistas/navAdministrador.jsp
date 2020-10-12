@@ -27,6 +27,12 @@
 	  	<li class="nav-item">
 	    	<a class="nav-link" href="catalogo-autores">Catalogos autor</a>
 	  	</li>
+	  	<li class="nav-item">
+	    	<a class="nav-link" href="registrar-localidad">Registrar Localidad</a>
+	  	</li>
+	  	<li class="nav-item">
+	    	<a class="nav-link" href="lista-localidades">Lista Localidades</a>
+	  	</li>
 		</ul>
 	</nav>
 	</div>
