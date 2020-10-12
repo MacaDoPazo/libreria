@@ -12,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Autor;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
+import ar.edu.unlam.tallerweb1.modelo.Stock;
 import ar.edu.unlam.tallerweb1.servicios.ServicioAutor;
+import ar.edu.unlam.tallerweb1.servicios.ServicioStock;
 import ar.edu.unlam.tallerweb1.servicios.servicioLibro;
 
 @Controller
@@ -22,6 +24,8 @@ public class ControladorLibros {
 	private servicioLibro servicioLibro;
 	@Inject
 	private ServicioAutor servicioAutor;
+	@Inject
+	private ServicioStock servicioStock;
 	@RequestMapping("/registrar-libro")
 	public ModelAndView mostrarCatalogoLibros() {
 		List<Autor> listaAutores = servicioAutor.listarAutores();
@@ -43,12 +47,16 @@ public class ControladorLibros {
 	@RequestMapping("/guardar-libro")
 	public ModelAndView guardarLibro(@RequestParam(value="nombre")String nombre,@RequestParam(value="idAutor")Long idAutor,
 			@RequestParam(value="paginas")Long paginas,@RequestParam(value="precio") Long precio,
-			@RequestParam(value="stock")Long stock)
+			@RequestParam(value="cantidad")Long cantidad)
 	{
 		Libro libro = new Libro();
 		libro.setNombre(nombre);
 		libro.setPaginas(paginas);
 		libro.setPrecio(precio);
+		Stock stock = new Stock();
+		stock.setCantidad(cantidad);
+		stock.setDisponibilidad(true);
+		Long idStock = servicioStock.guardarStock(stock);
 		libro.setStock(stock);
 		libro.setMegusta(0);
 		Autor autorEncontrado = servicioAutor.consultarAutorPorId(idAutor);

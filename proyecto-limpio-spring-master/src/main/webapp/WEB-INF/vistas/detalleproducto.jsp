@@ -32,6 +32,9 @@
       <div class="container-fluid">
       <form action="carrito-compras">
       <label for="cantidad">Cantidad:</label>
+      <small id="passwordHelpBlock" class="form-text text-muted">
+  		Disponible ${libro.stock.cantidad } unidades
+		</small>
       <input class="form-control" type="number" id="cantidad" name="cantidad" placeholder="0" style="width:50px" min=1 required><br>
       <input type="hidden" id="idLibroSolicitado" name="idLibroSolicitado" value= ${libro.id }>
       <input class="btn btn-success "type="submit" value="Añadir al carrito">

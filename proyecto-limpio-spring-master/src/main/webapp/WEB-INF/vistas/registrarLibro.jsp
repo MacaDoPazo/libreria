@@ -27,7 +27,7 @@
             <input class="form-control col-xs-12" type="text" name="precio" id="nombre" required>
             <br>
             <label for="nombre">Stock: </label>
-            <input class="form-control col-xs-12" type="text" name="stock" id="nombre" required>
+            <input class="form-control col-xs-12" type="text" name="cantidad" id="nombre" required>
             <br>
             <label for="Autor">Autor: </label>
           	 
