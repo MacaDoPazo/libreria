@@ -2,13 +2,13 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +22,7 @@ public class ControladorLogin {
 	// dicha clase debe estar anotada como @Service o @Repository y debe estar en un paquete de los indicados en
 	// applicationContext.xml
 	private ServicioLogin servicioLogin;
+	
 
 	@Autowired
 	public ControladorLogin(ServicioLogin servicioLogin){
@@ -72,33 +73,6 @@ public class ControladorLogin {
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
 		return new ModelAndView("redirect:/login");
-	}
-	@RequestMapping("/registroUsuario")
-	public ModelAndView registro() {
-		ModelMap modelo = new ModelMap();
-		return new ModelAndView("registroUsuario", modelo);
-	}
-	
-	@RequestMapping("/mostrarUsuarioRegistrado")
-	public ModelAndView usuarioRegistrado(
-			@RequestParam("nombre") String nombre,
-			@RequestParam("apellido") String apellido,
-			@RequestParam("sexo") String sexo,
-			@RequestParam("email") String email,
-			@RequestParam("password") String password,
-			@RequestParam("passwordRepetido") String passwordRepetido
-			) {
-		
-		ModelMap modelo = new ModelMap();
-		modelo.put("nombre", nombre);
-		modelo.put("apellido", apellido);
-		modelo.put("sexo", sexo);
-		modelo.put("email", email);
-		modelo.put("password", password);
-		modelo.put("passwordRepetido", passwordRepetido);
-	
-		return new ModelAndView("mostrarUsuarioRegistrado", modelo);
-		
 	}
 	
 }
