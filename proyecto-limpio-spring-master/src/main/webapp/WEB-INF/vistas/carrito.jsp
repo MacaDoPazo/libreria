@@ -19,7 +19,7 @@
                         <tr>
                             <th scope="col"> </th>
                             <th scope="col">Producto</th>
-                            <th scope="col">Disponible</th>
+                            <!-- <th scope="col">Disponible</th> -->
                             <th scope="col" class="text-center">Cantidad</th>
                             <th scope="col" class="text-center">Precio unitario</th>
                             <th scope="col" class="text-center">Precio total</th>
@@ -30,7 +30,7 @@
                         <tr>
                             <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
                             <td>${libro.nombre}</td>
-                            <td>en stock</td>
+                            <!-- <td>en stock</td> -->
                             <td class="text-center">${cantidad}</td>
                             <td class="text-center">$${libro.precio}</td>
                             <td class="text-center">$${precioTotal}</td>
@@ -39,7 +39,7 @@
                         <tr>
                             <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
                             <td>Cherries, interrupted</td>
-                            <td>en stock</td>
+                           <!--  <td>en stock</td> -->
                             <td><input class="form-control" type="text" value="1" /></td>
                             <td class="text-center">500$</td>
                             <td class="text-center">500$</td>
@@ -48,7 +48,7 @@
                         <tr>
                             <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
                             <td>Cherries, interrupted</td>
-                            <td>en stock</td>
+                            <!-- <td>en stock</td> -->
                             <td><input class="form-control" type="text" value="1" /></td>
                             <td class="text-center">200$</td>
                             <td class="text-center">500$</td>
@@ -85,7 +85,59 @@
                 </table>
             </div>
         </div>
-        <div class="col mb-2">
+        
+
+       <div class="col-sm-6  col-md-6">
+          <a href="pantalla-inicial"><button class="btn btn-lg btn-block btn-outline-dark text-uppercase">Continuar comprando</button></a> 
+       </div>      
+       
+        
+        <h2 class="text-primary mt-6 mb-3 col-sm-12  col-md-12">Ya es hora de generar el pago con tu tarjeta:</h2>
+        
+        
+         <form action="" class="container" id="form-pago">
+	        <div class="form-group row">
+	            <label for="" class="text-secondary col-sm-2 col-form-label">Nombre:</label>
+	            <div class="col-sm-4">
+	                <input type="text" name="nombre" class="form-control">
+	            </div>
+	        </div>
+	        
+	        <div class="form-group row">
+	            <label for="" class="text-secondary col-sm-2 col-form-label">Apellido:</label>
+	            <div class="col-sm-4">
+	                <input type="text" name="apellido" class="form-control">
+	            </div>
+	        </div>
+	        
+	        <div class="form-group row">
+	            <label for="" class="text-secondary col-sm-2 col-form-label">N° de tarjeta:</label>
+	            <div class="col-sm-4">
+	                <input type="text" name="numeroTarjeta" class="form-control border" id="numero-tarjeta">
+	            </div>
+        	</div>
+        	
+        	<div class="form-group row">
+	            <label for="" class="text-secondary col-sm-2 col-form-label">Fecha de caducidad:</label>
+	            <div class="col-sm-4">
+	                <input type="text" name="fechaCaducidad" class="form-control" id="fecha-caducidad">
+	            </div>
+	        </div>
+
+	        <div class="form-group row">
+	            <label for="" class="text-secondary col-sm-2 col-form-label">Cod. de seguridad:</label>
+	            <div class="col-sm-4">
+	                <input type="number" name="codigoSeguridad" class="form-control">
+	            </div>
+	        </div>
+	        
+	     </form>
+	     
+	   <div class="col-sm-12  col-md-6">
+           <button class="btn btn-lg btn-block btn-success text-uppercase">Finalizar compra</button>
+       </div>  
+        
+<!--         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
                    <a href="pantalla-inicial"><button class="btn btn-lg btn-block btn-outline-dark">Continuar comprando</button></a> 
@@ -94,7 +146,7 @@
                     <button class="btn btn-lg btn-block btn-success text-uppercase">Finalizar compra</button>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 	
