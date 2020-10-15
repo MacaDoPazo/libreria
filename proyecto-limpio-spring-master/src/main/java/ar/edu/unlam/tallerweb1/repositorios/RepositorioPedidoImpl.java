@@ -25,4 +25,16 @@ public class RepositorioPedidoImpl implements RepositorioPedido {
 		return pedido;
 	}
 
+	@Override
+	public Long guardarPedido(Pedido pedido) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Pedido buscarPedidoArmando(Long idCliente, String armando) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

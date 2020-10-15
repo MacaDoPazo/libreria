@@ -69,7 +69,8 @@ public class ControladorLibros {
 		modelo.put("precio",precio);
 		modelo.put("stock",stock);
 		modelo.put("autorLibro", autorEncontrado);
-		
+		List<Autor> listaAutores = servicioAutor.listarAutores();
+		modelo.put("lista",listaAutores);
 		
 		return new ModelAndView("registrarLibro",modelo);
 	}
