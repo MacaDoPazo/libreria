@@ -15,14 +15,20 @@ public class ServicioPedidoImpl implements ServicioPedido {
 	private RepositorioPedido repositorioPedido;
 
 	@Override
-	public void guardarPedido(Pedido pedido) {
-		repositorioPedido.guardarPedido(pedido);
+	public Long guardarPedido(Pedido pedido) {
+		return repositorioPedido.guardarPedido(pedido);
 	}
 
 	@Override
 	public Pedido consultarPedidoPorId(Long id) {
 		Pedido pedido = repositorioPedido.consultarPedidoPorId(id);
 		return pedido;
+	}
+
+	@Override
+	public Pedido buscarPedidoArmando(Long idCliente, String string) {
+		// TODO Auto-generated method stub
+		return repositorioPedido.buscarPedidoArmando(idCliente, string);
 	}
 
 }

@@ -64,8 +64,14 @@
       		<a href="#" style="text-decoration:none"><h6>${item.autor.nombre} ${item.autor.apellido}</h6></a>
       		<p class="card-text">$${item.precio}<p> 
       		<div class="card-text d-flex justify-content-center"><a href="sumar-megusta?idLibro=${item.id }"class="" id="botonlike"><i class="far fa-heart"></i> </a><p id="cantidadlikes"> &nbsp ${item.megusta}</p></div>
-      		<a href="detalle-producto?idLibro=${item.id}"><button type="button" class="btn btn-outline-dark">Comprar</button></a>	   
-      		
+      		<form action="agregar-al-carrito" >
+      		<input class="form-control mx-auto" type="number" id="cantidad" name="canitdad" placeholder="0" style="width:50px" min=1 required><br>
+      		<input type="hidden" id="precio" name="idLibro" value= ${item.id }>
+     		 <input type="hidden" id="precio" name="precio" value= ${item.precio }>
+      		<input type="hidden" id="precio" name="idCliente" value=1>
+     		 <input class="btn btn-success mx-auto"type="submit" value="Añadir al carrito">
+      		</form>
+      		<a href="detalle-producto?idLibro=${item.id}" class=" mx-auto"><button type="button" class="btn btn-outline-dark">Comprar</button></a>
       	</div>
       		
    		 </div>           
