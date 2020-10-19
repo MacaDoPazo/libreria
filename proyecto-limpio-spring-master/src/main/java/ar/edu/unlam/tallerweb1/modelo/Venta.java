@@ -12,7 +12,7 @@ public class Venta {
 	
 	private Long id;
 	private String formaDePago;
-	
+	private Long monto;
 	public Long getId() {
 		return id;
 	}
@@ -25,5 +25,13 @@ public class Venta {
 	public void setFormaDePago(String formaDePago) {
 		this.formaDePago = formaDePago;
 	}
+	public Long getMonto() {
+		return monto;
+	}
+	public void setMonto(Long monto) {
+		this.monto = monto;
+	}
+	
+	
 
 }

@@ -10,27 +10,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import ar.edu.unlam.tallerweb1.modelo.CantidadLibros;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
 import ar.edu.unlam.tallerweb1.modelo.Pedido;
-
+import ar.edu.unlam.tallerweb1.servicios.ServicioCantLibros;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPedido;
 import ar.edu.unlam.tallerweb1.servicios.servicioLibro;
 
 @Controller
 public class ControladorPedido {
 
-//	@Inject
+	@Inject
 	
-//	private ServicioPedido servicioPedido;
+	private ServicioPedido servicioPedido;
 	
-//	@Inject
-//	private servicioLibro servicioLibro;
+	@Inject
+	private servicioLibro servicioLibro;
 
-//	@Inject
-//	private ServicioCantLibros servicioCantLibros;
+	@Inject
+	private ServicioCantLibros servicioCantLibros;
 	
-/*	@RequestMapping("/agregar-al-carrito")
+	@RequestMapping("/agregar-al-carrito")
 	public ModelAndView agregarAlCarrito (@RequestParam("idLibro") Long idLibro,
 			@RequestParam("canitdad") Long cantidad,
 			@RequestParam("precio") Long precio,@RequestParam("idCliente") Long idCliente)
@@ -49,7 +49,7 @@ public class ControladorPedido {
 			CantidadLibros cantidadLibros = new CantidadLibros();
 			cantidadLibros.setLibro(libroPedir);
 			cantidadLibros.setPedido(pedidoCliente);
-			cantidadLibros.setCantidad(total);
+			cantidadLibros.setCantidad(cantidad);
 			cantidadLibros.setPrecioTotal(total);
 			Long idCantLibros = servicioCantLibros.guardarCantidadLibros(cantidadLibros);
 			
@@ -58,14 +58,25 @@ public class ControladorPedido {
 		else
 		{
 			Libro libroPedir = servicioLibro.consultarLibroPorId(idLibro);
+			CantidadLibros libroEncontrado=servicioCantLibros.buscarLibroEnPedidoArmado(pedidoArmando,libroPedir);
+			if(libroEncontrado != null)
+			{	
 			Long total = cantidad*precio;
-			CantidadLibros cantidadLibros = new CantidadLibros();
-			cantidadLibros.setLibro(libroPedir);
-			cantidadLibros.setPedido(pedidoArmando);
-			cantidadLibros.setCantidad(cantidad);
-			cantidadLibros.setPrecioTotal(total);
-			Long idCantLibros = servicioCantLibros.guardarCantidadLibros(cantidadLibros);
-			
+			libroEncontrado.setCantidad(cantidad+libroEncontrado.getCantidad());
+			libroEncontrado.setPrecioTotal(total+libroEncontrado.getPrecioTotal());
+			 servicioCantLibros.actualizarCantidadLibros(libroEncontrado);
+			}
+			else
+			{
+				Libro libroPedi = servicioLibro.consultarLibroPorId(idLibro);
+				Long total = cantidad*precio;
+				CantidadLibros cantidadLibros = new CantidadLibros();
+				cantidadLibros.setLibro(libroPedi);
+				cantidadLibros.setPedido(pedidoArmando);
+				cantidadLibros.setCantidad(cantidad);
+				cantidadLibros.setPrecioTotal(total);
+				Long idCantLibros = servicioCantLibros.guardarCantidadLibros(cantidadLibros);
+			}
 			
 		}
 		
@@ -73,6 +84,8 @@ public class ControladorPedido {
 		ModelMap modelo = new ModelMap();
 		modelo.put("lista",listalibros);
 		return new ModelAndView("pantallainicial",modelo);
-	}*/
+	}
+	
+	
 		
 }

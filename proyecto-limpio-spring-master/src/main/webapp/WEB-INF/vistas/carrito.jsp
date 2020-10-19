@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+       <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
      <%@include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -12,14 +13,14 @@
 	<section>
 	<div class="container mb-5">
     <div class="row">
-        <div class="col-15">
+        <div class="col-16">
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col"> </th>
                             <th scope="col">Producto</th>
-                            <!-- <th scope="col">Disponible</th> -->
+                            
                             <th scope="col" class="text-center">Cantidad</th>
                             <th scope="col" class="text-center">Precio unitario</th>
                             <th scope="col" class="text-center">Precio total</th>
@@ -27,49 +28,36 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <c:forEach items="${librosPedidos }" var="libros">
                         <tr>
                             <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>${libro.nombre}</td>
-                            <!-- <td>en stock</td> -->
-                            <td class="text-center">${cantidad}</td>
-                            <td class="text-center">$${libro.precio}</td>
-                            <td class="text-center">$${precioTotal}</td>
+                            <td>${libros.libro.nombre} </td>
+                            
+                            <td class="text-center">${libros.cantidad }</td>
+                            <td class="text-center">$${libros.libro.precio}</td>
+                            <td class="text-center">$${libros.precioTotal}</td>
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Cherries, interrupted</td>
-                           <!--  <td>en stock</td> -->
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-center">500$</td>
-                            <td class="text-center">500$</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Cherries, interrupted</td>
-                            <!-- <td>en stock</td> -->
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-center">200$</td>
-                            <td class="text-center">500$</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
+                   		</c:forEach>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td>Sub-Total</td>
-                            <td class="text-center">820 $</td>
+                            <td class="text-center">${subtotal } $</td>
                         </tr>
                         <tr>
                             <td></td>
                             <td class="text-right"><b>calcular envio:</b></td>
-                            <td><form action="buscar-localidad" method="post">
-                            		<input class="form-control" type="number" placeholder=CP name="cp">
-                            		<input type="submit" value=Calcular class="btn btn-success">
-                            	</form></td>
-                            <td></td>
+                            <td>
+                            <form action="buscar-localidad">
+                            		 <input class="form-control" type="number" id="cp" name="cp"><br>
+   								   <input type="hidden" id="idCliente" name="idCliente" value= 1>
+     						  		<input class="btn btn-success "type="submit" value="Calcular">
+     						</form>  		
+                            	</td>
+                            <td>${localidad.nombre }</td>
                             <td>Envio</td>
                             <td class="text-center">${localidad.precio }$</td>
                         </tr>
@@ -79,77 +67,39 @@
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-center"><strong>820 $</strong></td>
+                            <td class="text-center"><strong>${total } $</strong></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         
-
-       <div class="col-sm-6  col-md-6">
-          <a href="pantalla-inicial"><button class="btn btn-lg btn-block btn-outline-dark text-uppercase">Continuar comprando</button></a> 
-       </div>      
-       
-        
-        <h2 class="text-primary mt-6 mb-3 col-sm-12  col-md-12">Ya es hora de generar el pago con tu tarjeta:</h2>
-        
-        
-         <form action="" class="container" id="form-pago">
-	        <div class="form-group row">
-	            <label for="" class="text-secondary col-sm-2 col-form-label">Nombre:</label>
-	            <div class="col-sm-4">
-	                <input type="text" name="nombre" class="form-control">
-	            </div>
-	        </div>
-	        
-	        <div class="form-group row">
-	            <label for="" class="text-secondary col-sm-2 col-form-label">Apellido:</label>
-	            <div class="col-sm-4">
-	                <input type="text" name="apellido" class="form-control">
-	            </div>
-	        </div>
-	        
-	        <div class="form-group row">
-	            <label for="" class="text-secondary col-sm-2 col-form-label">N° de tarjeta:</label>
-	            <div class="col-sm-4">
-	                <input type="text" name="numeroTarjeta" class="form-control border" id="numero-tarjeta">
-	            </div>
-        	</div>
-        	
-        	<div class="form-group row">
-	            <label for="" class="text-secondary col-sm-2 col-form-label">Fecha de caducidad:</label>
-	            <div class="col-sm-4">
-	                <input type="text" name="fechaCaducidad" class="form-control" id="fecha-caducidad">
-	            </div>
-	        </div>
-
-	        <div class="form-group row">
-	            <label for="" class="text-secondary col-sm-2 col-form-label">Cod. de seguridad:</label>
-	            <div class="col-sm-4">
-	                <input type="number" name="codigoSeguridad" class="form-control">
-	            </div>
-	        </div>
-	        
-	     </form>
-	     
-	   <div class="col-sm-12  col-md-6">
-           <button class="btn btn-lg btn-block btn-success text-uppercase">Finalizar compra</button>
-       </div>  
-        
-<!--         <div class="col mb-2">
-            <div class="row">
-                <div class="col-sm-12  col-md-6">
-                   <a href="pantalla-inicial"><button class="btn btn-lg btn-block btn-outline-dark">Continuar comprando</button></a> 
-                </div>
-                <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">Finalizar compra</button>
-                </div>
+                <div class="col-16">
+                <form action="guardar-venta" method="post" >
+            <input type="hidden" id="totalpagar" name="totalpagar" value= ${total }>
+            <br>
+       			<input type="hidden" id="idCliente" name="idCliente" value= 1>	
+            <br>
+               <input type="hidden" id="localidad" name="localidad" value= ${localidad }>
+            
+			 <label for="pago">Medio de pago:</label><br>
+ 
+			 <input type="radio" name="pago" id="credito" value="credito" checked>
+			 <label for="tarjeta credito">tarjeta credito</label> 
+			 <input type="radio" name="pago" id="mercado" value="mercado">
+			 <label for="mercado pago">mercado pago</label>
+			 <input type="radio" name="pago" id="debito" value="debito">
+			 <label for="Débito">Débito</label> <br>
+			             
+            <input id="submit-button" name="enviar" class="btn btn-success float-right btn-lg" type="submit" value="Finalizar Compra">
+        <a href="pantalla-inicial"><button type="button" class="btn btn-outline-dark float-right  btn-lg">Continuar comprando</button></a> 
+        </form>
+               </div>
+                
+                
             </div>
-        </div> -->
-    </div>
-</div>
-	
+        </div>
+    
 	</section>
 </body>
 </html>

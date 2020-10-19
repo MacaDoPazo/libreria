@@ -14,8 +14,10 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String estado;
+//	@ManyToOne(cascade = CascadeType.ALL)
+	private Long cliente;
 	@ManyToOne(cascade = CascadeType.ALL)
-	Libro libro;
+	private Localidad localidad;
 	public Long getId() {
 		return id;
 	}
@@ -28,11 +30,17 @@ public class Pedido {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public Libro getLibro() {
-		return libro;
+	public Long getCliente() {
+		return cliente;
 	}
-	public void setLibro(Libro libro) {
-		this.libro = libro;
+	public void setCliente(Long cliente) {
+		this.cliente = cliente;
+	}
+	public Localidad getLocalidad() {
+		return localidad;
+	}
+	public void setLocalidad(Localidad localidad) {
+		this.localidad = localidad;
 	}
 	
 	

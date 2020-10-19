@@ -37,6 +37,7 @@
 		</small>
       <input class="form-control" type="number" id="cantidad" name="cantidad" placeholder="0" style="width:50px" min=1 required><br>
       <input type="hidden" id="idLibroSolicitado" name="idLibroSolicitado" value= ${libro.id }>
+       <input type="hidden" id="idCliente" name="idCliente" value= 1>
       <input class="btn btn-success "type="submit" value="Añadir al carrito">
       </form>
       </div>

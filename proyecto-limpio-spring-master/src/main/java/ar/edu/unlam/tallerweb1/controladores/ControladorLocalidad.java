@@ -11,14 +11,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unlam.tallerweb1.modelo.CantidadLibros;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
 import ar.edu.unlam.tallerweb1.modelo.Localidad;
+import ar.edu.unlam.tallerweb1.servicios.ServicioCantLibros;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLocalidad;
 
 @Controller
 public class ControladorLocalidad {
 	@Inject
 	private ServicioLocalidad servicioLocalidad;
+	@Inject
+	private ServicioCantLibros servicioCantLibros;
 
 	@RequestMapping(path="/registrar-localidad")
 	
@@ -48,13 +52,18 @@ public class ControladorLocalidad {
 		return mivista;
 	}
 	@RequestMapping(path="/buscar-localidad")
-	public ModelAndView buscarLibroPorId(@RequestParam(value="cp")Integer cp)
+	public ModelAndView buscarLibroPorId(@RequestParam(value="cp")Integer cp,
+			@RequestParam(value="idCliente")Long idCliente)
 	{
-		ModelMap model = new ModelMap();
-
+		List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idCliente,"armando");
+		Long subtotal = servicioCantLibros.subtotalDeTodosLosLibros(librosPedidos);
 		Localidad localidadEncontrada = servicioLocalidad.consultarLocalidadPorCP(cp);
-
+		Long total=localidadEncontrada.getPrecio()+subtotal;
+		ModelMap model = new ModelMap();
 		model.put("localidad", localidadEncontrada);
+		model.put("total",total);
+		model.put("subtotal",subtotal);
+		model.put("librosPedidos",librosPedidos);
 		return new ModelAndView("carrito",model);
 	}
 }
