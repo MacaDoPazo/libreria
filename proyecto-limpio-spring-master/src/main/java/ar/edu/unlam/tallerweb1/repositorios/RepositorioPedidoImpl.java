@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.expression.spel.ast.Projection;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.unlam.tallerweb1.modelo.Libro;
 import ar.edu.unlam.tallerweb1.modelo.Pedido;
 
 @Repository
@@ -35,6 +36,15 @@ public class RepositorioPedidoImpl implements RepositorioPedido {
 				//.createAlias("cliente","clienteBuscado")
 				
 				.add(Restrictions.and(Restrictions.eq("cliente",idCliente),Restrictions.eq("estado",armando))).uniqueResult();
+	}
+
+	@Override
+	public void actualizarEstadoDelPedido(Long idPedido, String estadoActualizado) {
+		Pedido pedido;
+		pedido = sessionFactory.getCurrentSession().get(Pedido.class, idPedido);
+		pedido.setEstado(estadoActualizado);
+		sessionFactory.getCurrentSession().update(pedido);
+		
 	}
 
 }

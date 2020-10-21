@@ -68,37 +68,61 @@
                             <td></td>
                             <td><strong>Total</strong></td>
                             <td class="text-center"><strong>${total } $</strong></td>
+                            
                         </tr>
+                        <a href="pantalla-inicial"><button type="button" class="btn btn-outline-dark float-right  btn-lg">Continuar comprando</button></a>
                     </tbody>
                 </table>
             </div>
         </div>
         
-                <div class="col-16">
-                <form action="guardar-venta" method="post" >
-            <input type="hidden" id="totalpagar" name="totalpagar" value= ${total }>
+        
+        <h2 class="text-primary mt-6 mb-3 col-sm-12  col-md-12">Ya es hora de generar el pago con tu tarjeta:</h2>
+        
+       <form action="guardar-venta" class="container" method="POST" >  <!-- modelAttribute="venta" -->
+            <input type="hidden" id="montoTotal" name="montoTotal" value= ${total }>
             <br>
        			<input type="hidden" id="idCliente" name="idCliente" value= 1>	
             <br>
-               <input type="hidden" id="localidad" name="localidad" value= ${localidad }>
-            
-			 <label for="pago">Medio de pago:</label><br>
- 
-			 <input type="radio" name="pago" id="credito" value="credito" checked>
-			 <label for="tarjeta credito">tarjeta credito</label> 
-			 <input type="radio" name="pago" id="mercado" value="mercado">
-			 <label for="mercado pago">mercado pago</label>
-			 <input type="radio" name="pago" id="debito" value="debito">
-			 <label for="Débito">Débito</label> <br>
-			             
+               <input type="hidden" id="localidadEnvio" name="localidadEnvio" value= ${localidad.id }>            
+			 <div class="form-group row">
+	            <label for="" class="text-secondary col-sm-2 col-form-label">Nombre:</label>
+	            <div class="col-sm-4">
+	                <input type="text" name="nombreTitularTarjeta" class="form-control">
+	            </div>
+	        </div>	        
+	        <div class="form-group row">
+	            <label for="" class="text-secondary col-sm-2 col-form-label">Apellido:</label>
+	            <div class="col-sm-4">
+	                <input type="text" name="apellidoTitularTarjeta" class="form-control">
+	            </div>
+	        </div>	        
+	        <div class="form-group row">
+	            <label for="" class="text-secondary col-sm-2 col-form-label">N° de tarjeta:</label>
+	            <div class="col-sm-4">
+	                <input type="text" name="numeroTarjeta" class="form-control border" id="numeroTarjeta">
+	            </div>
+        	</div>        	
+        	<div class="form-group row">
+	            <label for="" class="text-secondary col-sm-2 col-form-label">Fecha de caducidad:</label>
+	            <div class="col-sm-4">
+	                <input type="text" name="fechaCaducidadTarjeta" class="form-control" id="fechaCaducidadTarjeta">
+	            </div>
+	        </div>
+	        <div class="form-group row">
+	            <label for="" class="text-secondary col-sm-2 col-form-label">Cod. de seguridad:</label>
+	            <div class="col-sm-4">
+	                <input type="number" name="codigoSeguridadTarjeta" class="form-control">
+	            </div>
+	        </div>	             
             <input id="submit-button" name="enviar" class="btn btn-success float-right btn-lg" type="submit" value="Finalizar Compra">
-        <a href="pantalla-inicial"><button type="button" class="btn btn-outline-dark float-right  btn-lg">Continuar comprando</button></a> 
+         
         </form>
+        
                </div>
                 
                 
             </div>
-        </div>
     
 	</section>
 </body>

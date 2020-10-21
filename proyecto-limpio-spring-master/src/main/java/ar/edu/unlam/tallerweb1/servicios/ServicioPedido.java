@@ -7,5 +7,6 @@ public interface ServicioPedido {
 	public Long guardarPedido(Pedido pedido);
 	public Pedido consultarPedidoPorId(Long id);
 	public Pedido buscarPedidoArmando(Long idCliente, String armando);
+	public void actualizarEstadoDelPedido(Long idPedido, String estadoActualizado);
 
 }

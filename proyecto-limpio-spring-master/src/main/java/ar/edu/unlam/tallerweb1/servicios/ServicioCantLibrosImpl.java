@@ -22,6 +22,7 @@ public class ServicioCantLibrosImpl implements ServicioCantLibros {
 	public Long guardarCantidadLibros(CantidadLibros cantidadLibros) {
 		// TODO Auto-generated method stub
 		return respositorioCantLibros.guardarCantidadLibros(cantidadLibros);
+		
 	}
 
 

@@ -1,11 +1,15 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Pedido {
@@ -18,6 +22,18 @@ public class Pedido {
 	private Long cliente;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Localidad localidad;
+	
+	@OneToMany (cascade = CascadeType.ALL, mappedBy= "pedido")
+	private List <CantidadLibros> cantidadLibros;
+	
+	
+
+	public List<CantidadLibros> getCantidadLibros() {
+		return cantidadLibros;
+	}
+	public void setCantidadLibros(List<CantidadLibros> cantidadLibros) {
+		this.cantidadLibros = cantidadLibros;
+	}
 	public Long getId() {
 		return id;
 	}

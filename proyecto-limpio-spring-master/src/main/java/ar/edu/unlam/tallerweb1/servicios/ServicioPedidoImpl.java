@@ -31,4 +31,10 @@ public class ServicioPedidoImpl implements ServicioPedido {
 		return repositorioPedido.buscarPedidoArmando(idCliente, string);
 	}
 
+	@Override
+	public void actualizarEstadoDelPedido(Long idPedido, String estadoActualizado) {
+		repositorioPedido.actualizarEstadoDelPedido(idPedido, estadoActualizado);
+		
+	}
+
 }
