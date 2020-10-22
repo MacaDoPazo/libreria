@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@include file="header.jsp" %>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -16,7 +17,7 @@
 		<p>La localidad de envío es la que tiene el ID: ${localidadEnvio}</p>
 		<p>El monto total de la venta es: ${montoTotal } </p>
 		<p>La venta fue realizada para el cliente con ID: ${idCliente } </p>
-		
+	
 		 <c:forEach items="${listaLibrosVendidos }" var="libros">
                         <tr>
                             <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>

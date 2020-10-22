@@ -74,12 +74,12 @@ public class ControladorInicio {
 			Long idPedido =servicioPedido.guardarPedido(pedido);
 			Pedido pedidoCliente = servicioPedido.consultarPedidoPorId(idPedido);
 			Libro libroPedir = servicioLibro.consultarLibroPorId(idLibroSolicitado);
-			Long total = cantidad*libroPedir.getPrecio();
+		//	Long total = cantidad*libroPedir.getPrecio();
 			CantidadLibros cantidadLibros = new CantidadLibros();
 			cantidadLibros.setLibro(libroPedir);
 			cantidadLibros.setPedido(pedidoCliente);
 			cantidadLibros.setCantidad(cantidad);
-			cantidadLibros.setPrecioTotal(total);
+	//		cantidadLibros.setPrecioTotal(total);
 			Long idCantLibros = servicioCantLibros.guardarCantidadLibros(cantidadLibros);
 			
 			
@@ -90,21 +90,21 @@ public class ControladorInicio {
 			CantidadLibros libroEncontrado=servicioCantLibros.buscarLibroEnPedidoArmado(pedidoArmando,libroPedir);
 			if(libroEncontrado != null)
 			{	
-			Long total = cantidad*libroPedir.getPrecio();
+		//	Long total = cantidad*libroPedir.getPrecio();
 			libroEncontrado.setCantidad(cantidad+libroEncontrado.getCantidad());
-			libroEncontrado.setPrecioTotal(total+libroEncontrado.getPrecioTotal());
+		//	libroEncontrado.setPrecioTotal(total+libroEncontrado.calcularPrecioTotal());
 			 servicioCantLibros.actualizarCantidadLibros(libroEncontrado);
 			
 			}
 			else
 			{
-				Libro libroPedi = servicioLibro.consultarLibroPorId(idLibroSolicitado);
-				Long total = cantidad*libroPedir.getPrecio();
+			//	Libro libroPedi = servicioLibro.consultarLibroPorId(idLibroSolicitado);
+			//	Long total = cantidad*libroPedir.getPrecio();
 				CantidadLibros cantidadLibros = new CantidadLibros();
-				cantidadLibros.setLibro(libroPedi);
+				cantidadLibros.setLibro(libroPedir);
 				cantidadLibros.setPedido(pedidoArmando);
 				cantidadLibros.setCantidad(cantidad);
-				cantidadLibros.setPrecioTotal(total);
+			//	cantidadLibros.setPrecioTotal(total);
 				Long idCantLibros = servicioCantLibros.guardarCantidadLibros(cantidadLibros);
 				
 			}

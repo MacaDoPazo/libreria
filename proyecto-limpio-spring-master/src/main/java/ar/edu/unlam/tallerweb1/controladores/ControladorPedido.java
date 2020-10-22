@@ -45,12 +45,12 @@ public class ControladorPedido {
 			Long idPedido =servicioPedido.guardarPedido(pedido);
 			Pedido pedidoCliente = servicioPedido.consultarPedidoPorId(idPedido);
 			Libro libroPedir = servicioLibro.consultarLibroPorId(idLibro);
-			Long total = cantidad*precio;
+			Long total = cantidad*precio;//servicioPedido
 			CantidadLibros cantidadLibros = new CantidadLibros();
 			cantidadLibros.setLibro(libroPedir);
 			cantidadLibros.setPedido(pedidoCliente);
 			cantidadLibros.setCantidad(cantidad);
-			cantidadLibros.setPrecioTotal(total);
+			cantidadLibros.setPrecioTotal(cantidadLibros.calcularPrecioTotal());
 			Long idCantLibros = servicioCantLibros.guardarCantidadLibros(cantidadLibros);
 			
 			
@@ -63,18 +63,18 @@ public class ControladorPedido {
 			{	
 			Long total = cantidad*precio;
 			libroEncontrado.setCantidad(cantidad+libroEncontrado.getCantidad());
-			libroEncontrado.setPrecioTotal(total+libroEncontrado.getPrecioTotal());
+			libroEncontrado.setPrecioTotal(libroEncontrado.calcularPrecioTotal());
 			 servicioCantLibros.actualizarCantidadLibros(libroEncontrado);
 			}
 			else
 			{
-				Libro libroPedi = servicioLibro.consultarLibroPorId(idLibro);
-				Long total = cantidad*precio;
+			//	Libro libroPedi = servicioLibro.consultarLibroPorId(idLibro);
+			// total = cantidad*precio;
 				CantidadLibros cantidadLibros = new CantidadLibros();
-				cantidadLibros.setLibro(libroPedi);
+				cantidadLibros.setLibro(libroPedir);
 				cantidadLibros.setPedido(pedidoArmando);
 				cantidadLibros.setCantidad(cantidad);
-				cantidadLibros.setPrecioTotal(total);
+				cantidadLibros.setPrecioTotal(cantidadLibros.calcularPrecioTotal());
 				Long idCantLibros = servicioCantLibros.guardarCantidadLibros(cantidadLibros);
 			}
 			
@@ -85,7 +85,5 @@ public class ControladorPedido {
 		modelo.put("lista",listalibros);
 		return new ModelAndView("pantallainicial",modelo);
 	}
-	
-	
-		
+
 }

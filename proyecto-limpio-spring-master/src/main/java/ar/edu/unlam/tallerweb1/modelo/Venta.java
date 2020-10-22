@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +23,7 @@ public class Venta {
 	private Long numeroTarjeta;
 	private String fechaCaducidadTarjeta;
 	private Integer codigoSeguridadTarjeta;
-	
+	private Date fechaDeVenta;
 	@OneToOne
 	private Pedido pedido;
 	
@@ -87,6 +89,12 @@ public class Venta {
 	}
 	public void setCodigoSeguridadTarjeta(Integer codigoSeguridadTarjeta) {
 		this.codigoSeguridadTarjeta = codigoSeguridadTarjeta;
+	}
+	public Date getFechaDeVenta() {
+		return fechaDeVenta;
+	}
+	public void setFechaDeVenta(Date fechaDeVenta) {
+		this.fechaDeVenta = fechaDeVenta;
 	}
 	
 	

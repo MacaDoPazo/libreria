@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class CantidadLibros {
@@ -14,11 +15,13 @@ public class CantidadLibros {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Long cantidad;
+	//@Transient
 	private Long precioTotal;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Libro libro;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Pedido pedido;
+	
 	
 	public Long getId() {
 		return id;
@@ -33,11 +36,15 @@ public class CantidadLibros {
 		this.cantidad = cantidad;
 	}
 	
+	public Long calcularPrecioTotal() {
+		return this.libro.getPrecio()*this.cantidad;
+	}
+	
 	public Long getPrecioTotal() {
 		return precioTotal;
 	}
-	public void setPrecioTotal(Long total) {
-		this.precioTotal = total;
+	public void setPrecioTotal(Long precioTotal) {
+		this.precioTotal = precioTotal;
 	}
 	public Libro getLibro() {
 		return libro;

@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -65,6 +66,8 @@ public class ControladorVenta {
 			//Agregar fecha de venta
 			venta.setCodigoSeguridadTarjeta(codigoSeguridadTarjeta);
 			venta.setPedido(pedido);
+			java.sql.Date fechaVenta = new java.sql.Date(Calendar.getInstance().getTime().getTime()); 
+			venta.setFechaDeVenta(fechaVenta);
 			servicioVenta.guardarVenta(venta);
 			
 			List <CantidadLibros> listaLibrosVendidos= servicioCantidadLibros.listarLibrosPedidoDelCliente(idCliente, "armando");
@@ -89,5 +92,7 @@ public class ControladorVenta {
 		return new ModelAndView ("resultadoVenta", modelo);
 		
 	}
+	
+	
 }
 
