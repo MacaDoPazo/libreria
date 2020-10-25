@@ -47,4 +47,10 @@ public class RepositorioPedidoImpl implements RepositorioPedido {
 		
 	}
 
+	@Override
+	public void actualizarPedido(Pedido pedido) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().update(pedido);
+	}
+
 }

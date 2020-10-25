@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
@@ -23,6 +25,13 @@ public class ServicioVentaImpl implements ServicioVenta {
 	public Venta consultarVentaPorId(Long id) {
 		Venta venta= repositorioVenta.consultarVentaPorId(id);
 		return venta;
+	}
+
+	
+	@Override
+	public List<Venta> listarPedidosFacturados() {
+		// TODO Auto-generated method stub
+		return repositorioVenta.listarPedidosFacturados();
 	}
 
 }

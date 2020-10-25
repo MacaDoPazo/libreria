@@ -60,5 +60,11 @@ public class RepositorioCantLibrosImpl implements RepositorioCantLibros {
 		return (Long) sesion.getCurrentSession().createCriteria(CantidadLibros.class)
 				.setProjection(Projections.sum("precioTotal")).uniqueResult();
 	}
+	@Override
+	public List<CantidadLibros> listarLibrosComprados(Long pedidoId) {
+		// TODO Auto-generated method stub
+		return sesion.getCurrentSession().createCriteria(CantidadLibros.class)
+				.add(Restrictions.eq("pedido.id",pedidoId)).list();
+	}
 
 }

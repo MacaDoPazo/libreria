@@ -20,4 +20,6 @@ public interface RepositorioCantLibros {
 
 	Long subtotalDeTodosLosLibros(List<CantidadLibros> librosPedidos);
 
+	List<CantidadLibros> listarLibrosComprados(Long pedidoId);
+
 }

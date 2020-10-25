@@ -20,4 +20,6 @@ public interface ServicioCantLibros {
 
 	Long subtotalDeTodosLosLibros(List<CantidadLibros> librosPedidos);
 
+	List<CantidadLibros> listarLibrosComprados(Long pedidoId);
+
 }

@@ -65,4 +65,12 @@ public class ServicioCantLibrosImpl implements ServicioCantLibros {
 		return respositorioCantLibros.subtotalDeTodosLosLibros(librosPedidos);
 	}
 
+
+
+	@Override
+	public List<CantidadLibros> listarLibrosComprados(Long pedidoId) {
+		// TODO Auto-generated method stub
+		return respositorioCantLibros.listarLibrosComprados(pedidoId);
+	}
+
 }

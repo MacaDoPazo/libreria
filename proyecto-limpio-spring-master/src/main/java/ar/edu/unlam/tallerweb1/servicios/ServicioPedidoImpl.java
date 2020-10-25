@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
@@ -36,5 +38,12 @@ public class ServicioPedidoImpl implements ServicioPedido {
 		repositorioPedido.actualizarEstadoDelPedido(idPedido, estadoActualizado);
 		
 	}
+
+	@Override
+	public void actualizarPedido(Pedido pedido) {
+		repositorioPedido.actualizarPedido(pedido);
+		
+	}
+
 
 }
