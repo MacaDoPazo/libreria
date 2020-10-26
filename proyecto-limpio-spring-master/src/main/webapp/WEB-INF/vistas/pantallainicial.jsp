@@ -15,7 +15,11 @@
 		<title>Inicio - Cumelén</title>
 	</head>
 	<body>
-	
+	<br>
+	<c:if test="${cerro!=null}">
+	<div class="alert alert-info">Ha salido del sistema</div>
+	<br>
+	</c:if>
 		<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -26,13 +30,13 @@
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="https://tap-multimedia-1113.nyc3.digitaloceanspaces.com/slider/2473/large/1200x300.jpg" class="d-block w-100" alt="https://tap-multimedia-1113.nyc3.digitaloceanspaces.com/slider/2473/large/1200x300.jpg">
+      <img src="img/carrousel1.jpg" alt="im1"  width="850px" height="450px" >
     </div>
     <div class="carousel-item">
-      <img src="https://tap-multimedia-1113.nyc3.digitaloceanspaces.com/slider/2473/large/1200x300.jpg" class="d-block w-100" alt="https://tap-multimedia-1113.nyc3.digitaloceanspaces.com/slider/2473/large/1200x300.jpg">
+      <img src="img/carrousel2.jpg" alt="im2"  width="850px" height="450px" >
     </div>
     <div class="carousel-item">
-      <img src="https://tap-multimedia-1113.nyc3.digitaloceanspaces.com/slider/2473/large/1200x300.jpg" class="d-block w-100" alt="https://tap-multimedia-1113.nyc3.digitaloceanspaces.com/slider/2473/large/1200x300.jpg">
+      <img src="img/carrousel3.jpg" alt="im3"  width="850px" height="450px" >
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

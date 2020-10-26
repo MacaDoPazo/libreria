@@ -7,6 +7,9 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.inject.Inject;
 
 // implelemtacion del repositorio de usuarios, la anotacion @Repository indica a Spring que esta clase es un componente que debe
@@ -40,7 +43,14 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 	@Override
 	public Long guardarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
-		return (Long) sessionFactory.getCurrentSession().save(usuario);
+		Long id_usuario = null;
+		try {
+		id_usuario=(Long) sessionFactory.getCurrentSession().save(usuario);
+		}catch (Exception e) {
+			Logger logger = Logger.getLogger(RepositorioUsuarioImpl.class.getName());
+			logger.log(Level.WARNING, "Guardar Usuario Lanzo la siguiente Excepcion: "+e.getMessage());
+		}
+		return id_usuario;
 	}
 
 }

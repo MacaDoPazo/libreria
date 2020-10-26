@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -85,6 +87,19 @@ public class ControladorDePaginas {
 		modelo.put("titulo","Confirmacion");
 		return new ModelAndView("confirmacion",modelo);
 	}
-	//@RequestMapping(path="/home", method = Requestmethod.GET)
-	//public ModelAndView home
+
+	// Escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la url /login directamente.
+		@RequestMapping(path = "/", method = RequestMethod.GET)
+		public ModelAndView inicial() {
+			return new ModelAndView("redirect:/pantalla-inicial");
+		}
+		
+		@RequestMapping(path = "/salir", method = RequestMethod.GET)
+		public ModelAndView inicial( HttpServletRequest request) {
+			HttpSession session=request.getSession();
+			session.removeAttribute("usuario_nombre");
+			ModelMap modelo = new ModelMap();
+			modelo.put("cerro", "cerro");
+			return new ModelAndView("redirect:/pantalla-inicial",modelo);
+		}
 }
