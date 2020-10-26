@@ -84,7 +84,7 @@
             <br>
        			<input type="hidden" id="idCliente" name="idCliente" value= 1>	
             <br>
-               <input type="hidden" id="localidadEnvio" name="localidadEnvio" value= ${localidad.id }>            
+               <input type="hidden" id="localidadEnvio" name="localidadEnvio" value= ${localidad.cp }>            
 			 <div class="form-group row">
 	            <label for="" class="text-secondary col-sm-2 col-form-label">Nombre:</label>
 	            <div class="col-sm-4">

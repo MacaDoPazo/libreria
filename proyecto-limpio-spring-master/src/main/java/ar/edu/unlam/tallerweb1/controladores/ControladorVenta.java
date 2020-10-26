@@ -17,10 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Autor;
 import ar.edu.unlam.tallerweb1.modelo.CantidadLibros;
+import ar.edu.unlam.tallerweb1.modelo.Localidad;
 import ar.edu.unlam.tallerweb1.modelo.Pedido;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.modelo.Venta;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCantLibros;
+import ar.edu.unlam.tallerweb1.servicios.ServicioLocalidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPedido;
 import ar.edu.unlam.tallerweb1.servicios.ServicioStock;
 import ar.edu.unlam.tallerweb1.servicios.ServicioVenta;
@@ -39,7 +41,8 @@ public class ControladorVenta {
 	
 	@Inject
 	private ServicioStock servicioStock;
-	
+	@Inject
+	private ServicioLocalidad servicioLocalidad;
 	@RequestMapping(path= "/guardar-venta", method= RequestMethod.POST)
 	public ModelAndView guardarVenta(
 			@RequestParam("idCliente") Long idCliente,
@@ -53,7 +56,7 @@ public class ControladorVenta {
 			) {
 		
 		Pedido pedido = servicioPedido.buscarPedidoArmando(idCliente, "armando");
-
+		Localidad localidad = servicioLocalidad.consultarLocalidadPorCP(localidadEnvio);
 		
 		Venta venta = new Venta();
 			venta.setIdCliente(idCliente);
@@ -66,10 +69,12 @@ public class ControladorVenta {
 			//Agregar fecha de venta
 			venta.setCodigoSeguridadTarjeta(codigoSeguridadTarjeta);
 			venta.setPedido(pedido);
+			pedido.setVenta(venta);
+			pedido.setLocalidad(localidad);
 			java.sql.Date fechaVenta = new java.sql.Date(Calendar.getInstance().getTime().getTime()); 
 			venta.setFechaDeVenta(fechaVenta);
 			servicioVenta.guardarVenta(venta);
-			
+			servicioPedido.actualizarPedido(pedido);
 			List <CantidadLibros> listaLibrosVendidos= servicioCantidadLibros.listarLibrosPedidoDelCliente(idCliente, "armando");
 			servicioStock.descontarStock(listaLibrosVendidos);
 			
@@ -93,6 +98,18 @@ public class ControladorVenta {
 		
 	}
 	
-	
+	@RequestMapping(path="/detalle-venta", method= RequestMethod.GET)
+	public ModelAndView detalleVenta (@RequestParam("pedidoId")Long pedidoId)
+	{
+		List<CantidadLibros> librosComprados = servicioCantidadLibros.listarLibrosComprados(pedidoId);
+		Pedido pedido = servicioPedido.consultarPedidoPorId(pedidoId);
+		
+		ModelMap modelo = new ModelMap();
+		
+		modelo.put("librosComprados",librosComprados);
+		
+		modelo.put("pedido",pedido);
+		return new ModelAndView("detalleVenta",modelo);
+	}
 }
 

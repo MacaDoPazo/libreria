@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Pedido {
@@ -25,7 +26,8 @@ public class Pedido {
 	
 	@OneToMany (cascade = CascadeType.ALL, mappedBy= "pedido")
 	private List <CantidadLibros> cantidadLibros;
-	
+	@OneToOne
+	private Venta venta;
 	
 
 	public List<CantidadLibros> getCantidadLibros() {
@@ -57,6 +59,12 @@ public class Pedido {
 	}
 	public void setLocalidad(Localidad localidad) {
 		this.localidad = localidad;
+	}
+	public Venta getVenta() {
+		return venta;
+	}
+	public void setVenta(Venta venta) {
+		this.venta = venta;
 	}
 	
 	

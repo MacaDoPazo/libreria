@@ -33,6 +33,9 @@
 	  	<li class="nav-item">
 	    	<a class="nav-link" href="lista-localidades">Lista Localidades</a>
 	  	</li>
+	  	<li class="nav-item">
+	    	<a class="nav-link" href="listar-pedidos-clientes">Pedidos Clientes</a>
+	  	</li>
 		</ul>
 	</nav>
 	</div>
