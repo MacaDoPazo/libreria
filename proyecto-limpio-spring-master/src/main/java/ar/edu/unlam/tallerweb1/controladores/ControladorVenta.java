@@ -25,10 +25,14 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioCantLibros;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLocalidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPedido;
 import ar.edu.unlam.tallerweb1.servicios.ServicioStock;
+import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioVenta;
 
 @Controller
 public class ControladorVenta {
+	
+	@Inject
+	private ServicioUsuario servicioUsuario;
 
 	@Inject
 	private ServicioVenta servicioVenta;
@@ -111,5 +115,21 @@ public class ControladorVenta {
 		modelo.put("pedido",pedido);
 		return new ModelAndView("detalleVenta",modelo);
 	}
+	
+	@RequestMapping(path="/listarVentasAlCliente", method= RequestMethod.GET)
+	public ModelAndView listarVentasAlCliente(
+			@RequestParam("idCliente") Long idCliente) {
+	
+		List <Venta> listadoVentasRealizadasAlCliente = servicioVenta.listarVentasAlCliente(idCliente);
+		
+		ModelMap modelo = new ModelMap();
+		
+			modelo.put("idCliente", idCliente);
+			modelo.put("listadoVentasRealizadasAlCliente", listadoVentasRealizadasAlCliente);
+			
+			return new ModelAndView ("ventasAlCliente", modelo);
+	}
+	
+	
 }
 
