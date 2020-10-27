@@ -59,6 +59,7 @@ public class ControladorLogin {
 		// hace una llamada a otro action a través de la URL correspondiente a ésta
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
 		if (usuarioBuscado != null) {
+			request.getSession().setAttribute("usuario_id", usuarioBuscado.getId());
 			request.getSession().setAttribute("usuario_nombre", usuarioBuscado.getNombre());
 			return new ModelAndView("redirect:/home");
 		} else {
