@@ -11,4 +11,5 @@ public interface RepositorioVenta {
 	public void guardarVenta(Venta venta);
 	public Venta consultarVentaPorId(Long id);
 	public List<Venta> listarPedidosFacturados();
+	public List<Venta> listarVentasAlCliente(Long idCliente);
 }

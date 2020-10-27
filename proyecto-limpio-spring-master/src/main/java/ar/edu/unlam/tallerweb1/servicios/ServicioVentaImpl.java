@@ -34,4 +34,9 @@ public class ServicioVentaImpl implements ServicioVenta {
 		return repositorioVenta.listarPedidosFacturados();
 	}
 
+	@Override
+	public List<Venta> listarVentasAlCliente(Long idCliente) {
+		return repositorioVenta.listarVentasAlCliente(idCliente);
+	}
+
 }

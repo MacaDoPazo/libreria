@@ -20,4 +20,16 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 		return repositorioUsuario.guardarUsuario(usuario);
 	}
 
+	@Override
+	public Usuario consultarUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return repositorioUsuario.consultarUsuario(usuario);
+	}
+
+	@Override
+	public Usuario consultarUsuarioPorId(Long id) {
+		Usuario usuario = repositorioUsuario.consultarUsuarioPorId(id);
+		return usuario;
+	}
+
 }

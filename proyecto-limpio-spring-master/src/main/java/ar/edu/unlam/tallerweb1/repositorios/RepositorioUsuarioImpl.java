@@ -53,4 +53,10 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		return id_usuario;
 	}
 
+	@Override
+	public Usuario consultarUsuarioPorId(Long id) {
+		Usuario usuario = sessionFactory.getCurrentSession().get(Usuario.class,id);
+		return usuario;
+	}
+
 }

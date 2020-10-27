@@ -40,4 +40,13 @@ public class RepositorioVentaImpl implements RepositorioVenta {
 				.list();
 	}
 
+	@Override
+	public List<Venta> listarVentasAlCliente(Long idCliente) {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession()
+				.createCriteria(Venta.class)
+				.add(Restrictions.eq("idCliente", idCliente))
+				.list();
+	}
+
 }
