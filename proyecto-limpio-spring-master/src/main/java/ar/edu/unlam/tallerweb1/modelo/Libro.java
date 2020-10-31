@@ -1,11 +1,14 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Libro {
@@ -21,6 +24,19 @@ public class Libro {
 	private Autor autor;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Stock stock;
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Genero genero;
+	@OneToMany
+	private List<Resenia> resenias;
+	
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
+
 	public Autor getAutor() {
 		return autor;
 	}

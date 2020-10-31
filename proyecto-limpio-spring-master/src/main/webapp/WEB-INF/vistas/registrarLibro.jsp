@@ -20,7 +20,7 @@
             <label for="nombre">Nombre: </label>
             <input class="form-control col-xs-12" type="text" name="nombre" id="nombre" required>
             <br>
-            <label for="nombre">Cantidad de paginas: </label>
+            <label for="nombre">Cantidad de páginas: </label>
             <input class="form-control col-xs-12" type="text" name="paginas" id="nombre" required>
             <br>
             <label for="nombre">Precio: </label>
@@ -29,17 +29,20 @@
             <label for="nombre">Stock: </label>
             <input class="form-control col-xs-12" type="text" name="cantidad" id="nombre" required>
             <br>
-            <label for="Autor">Autor: </label>
-          	 
-			<select id="Autor" name="idAutor" class="form-control col-xs-12">
-        <c:forEach items="${lista}" var="item" >
-    	
-  		<option value="${item.id}" >${item.nombre} ${item.apellido }</option>
-  
-			
-            </c:forEach>
-          	</select>
-                     
+            <label for="Autor">Autor: </label>          	 
+				<select id="Autor" name="idAutor" class="form-control col-xs-12">
+		        	<c:forEach items="${lista}" var="item" >    	
+		  				<option value="${item.id}" >${item.nombre} ${item.apellido }</option>			
+		            </c:forEach>
+	          	</select>
+	         <br>
+             <label for="Genero">Género: </label>          	 
+				<select id="Genero" name="idGenero" class="form-control col-xs-12">
+		        	<c:forEach items="${listaGeneros}" var="itemGenero" >    	
+		  				<option value="${itemGenero.id}" >${itemGenero.nombre}</option>			
+		            </c:forEach>
+	          	</select>
+                 
             <input id="submit-button" name="enviar" class="btn btn-success float-right mt-2" type="submit" value="Registrar libro">
         </form>
           

@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Autor;
+import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
 import ar.edu.unlam.tallerweb1.modelo.Stock;
 import ar.edu.unlam.tallerweb1.servicios.ServicioAutor;
+import ar.edu.unlam.tallerweb1.servicios.ServicioGenero;
 import ar.edu.unlam.tallerweb1.servicios.ServicioStock;
 import ar.edu.unlam.tallerweb1.servicios.servicioLibro;
 
@@ -26,11 +28,16 @@ public class ControladorLibros {
 	private ServicioAutor servicioAutor;
 	@Inject
 	private ServicioStock servicioStock;
+	@Inject
+	private ServicioGenero servicioGenero;
+	
 	@RequestMapping("/registrar-libro")
 	public ModelAndView mostrarCatalogoLibros() {
 		List<Autor> listaAutores = servicioAutor.listarAutores();
+		List<Genero> listaGeneros = servicioGenero.listarGeneros();
 		ModelMap modelo = new ModelMap();
 		modelo.put("lista",listaAutores);
+		modelo.put("listaGeneros", listaGeneros);
 		return new ModelAndView("registrarLibro",modelo);
 	}
 	
@@ -46,6 +53,7 @@ public class ControladorLibros {
 	}
 	@RequestMapping("/guardar-libro")
 	public ModelAndView guardarLibro(@RequestParam(value="nombre")String nombre,@RequestParam(value="idAutor")Long idAutor,
+			@RequestParam(value="idGenero")Long idGenero,
 			@RequestParam(value="paginas")Long paginas,@RequestParam(value="precio") Long precio,
 			@RequestParam(value="cantidad")Long cantidad)
 	{
@@ -61,6 +69,8 @@ public class ControladorLibros {
 		libro.setMegusta(0);
 		Autor autorEncontrado = servicioAutor.consultarAutorPorId(idAutor);
 		libro.setAutor(autorEncontrado);
+		Genero generoEncontrado = servicioGenero.consultarGeneroPorId(idGenero);
+		libro.setGenero(generoEncontrado);
 		Long idLibro = servicioLibro.guardarlibro(libro);
 		ModelMap modelo = new ModelMap();
 		modelo.put("id",idLibro);
@@ -69,6 +79,7 @@ public class ControladorLibros {
 		modelo.put("precio",precio);
 		modelo.put("stock",stock);
 		modelo.put("autorLibro", autorEncontrado);
+		modelo.put("generoLibro", generoEncontrado);
 		
 		
 		return new ModelAndView("registrarLibro",modelo);

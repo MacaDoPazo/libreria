@@ -16,16 +16,22 @@
 	  	
 		<ul class="nav justify-content-start">
 	  	<li class="nav-item">
-	    	<a class="nav-link" href="registrar-libro">Registrar libro</a>
+	    	<a class="nav-link" href="registrar-libro">Registrar Libro</a>
 	  	</li>
 	  	<li class="nav-item">
 	    	<a class="nav-link" href="registrar-autor">Registrar Autor</a>
 	  	</li>
 	  	<li class="nav-item">
-	    	<a class="nav-link" href="catalogo-libros">Catalogo libros</a>
+	    	<a class="nav-link" href="registrar-genero">Registrar Género</a>
 	  	</li>
 	  	<li class="nav-item">
-	    	<a class="nav-link" href="catalogo-autores">Catalogos autor</a>
+	    	<a class="nav-link" href="catalogo-libros">Catálogo Libros</a>
+	  	</li>
+	  	<li class="nav-item">
+	    	<a class="nav-link" href="catalogo-autores">Catálogo Autores</a>
+	  	</li>
+	  	<li class="nav-item">
+	    	<a class="nav-link" href="lista-generos">Lista Géneros</a>
 	  	</li>
 	  	<li class="nav-item">
 	    	<a class="nav-link" href="registrar-localidad">Registrar Localidad</a>
