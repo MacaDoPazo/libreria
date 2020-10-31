@@ -38,7 +38,14 @@
         <td>${venta.pedido.estado }</td>
         <td><c:choose>
         		<c:when test="${venta.pedido.estado == 'entregado'}">
-        		Registrar reseña
+        			
+        			<!-- <a class="nav-link" href="registrar-resenia">Registrar reseña</a> -->
+        			
+        			       <form action="registrar-resenia" method="post">
+   								<%-- <input type="hidden" id="listaLibrosDeLaVenta" name="listaLibrosDeLaVenta" value= ${listadoVentasRealizadasAlCliente }> --%>
+     						  	<input class="btn btn-success "type="submit" value="Registrar reseña">
+     						</form>
+        			
         		</c:when>
         	</c:choose>
         </td>
