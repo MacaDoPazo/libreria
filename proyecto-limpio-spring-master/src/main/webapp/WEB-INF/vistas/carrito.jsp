@@ -7,7 +7,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>carrito compras</title>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body>
 	<section>
@@ -53,7 +52,7 @@
                             <td>
                             <form action="buscar-localidad">
                             		 <input class="form-control" type="number" id="cp" name="cp"><br>
-   								   <input type="hidden" id="idCliente" name="idCliente" value= 1>
+   								   <input type="hidden" id="idCliente" name="idCliente" value="${sessionScope.usuario_id}">
      						  		<input class="btn btn-success "type="submit" value="Calcular">
      						</form>  		
                             	</td>
@@ -82,7 +81,7 @@
        <form action="guardar-venta" class="container" method="POST" >  <!-- modelAttribute="venta" -->
             <input type="hidden" id="montoTotal" name="montoTotal" value= ${total }>
             <br>
-       			<input type="hidden" id="idCliente" name="idCliente" value= 1>	
+       			<input type="hidden" id="idCliente" name="idCliente" value= "${sessionScope.usuario_id}">	
             <br>
                <input type="hidden" id="localidadEnvio" name="localidadEnvio" value= ${localidad.cp }>            
 			 <div class="form-group row">

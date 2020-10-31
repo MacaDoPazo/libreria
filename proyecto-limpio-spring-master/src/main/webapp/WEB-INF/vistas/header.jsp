@@ -36,6 +36,40 @@
 	</nav>
 	</div>
 	</c:when>
+	<c:when test="${sessionScope.usuario_rol == 'Admin'}">
+	<div class="sticky-top">
+	<nav class="navbar navbar-light bg-light sticky-float">
+	  	<a class="navbar-brand" href="pantalla-inicial">
+	    	<img src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+	    	Cumelén
+	  	</a>
+		<ul class="nav justify-content-end">
+		<li class="nav-item">
+		     <form action="listarVentasAlCliente" method="GET" modelAttribute="usuario">
+	           <input type="hidden" name="idCliente" id="idCliente" value="${sessionScope.usuario_id}">
+	            <button class="btn btn-sm btn-success">Mis pedidos realizados<i class="fa fa-shopping-cart"></i></button>
+        	</form>
+
+		<a href="ver-pedido?idCliente=1" class="nav-link" ><button class="btn btn-sm btn-success">Mi pedido<i class="fa fa-shopping-cart"></i></button></a> 
+		</li>
+	  	<li class="nav-item">
+  			<div class="dropdown">
+		  		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		            <i class="fa fa-user"></i>
+                    <p class="text text-right">Bienvenido <c:out value="${sessionScope.usuario_nombre}"></c:out> </p>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="salir">
+                    <i class="fa fa-sign-in">
+                    </i> Salir</a>
+                </div>
+            </div>
+	    </li>
+		</ul>
+	</nav>
+	</div>
+	    <%@include file="navAdministrador.jsp" %>
+	</c:when>
 	<c:otherwise>
 	<div class="sticky-top">
 	<nav class="navbar navbar-light bg-light sticky-float">

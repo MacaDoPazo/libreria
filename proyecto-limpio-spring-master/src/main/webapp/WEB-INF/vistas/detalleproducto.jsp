@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 <%@include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
     	<head>
 		<meta charset="ISO-8859-1">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 		
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 		<title>Detalle de producto - Cumelén</title>
 	</head>
     <body>
@@ -37,7 +32,7 @@
 		</small>
       <input class="form-control" type="number" id="cantidad" name="cantidad" placeholder="0" style="width:50px" min=1 required><br>
       <input type="hidden" id="idLibroSolicitado" name="idLibroSolicitado" value= ${libro.id }>
-       <input type="hidden" id="idCliente" name="idCliente" value= 1>
+       <input type="hidden" id="idCliente" name="idCliente" value= "${sessionScope.usuario_id}">
       <input class="btn btn-success "type="submit" value="Añadir al carrito">
       </form>
       </div>

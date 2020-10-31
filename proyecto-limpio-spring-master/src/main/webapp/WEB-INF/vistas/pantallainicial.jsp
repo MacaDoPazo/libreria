@@ -7,12 +7,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-		
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-		<title>Inicio - Cumelén</title>
+				<title>Inicio - Cumelén</title>
 	</head>
 	<body>
 	<br>
@@ -72,7 +67,7 @@
       		<input class="form-control mx-auto" type="number" id="cantidad" name="canitdad" placeholder="0" style="width:50px" min=1 required><br>
       		<input type="hidden" id="precio" name="idLibro" value= ${item.id }>
      		 <input type="hidden" id="precio" name="precio" value= ${item.precio }>
-      		<input type="hidden" id="precio" name="idCliente" value=1>
+      		<input type="hidden" id="precio" name="idCliente" value="${sessionScope.usuario_id}">
      		 <input class="btn btn-success mx-auto"type="submit" value="Añadir al carrito">
       		</form>
       		<a href="detalle-producto?idLibro=${item.id}" class=" mx-auto"><button type="button" class="btn btn-outline-dark">Comprar</button></a>

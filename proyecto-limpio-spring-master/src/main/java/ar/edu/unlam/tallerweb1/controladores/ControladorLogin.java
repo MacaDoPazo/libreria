@@ -61,12 +61,20 @@ public class ControladorLogin {
 		if (usuarioBuscado != null) {
 			request.getSession().setAttribute("usuario_id", usuarioBuscado.getId());
 			request.getSession().setAttribute("usuario_nombre", usuarioBuscado.getNombre());
-			return new ModelAndView("redirect:/home");
+			request.getSession().setAttribute("usuario_rol", usuarioBuscado.getRol());
+			return new ModelAndView("redirect:/pantalla-inicial");
 		} else {
 			// si el usuario no existe agrega un mensaje de error en el modelo.
 			model.put("error", "Usuario o clave incorrecta");
 		}
 		return new ModelAndView("login", model);
+	}
+	@RequestMapping(path = "/salir")
+	public ModelAndView cerrarSesion(HttpServletRequest request) {
+		
+			request.getSession().invalidate();
+			return new ModelAndView("redirect:/pantalla-inicial");
+		
 	}
 
 	// Escucha la URL /home por GET, y redirige a una vista.
