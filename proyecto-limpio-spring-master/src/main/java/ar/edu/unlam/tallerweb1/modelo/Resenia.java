@@ -14,6 +14,23 @@ public class Resenia {
 	private Long id;
 	private Integer puntuacion;
 	private String comentario;
+		@ManyToOne
+	private Cliente cliente;
+	@ManyToOne
+	private Libro libro;
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public Libro getLibro() {
+		return libro;
+	}
+	public void setLibro(Libro libro) {
+		this.libro = libro;
+	}
 	public Long getId() {
 		return id;
 	}
