@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,7 +25,7 @@
 	  	</a>
 		<ul class="nav justify-content-end">
 		<li class="nav-item">
-		<a href="ver-pedido?idCliente=1" class="nav-link" ><button class="btn btn-sm btn-success">Mi pedido<i class="fa fa-shopping-cart"></i></button></a> 
+		<a href="login" class="nav-link" ><button class="btn btn-sm btn-success">Mi pedido<i class="fa fa-shopping-cart"></i></button></a> 
 		</li>
 	  	<li class="nav-item">
 	    	<a class="nav-link" href="login">Iniciar Sesión</a>
@@ -45,12 +46,12 @@
 	  	</a>
 		<ul class="nav justify-content-end">
 		<li class="nav-item">
-		     <form action="listarVentasAlCliente" method="GET" modelAttribute="usuario">
+		     <form action="listaVentasAlCliente" method="GET" modelAttribute="usuario">
 	           <input type="hidden" name="idCliente" id="idCliente" value="${sessionScope.usuario_id}">
 	            <button class="btn btn-sm btn-success">Mis pedidos realizados<i class="fa fa-shopping-cart"></i></button>
         	</form>
 
-		<a href="ver-pedido?idCliente=1" class="nav-link" ><button class="btn btn-sm btn-success">Mi pedido<i class="fa fa-shopping-cart"></i></button></a> 
+		<a href="ver-pedido?idCliente=${sessionScope.usuario_id}" class="nav-link" ><button class="btn btn-sm btn-success">Mi pedido<i class="fa fa-shopping-cart"></i></button></a> 
 		</li>
 	  	<li class="nav-item">
   			<div class="dropdown">
@@ -67,8 +68,8 @@
 	    </li>
 		</ul>
 	</nav>
+	<%@include file="navAdministrador.jsp" %>  
 	</div>
-	    <%@include file="navAdministrador.jsp" %>
 	</c:when>
 	<c:otherwise>
 	<div class="sticky-top">

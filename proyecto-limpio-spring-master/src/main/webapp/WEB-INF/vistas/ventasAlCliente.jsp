@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@include file="header.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -38,7 +36,14 @@
         <td>${venta.pedido.estado }</td>
         <td><c:choose>
         		<c:when test="${venta.pedido.estado == 'entregado'}">
-        		Registrar reseña
+        			
+        			<!-- <a class="nav-link" href="registrar-resenia">Registrar reseña</a> -->
+        			
+        			       <form action="registrar-resenia" method="post">
+   							 <input type="hidden" id="idPedido" name="idPedido" value= ${venta.pedido.id }> 
+     						  	<input class="btn btn-success "type="submit" value="Registrar reseña">
+     						</form>
+        			
         		</c:when>
         	</c:choose>
         </td>

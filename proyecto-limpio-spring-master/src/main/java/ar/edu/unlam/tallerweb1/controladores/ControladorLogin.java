@@ -69,6 +69,7 @@ public class ControladorLogin {
 		}
 		return new ModelAndView("login", model);
 	}
+
 	@RequestMapping(path = "/salir")
 	public ModelAndView cerrarSesion(HttpServletRequest request) {
 		
@@ -76,7 +77,6 @@ public class ControladorLogin {
 			return new ModelAndView("redirect:/pantalla-inicial");
 		
 	}
-
 	// Escucha la URL /home por GET, y redirige a una vista.
 	@RequestMapping(path = "/home", method = RequestMethod.GET)
 	public ModelAndView irAHome() {

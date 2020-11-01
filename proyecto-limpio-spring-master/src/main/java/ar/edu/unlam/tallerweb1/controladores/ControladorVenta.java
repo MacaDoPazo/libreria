@@ -116,7 +116,7 @@ public class ControladorVenta {
 		return new ModelAndView("detalleVenta",modelo);
 	}
 	
-	@RequestMapping(path="/listarVentasAlCliente", method= RequestMethod.GET)
+	@RequestMapping(path="/listaVentasAlCliente", method= RequestMethod.GET)
 	public ModelAndView listarVentasAlCliente(
 			@RequestParam("idCliente") Long idCliente) {
 	

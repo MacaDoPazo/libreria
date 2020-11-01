@@ -1,9 +1,12 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
  <%@include file="header.jsp" %>
- <!DOCTYPE html>
+  
+<!DOCTYPE html>
 <html>
-	
+	<head>
+	<!-- Bootstrap core CSS -->
+	   
+	</head>
 	<body>
 
     <h1 id="login-title" class="text-center">Registrar Autor</h1>

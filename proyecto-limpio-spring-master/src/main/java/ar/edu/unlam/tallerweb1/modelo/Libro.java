@@ -83,6 +83,14 @@ public class Libro {
 	public void setMegusta(Integer megusta) {
 		this.megusta = megusta;
 	}
+
+	public List<Resenia> getResenias() {
+		return resenias;
+	}
+
+	public void setResenias(List<Resenia> resenias) {
+		this.resenias = resenias;
+	}
 	
 	
 }

@@ -10,4 +10,6 @@ public interface RepositorioUsuario {
 	Long guardarUsuario(Usuario usuario);
 	
 	Usuario consultarUsuarioPorId(Long id);
+
+
 }

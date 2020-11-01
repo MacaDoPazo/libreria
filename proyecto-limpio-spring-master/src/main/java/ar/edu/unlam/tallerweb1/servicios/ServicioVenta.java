@@ -9,4 +9,5 @@ public interface ServicioVenta {
 	public Venta consultarVentaPorId(Long id);
 	public List<Venta> listarPedidosFacturados();
 	public List<Venta> listarVentasAlCliente(Long idCliente);
+	
 }

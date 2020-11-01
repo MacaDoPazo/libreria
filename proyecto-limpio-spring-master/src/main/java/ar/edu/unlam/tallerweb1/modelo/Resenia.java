@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Id;
 
 @Entity
 public class Resenia {
@@ -15,14 +17,14 @@ public class Resenia {
 	private Integer puntuacion;
 	private String comentario;
 		@ManyToOne
-	private Cliente cliente;
+	private Usuario cliente;
 	@ManyToOne
 	private Libro libro;
 	
-	public Cliente getCliente() {
+	public Usuario getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente cliente) {
+	public void setCliente(Usuario cliente) {
 		this.cliente = cliente;
 	}
 	public Libro getLibro() {
