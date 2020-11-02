@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.modelo.CantidadLibros;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
 import ar.edu.unlam.tallerweb1.modelo.Pedido;
+import ar.edu.unlam.tallerweb1.modelo.Resenia_Libros_Cliente;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCantLibros;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPedido;
@@ -26,10 +28,12 @@ public class ControladorInicio {
 	@Inject
 	private ServicioCantLibros servicioCantLibros;
 	@Inject
-	
 	private ServicioPedido servicioPedido;
-	@RequestMapping("/pantalla-inicial")
-	public ModelAndView irAlInicio() {
+	
+	@RequestMapping(path="/pantalla-inicial"/*, method = RequestMethod.POST*/)
+	public ModelAndView irAlInicio(HttpServletRequest request) {
+		Long idUsuario = (Long) request.getAttribute("usuario_id");
+		
 		List<Libro> listalibros = servicioLibro.listarLibros();
 		ModelMap modelo = new ModelMap();
 		modelo.put("lista",listalibros);

@@ -23,8 +23,7 @@
         <th>Libro</th>
         <th>Autor</th>
         <th>Género</th>
-        <th>Puntuación</th>
-        <th>Comentario</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -34,28 +33,32 @@
         <td> ${libro.libro.autor.nombre } ${libro.libro.autor.apellido }</td>
         <td> ${libro.libro.genero.nombre }</td>
         <td>
+        <c:choose>
+        		<c:when test="${not empty error}">
+        <form action="comentar-resenia" method="post">
         
-        <form action="guardar-resenia" method="post">
-        
- 
-			 <input type="radio" name="puntuacion" id="1" value="1" checked>
-			 <label for="1">1<i class="far fa-star"></i></label> 
-			 <input type="radio" name="puntuacion" id="2" value="2">
-			 <label for="3">2<i class="far fa-star"></i></label>
-			 <input type="radio" name="puntuacion" id="3" value="3">
-			 <label for="3">3<i class="far fa-star"></i></label>
-			 <input type="radio" name="puntuacion" id="4" value="4">
-			 <label for="4">4<i class="far fa-star"></i></label>
-			 <input type="radio" name="puntuacion" id="5" value="5">
-			 <label for="5">5<i class="far fa-star"></i></label>
-		<textarea rows="10" name="comentario" style="width:100%;"></textarea>
-		
-		   	 <input type="hidden" id="idCliente" name="idCliente" value= "${sessionScope.usuario_id}">
+ 	   	 	   	 <input type="hidden" id="idCliente" name="idCliente" value= "${sessionScope.usuario_id}">
 		   	 <input type="hidden" id="idLibro" name="idLibro" value= "${libro.libro.id }">
 		   	 <input type="hidden" id="idPedido" name="idPedido" value= "${pedido.id}">
           	 
-   			 <input class="btn btn-success "type="submit" value="enviar">
+   			 <input class="btn btn-success "type="submit" value="Reseña" disabled>
      	</form>
+     	
+			        <h4><span>${error}</span></h4>
+			        <br>
+		        </c:when>
+		
+		<c:otherwise>
+		<form action="comentar-resenia" method="post">
+        
+ 	   	 	   	 <input type="hidden" id="idCliente" name="idCliente" value= "${sessionScope.usuario_id}">
+		   	 <input type="hidden" id="idLibro" name="idLibro" value= "${libro.libro.id }">
+		   	 <input type="hidden" id="idPedido" name="idPedido" value= "${pedido.id}">
+          	 
+   			 <input class="btn btn-success "type="submit" value="Reseña">
+     	</form>
+		</c:otherwise>  
+		</c:choose>      
      	</td> 
       </tr>
       
