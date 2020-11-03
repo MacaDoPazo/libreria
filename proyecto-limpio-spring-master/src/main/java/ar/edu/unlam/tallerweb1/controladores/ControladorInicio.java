@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.CantidadLibros;
+import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
 import ar.edu.unlam.tallerweb1.modelo.Pedido;
 import ar.edu.unlam.tallerweb1.modelo.Resenia_Libros_Cliente;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCantLibros;
+import ar.edu.unlam.tallerweb1.servicios.ServicioGenero;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPedido;
 import ar.edu.unlam.tallerweb1.servicios.servicioLibro;
 
@@ -29,15 +31,16 @@ public class ControladorInicio {
 	private ServicioCantLibros servicioCantLibros;
 	@Inject
 	private ServicioPedido servicioPedido;
+	@Inject ServicioGenero servicioGenero;
 	
 	@RequestMapping(path="/pantalla-inicial"/*, method = RequestMethod.POST*/)
 	public ModelAndView irAlInicio(HttpServletRequest request) {
-		Long idUsuario = (Long) request.getAttribute("usuario_id");
 		
 		List<Libro> listalibros = servicioLibro.listarLibros();
 		ModelMap modelo = new ModelMap();
+		
 		modelo.put("lista",listalibros);
-
+		
 		return new ModelAndView("pantallainicial",modelo);
 	}
 	
@@ -55,12 +58,22 @@ public class ControladorInicio {
 	
 		public ModelAndView verPedido(@RequestParam(value="idCliente", required = true)Long idCliente)
 		{
-		List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idCliente,"armando");
-		Long subtotal = servicioCantLibros.subtotalDeTodosLosLibros(librosPedidos);
-		ModelMap modelo = new ModelMap();
-		modelo.put("subtotal",subtotal);
-		modelo.put("librosPedidos",librosPedidos);
-			return new ModelAndView("carrito", modelo);
+		Pedido pedido =servicioPedido.buscarPedidoArmando(idCliente, "armando");
+		if(pedido != null)
+		{
+			List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idCliente,"armando");
+			Long subtotal = servicioCantLibros.subtotalDeTodosLosLibros(librosPedidos);
+			ModelMap modelo = new ModelMap();
+			modelo.put("subtotal",subtotal);
+			modelo.put("librosPedidos",librosPedidos);
+				return new ModelAndView("carrito", modelo);
+		}
+		else
+		{
+			ModelMap modelo = new ModelMap();
+			modelo.put("mensaje","no cargo ningun libro al carrito");
+			return new ModelAndView("carrito",modelo);
+		}
 		}
 	
 	@RequestMapping("/carrito-compras")

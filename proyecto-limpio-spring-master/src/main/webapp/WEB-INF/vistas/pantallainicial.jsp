@@ -52,10 +52,11 @@
 	</div>
 	<div class="container">
 	<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-	<h1 class="text-center">Libros destacados</h1>
+	<h1 class="text-center">Libros populares</h1>
 	<hr style="height:2px;border-width:0;color:gray;background-color:gray">
    <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
-   
+ 
+  
   <div class="container" id="food">
     <div class="card-deck">
     <c:forEach items="${lista}" var="item" >
@@ -81,30 +82,6 @@
    		 </div>           
           </c:forEach>  
       </div>     	
-  </div>
-  <div class="container" id="food">
-    <div class="w3-quarter col">
-      <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Sandwich" style="width:100%"></a>
-      <h3>The Perfect Sandwich, A Real NYC Classic</h3>
-      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>
-    <div class="w3-quarter col">
-      <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Steak" style="width:100%"></a>
-      <h3>Let Me Tell You About This Steak</h3>
-      <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>
-    <div class="col w3-quarter">
-      <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Cherries" style="width:100%"></a>
-      <h3>Cherries, interrupted</h3>
-      <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      <p>What else?</p>
-    </div>
-    <div class="col w3-quarter">
-      <a href="#"><img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Cherries" style="width:100%"></a>
-      <h3>Cherries, interrupted</h3>
-      <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      <p>What else?</p>
-    </div>
   </div>
   </div>
   </div>

@@ -12,6 +12,9 @@
 <body>
 	<section>
 	<div class="container mb-5">
+	<div class="alert alert-danger" role="alert">
+  ${mensaje }
+</div>
     <div class="row">
         <div class="col-16">
             <div class="table-responsive">

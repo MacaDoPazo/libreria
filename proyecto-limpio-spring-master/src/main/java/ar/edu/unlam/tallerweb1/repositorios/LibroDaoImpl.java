@@ -5,6 +5,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import ar.edu.unlam.tallerweb1.modelo.Libro;
+import ar.edu.unlam.tallerweb1.modelo.Resenia_Libros_Cliente;
 @Repository
 @Transactional
 public class LibroDaoImpl implements LibroDao {
@@ -47,6 +52,14 @@ public class LibroDaoImpl implements LibroDao {
 		libro = sesion.getCurrentSession().get(Libro.class, idLibro);
 		libro.setMegusta(suma);
 		sesion.getCurrentSession().update(libro);
+	}
+	
+	@Override
+	public List<Libro> listarLibrosGenero(Long idGenero) {
+		// TODO Auto-generated method stub
+		return sesion.getCurrentSession().createCriteria(Libro.class)
+				.createAlias("genero", "generoLibro")
+				.add(Restrictions.eq("generoLibro.id",idGenero)).list();
 	}
 
 }

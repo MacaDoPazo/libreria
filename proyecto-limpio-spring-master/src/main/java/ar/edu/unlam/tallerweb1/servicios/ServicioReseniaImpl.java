@@ -52,4 +52,10 @@ public class ServicioReseniaImpl implements ServicioResenia {
 		return repositorioResenia.consultarReseniaLibroCliente(libro,usuario);
 	}
 
+	@Override
+	public List<Resenia_Libros_Cliente> listarReseniasDelCliente(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return repositorioResenia.listarReseniasDelCliente(usuario);
+	}
+
 }

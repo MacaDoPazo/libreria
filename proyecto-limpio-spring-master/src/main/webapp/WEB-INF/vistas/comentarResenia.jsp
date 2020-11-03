@@ -21,16 +21,11 @@
 		<form action="guardar-resenia" method="post">
         
  			 <div class="form-group">
-			 <input type="radio" name="puntuacion" id="1" value="1" checked>
-			 <label for="1">1<i class="far fa-star"></i></label> 
-			 <input type="radio" name="puntuacion" id="2" value="2">
-			 <label for="3">2<i class="far fa-star"></i></label>
-			 <input type="radio" name="puntuacion" id="3" value="3">
-			 <label for="3">3<i class="far fa-star"></i></label>
-			 <input type="radio" name="puntuacion" id="4" value="4">
-			 <label for="4">4<i class="far fa-star"></i></label>
-			 <input type="radio" name="puntuacion" id="5" value="5">
-			 <label for="5">5<i class="far fa-star"></i></label>
+			 <input type="radio" name="puntuacion" id="positivo" value="positivo" checked>
+			 <label for="positivo"><i class="far fa-thumbs-up"></i></label> 
+			 <input type="radio" name="puntuacion" id="negativo" value="negativo">
+			 <label for="negativo"><i class="far fa-thumbs-down"></i></label>
+			 
 			 </div>
 			  <div class="form-group">
 		<textarea rows="10" name="comentario" style="width:100%;"></textarea>

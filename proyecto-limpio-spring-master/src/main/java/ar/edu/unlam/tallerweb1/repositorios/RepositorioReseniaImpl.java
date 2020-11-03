@@ -62,4 +62,13 @@ public class RepositorioReseniaImpl implements RepositorioResenia {
 						Restrictions.eq("usuario",usuario))).uniqueResult();
 	}
 
+	@Override
+	public List<Resenia_Libros_Cliente> listarReseniasDelCliente(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession().createCriteria(Resenia_Libros_Cliente.class)
+				
+				//.add(Restrictions.eq("usuario",usuario))
+				.list();
+	}
+
 }

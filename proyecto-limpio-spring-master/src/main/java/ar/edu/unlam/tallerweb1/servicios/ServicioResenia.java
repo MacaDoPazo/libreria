@@ -14,5 +14,6 @@ public interface ServicioResenia {
 	List<Resenia> listarResenias();
 	public void guardarReseniaLibrosCliente(Resenia_Libros_Cliente reseniaLibroCliente);
 	public Resenia_Libros_Cliente consultarReseniaLibroCliente(Libro libro, Usuario usuario);
+	public List<Resenia_Libros_Cliente> listarReseniasDelCliente(Usuario usuario);
 
 }

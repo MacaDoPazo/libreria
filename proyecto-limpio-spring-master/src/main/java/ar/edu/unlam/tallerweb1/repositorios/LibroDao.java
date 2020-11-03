@@ -16,6 +16,8 @@ public interface LibroDao {
 
 	void actualizarMeGusta(Long idLibro, Integer suma);
 
+	List<Libro> listarLibrosGenero(Long idGenero);
+
 	
 
 	

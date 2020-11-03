@@ -39,5 +39,11 @@ public class servicioLibroImpl implements servicioLibro {
 		// TODO Auto-generated method stub
 		libroDao.actualizarMeGusta(idLibro,suma);
 	}
+	
+	@Override
+	public List<Libro> listarLibrosGenero(Long idGenero) {
+		// TODO Auto-generated method stub
+		return libroDao.listarLibrosGenero(idGenero);
+	}
 
 }

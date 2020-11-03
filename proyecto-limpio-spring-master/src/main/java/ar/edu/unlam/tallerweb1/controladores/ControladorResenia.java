@@ -3,6 +3,8 @@ package ar.edu.unlam.tallerweb1.controladores;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,13 +39,16 @@ public class ControladorResenia {
 	@Inject 
 	private ServicioUsuario servicioUsuario;
 	@RequestMapping(path="/registrar-resenia", method= RequestMethod.POST)
-	public ModelAndView IrAlRegistroDelaResenia(@RequestParam("idPedido") Long idPedido){		
-		List<CantidadLibros> librosComprados = servicioCantLibros.listarLibrosComprados(idPedido);
+	public ModelAndView IrAlRegistroDelaResenia(@RequestParam("idPedido") Long idPedido, HttpServletRequest request){		
 		
+		Usuario usuario = (Usuario) request.getAttribute("usuario_id");
+		List<CantidadLibros> librosComprados = servicioCantLibros.listarLibrosComprados(idPedido);
+		List<Resenia_Libros_Cliente> listaReseniaLibroCliente = servicioResenia.listarReseniasDelCliente(usuario);
 		Pedido pedido = servicioPedido.consultarPedidoPorId(idPedido);
 		ModelMap modelo = new ModelMap();
 		modelo.put("librosComprados",librosComprados);
 		modelo.put("pedido",pedido);
+		modelo.put("listaResenia",listaReseniaLibroCliente);
 		return new ModelAndView("registrarResenia",modelo);		
 	}
 	
@@ -54,17 +59,11 @@ public class ControladorResenia {
 		Libro libro = servicioLibro.consultarLibroPorId(idLibro);
 		Pedido pedido = servicioPedido.consultarPedidoPorId(idPedido);
 		Usuario usuario = servicioUsuario.consultarUsuarioPorId(idCliente);
+		List<Resenia_Libros_Cliente> listaReseniaLibroCliente = servicioResenia.listarReseniasDelCliente(usuario);
 		Resenia_Libros_Cliente reseniaLibroCliente = servicioResenia.consultarReseniaLibroCliente(libro,usuario);
 		ModelMap modelo = new ModelMap();
-		while(reseniaLibroCliente != null)
-		{
-			List<CantidadLibros> librosComprados = servicioCantLibros.listarLibrosComprados(idPedido);
-			modelo.put("error","ya hizo la reseña de este libro");
-			modelo.put("librosComprados",librosComprados);
-			modelo.put("pedido",pedido);
-			return new ModelAndView("registrarResenia",modelo);
-		}
 		
+		modelo.put("listaResenia",listaReseniaLibroCliente);
 		modelo.put("libro",libro);
 		modelo.put("pedido",pedido);
 		return new ModelAndView("comentarResenia",modelo);			
@@ -74,7 +73,7 @@ public class ControladorResenia {
 	public ModelAndView guardarResenia(@RequestParam("idCliente") Long idCliente,
 			@RequestParam("idLibro") Long idLibro,
 			@RequestParam("comentario") String comentario,
-			@RequestParam("puntuacion") Integer puntuacion,
+			@RequestParam("puntuacion") String puntuacion,
 			@RequestParam("idPedido") Long idPedido){
 		Libro libro = servicioLibro.consultarLibroPorId(idLibro);
 		Usuario usuario = servicioUsuario.consultarUsuarioPorId(idCliente);
@@ -90,17 +89,11 @@ public class ControladorResenia {
 		reseniaLibroCliente.setLibro(libro);
 		reseniaLibroCliente.setUsuario(usuario);
 		servicioResenia.guardarReseniaLibrosCliente(reseniaLibroCliente);
+		List<Resenia_Libros_Cliente> listaReseniaLibroCliente = servicioResenia.listarReseniasDelCliente(usuario);
 		List<CantidadLibros> librosComprados = servicioCantLibros.listarLibrosComprados(idPedido);	
 		Pedido pedido = servicioPedido.consultarPedidoPorId(idPedido);
 		ModelMap modelo = new ModelMap();
-		while(reseniaLibroCliente != null)
-		{
-		
-			modelo.put("error","ya hizo la reseña de este libro");
-			modelo.put("librosComprados",librosComprados);
-			modelo.put("pedido",pedido);
-			return new ModelAndView("registrarResenia",modelo);
-		}
+		modelo.put("listaResenia",listaReseniaLibroCliente);
 		modelo.put("librosComprados",librosComprados);
 		modelo.put("pedido",pedido);
 		

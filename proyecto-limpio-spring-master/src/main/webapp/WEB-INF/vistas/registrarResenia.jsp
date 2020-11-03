@@ -27,14 +27,18 @@
       </tr>
     </thead>
     <tbody>
+    
       <c:forEach items="${librosComprados}" var="libro">
       <tr>
         <td> ${libro.libro.nombre }</td>
         <td> ${libro.libro.autor.nombre } ${libro.libro.autor.apellido }</td>
         <td> ${libro.libro.genero.nombre }</td>
         <td>
+       <c:set var="Exisite" value="no" />
+    <c:forEach items="${listaResenia }" var="resenia">
         <c:choose>
-        		<c:when test="${not empty error}">
+        		<c:when test="${fn:contains(resenia.libro.id,libro.libro.id)}">
+        		 <c:set var="Exisite" value="${fn:replace(Exisite,'no','si') }" />
         <form action="comentar-resenia" method="post">
         
  	   	 	   	 <input type="hidden" id="idCliente" name="idCliente" value= "${sessionScope.usuario_id}">
@@ -43,22 +47,22 @@
           	 
    			 <input class="btn btn-success "type="submit" value="Reseña" disabled>
      	</form>
-     	
-			        <h4><span>${error}</span></h4>
-			        <br>
+     			
 		        </c:when>
-		
-		<c:otherwise>
-		<form action="comentar-resenia" method="post">
+		        
+		        </c:choose>
+		</c:forEach> 
+		<c:if test="${Exisite == 'no'}">
+        <form action="comentar-resenia" method="post">
         
  	   	 	   	 <input type="hidden" id="idCliente" name="idCliente" value= "${sessionScope.usuario_id}">
 		   	 <input type="hidden" id="idLibro" name="idLibro" value= "${libro.libro.id }">
 		   	 <input type="hidden" id="idPedido" name="idPedido" value= "${pedido.id}">
           	 
-   			 <input class="btn btn-success "type="submit" value="Reseña">
+   			 <input class="btn btn-success "type="submit" value="Reseña" >
      	</form>
-		</c:otherwise>  
-		</c:choose>      
+     	
+		        </c:if>
      	</td> 
       </tr>
       

@@ -26,8 +26,8 @@ public class Libro {
 	private Stock stock;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Genero genero;
-	@OneToMany
-	private List<Resenia> resenias;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Resenia_Libros_Cliente> resenias;
 	
 	public Genero getGenero() {
 		return genero;
@@ -84,11 +84,11 @@ public class Libro {
 		this.megusta = megusta;
 	}
 
-	public List<Resenia> getResenias() {
+	public List<Resenia_Libros_Cliente> getResenias() {
 		return resenias;
 	}
 
-	public void setResenias(List<Resenia> resenias) {
+	public void setResenias(List<Resenia_Libros_Cliente> resenias) {
 		this.resenias = resenias;
 	}
 	

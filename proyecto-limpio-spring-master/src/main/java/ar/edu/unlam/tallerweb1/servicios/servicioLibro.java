@@ -26,6 +26,10 @@ public interface servicioLibro {
 
 
 
+	List<Libro> listarLibrosGenero(Long idGenero);
+
+
+
 	
 
 
