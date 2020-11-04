@@ -103,7 +103,7 @@
 	  	</a>
 		<ul class="nav justify-content-end">
 		<li class="nav-item">
-		     <form action="listarVentasAlCliente" method="GET" modelAttribute="usuario">
+		     <form action="listaVentasAlCliente" method="GET" modelAttribute="usuario">
 	           <input type="hidden" name="idCliente" id="idCliente" value="${sessionScope.usuario_id}">
 	            <button class="btn btn-sm btn-success">Mis pedidos realizados<i class="fa fa-shopping-cart"></i></button>
         	</form>
