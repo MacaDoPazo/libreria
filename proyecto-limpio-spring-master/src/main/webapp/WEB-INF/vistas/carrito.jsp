@@ -1,15 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-       <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-     <%@include file="header.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>carrito compras</title>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-</head>
-<body>
+<%@include file="header.jsp" %>
+
 	<section>
 	<div class="container mb-5">
 	<div class="alert alert-danger" role="alert">
@@ -128,6 +118,4 @@
             </div>
     
 	</section>
-</body>
-</html>
  <%@include file="footer.jsp" %>
