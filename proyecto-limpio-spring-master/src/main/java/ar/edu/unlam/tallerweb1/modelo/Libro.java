@@ -19,6 +19,7 @@ public class Libro {
 	private Long paginas;
 	private Long precio;
 	private Integer megusta;
+	private String nombre_archivo;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Autor autor;
@@ -90,6 +91,14 @@ public class Libro {
 
 	public void setResenias(List<Resenia_Libros_Cliente> resenias) {
 		this.resenias = resenias;
+	}
+
+	public String getNombre_archivo() {
+		return nombre_archivo;
+	}
+
+	public void setNombre_archivo(String nombre_archivo) {
+		this.nombre_archivo = nombre_archivo;
 	}
 	
 	

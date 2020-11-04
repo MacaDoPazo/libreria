@@ -1,15 +1,5 @@
-
-    <%@include file="header.jsp" %>
-   
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Lista localidades</title>
-</head>
-<body>
-	<h1 id="login-title" class="text-center">Catalogo de localidades cargados</h1>
+<%@include file="header.jsp" %>
+<h1 id="login-title" class="text-center">Catalogo de localidades cargados</h1>
  <div class="container"> 
        
 	<table class="table table-hover">
@@ -32,6 +22,5 @@
       
     </tbody>
   </table>
-	</div>
-</body>
-</html>
+</div>
+<%@include file="footer.jsp" %>

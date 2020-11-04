@@ -1,9 +1,4 @@
 <%@include file="header.jsp" %>
-<body>
-	<header>
-		<h1>${titulo}</h1>
-	</header>
-	
 	<main>
 	<p>El resultado de la suma es ${suma}</p>
 		<form action="mostrarConfirmacion">
@@ -14,5 +9,5 @@
 			<input type="submit" value="enviar">
 		</form>
 	</main>
-</body>
-</html>
+<br><br>
+<%@include file="footer.jsp" %>

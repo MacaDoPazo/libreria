@@ -1,22 +1,14 @@
-
-     <%@include file="header.jsp" %>
- 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registro de géneros</title>
-	    
-</head>
-<body>
+<%@include file="header.jsp" %>
 	<h1 id="login-title" class="text-center">Registrar Género</h1>
-  	<div id="login-container" class="container"> 
-        <form action="guardar-genero" method="post">
-            <label for="nombre">Ingrese el nombre del género a registrar: </label>
-            <input class="form-control col-xs-12" type="text" name="nombre" id="nombre" required>
-            <input id="submit-button" name="enviar" class="btn btn-success float-right mt-2" type="submit" value="Registrar género">
-        </form>
+  	<div id="login-container" class="container">
+	  	<div  style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2"> 
+	        <form action="guardar-genero" method="post">
+	            <label for="nombre">Ingrese el nombre del género a registrar: </label>
+	            <input class="form-control col-xs-12" type="text" name="nombre" id="nombre" required>
+	            <br>
+	            <input id="submit-button" name="enviar" class="btn btn-success pull-right" type="submit" value="Registrar género">
+	        </form>
+        </div>
     </div>
-</body>
-</html>
+    <br><br>
 <%@include file="footer.jsp" %>

@@ -1,18 +1,7 @@
-
- <%@include file="header.jsp" %>
-
-
- 
-<!DOCTYPE html>
-<html>
-	<head>
-	<!-- Bootstrap core CSS -->
-	   
-	</head>
-	<body>
-
-    <h1 id="login-title" class="text-center">Registrar Libro</h1>
-  	<div id="login-container" class="container"> 
+<%@include file="header.jsp" %>
+<h1 id="login-title" class="text-center">Registrar Libro</h1>
+  	<div  class="container">
+  		<div  style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2"> 
         <form action="guardar-libro" method="post">
             <label for="nombre">Nombre: </label>
             <input class="form-control col-xs-12" type="text" name="nombre" id="nombre" required>
@@ -39,14 +28,10 @@
 		  				<option value="${itemGenero.id}" >${itemGenero.nombre}</option>			
 		            </c:forEach>
 	          	</select>
-                 
-            <input id="submit-button" name="enviar" class="btn btn-success float-right mt-2" type="submit" value="Registrar libro">
+                 <br>
+            <input id="submit-button" name="enviar" class="btn btn-success pull-right" type="submit" value="Registrar libro">
         </form>
-          
-        
-           	         
-			 
-		</div>
-	</body>
-</html>
+        </div>
+	</div>
+<br><br>
  <%@include file="footer.jsp" %>

@@ -1,58 +1,47 @@
- <%@include file="header.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-	<head>
-		<!-- Bootstrap core CSS -->
-		    	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Sus compras</title>
-	</head>
-	<body>
-	
-    <h1 id="login-title" class="text-center">Detalle de sus compras</h1>
-  	<div class="container mb-4"> 
-    	<div class="row">   
-    		<div class="col-12">
-            	<div class="table-responsive">
-	<table class="table table-hover">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Fecha</th>
-        <th>Monto</th>
-        <th>Estado</th>
-        <th>Reseña</th>
-      </tr>
-    </thead>
-    <tbody>
-      <c:forEach items="${listadoVentasRealizadasAlCliente }" var="venta">
-      <tr>
-        <td>${venta.id }</td>
-        <td>${venta.fechaDeVenta }</td>
-        <td>$${venta.montoTotal }</td>
-        <td>${venta.pedido.estado }</td>
-        <td><c:choose>
-        		<c:when test="${venta.pedido.estado == 'entregado'}">
-        			
-        			<!-- <a class="nav-link" href="registrar-resenia">Registrar reseña</a> -->
-        			
-        			       <form action="registrar-resenia" method="post">
-   							 <input type="hidden" id="idPedido" name="idPedido" value= ${venta.pedido.id }> 
-     						  	<input class="btn btn-success "type="submit" value="Registrar reseña">
-     						</form>
-        			
-        		</c:when>
-        	</c:choose>
-        </td>
-        
-      </tr>
-       </c:forEach>
-      
-    </tbody>
-  </table>
-						</div>
-					</div>
-				</div>
+<%@include file="header.jsp" %>
+<h1 id="login-title" class="text-center">Detalle de sus compras</h1>
+ 	<div class="container mb-4"> 
+   	<div class="row">   
+   		<div class="col-12">
+           	<div class="table-responsive">
+				<table class="table table-hover">
+				    <thead>
+				      <tr>
+				        <th>ID</th>
+				        <th>Fecha</th>
+				        <th>Monto</th>
+				        <th>Estado</th>
+				        <th>Reseña</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				      <c:forEach items="${listadoVentasRealizadasAlCliente }" var="venta">
+				      <tr>
+				        <td>${venta.id }</td>
+				        <td>${venta.fechaDeVenta }</td>
+				        <td>$${venta.montoTotal }</td>
+				        <td>${venta.pedido.estado }</td>
+				        <td><c:choose>
+				        		<c:when test="${venta.pedido.estado == 'entregado'}">
+				        			
+				        			<!-- <a class="nav-link" href="registrar-resenia">Registrar reseña</a> -->
+				        			
+				        			       <form action="registrar-resenia" method="post">
+				   							 <input type="hidden" id="idPedido" name="idPedido" value= ${venta.pedido.id }> 
+				     						  	<input class="btn btn-success "type="submit" value="Registrar reseña">
+				     						</form>
+				        			
+				        		</c:when>
+				        	</c:choose>
+				        </td>
+				        
+				      </tr>
+				       </c:forEach>
+				      
+				    </tbody>
+				</table>
+			</div>
 		</div>
-	</body>
-</html>
+	</div>
+</div>
 <%@include file="footer.jsp" %>

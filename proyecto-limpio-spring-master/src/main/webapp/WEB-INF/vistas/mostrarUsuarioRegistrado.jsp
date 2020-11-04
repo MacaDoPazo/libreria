@@ -1,14 +1,8 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%@include file="header.jsp" %>	
-	<header>
-		<h1>Datos del usuario registrado:</h1>
-	</header>
+<%@include file="header.jsp" %>	
+<h1>Datos del usuario registrado:</h1>
+<br><br>
 	<main>
-		<p>${nombre} ${apellido}, de sexo ${sexo}, se ha registrado con el mail ${email} </p>
-
-
+		<p class="alert alert-success">${nombre} ${apellido}, de sexo ${sexo}, se ha registrado con el mail ${email} </p>
 	</main>
-</body>
-</html>
- <%@include file="footer.jsp" %>
+<br><br>	
+<%@include file="footer.jsp" %>
