@@ -23,7 +23,7 @@
                     <tbody>
                         <c:forEach items="${librosPedidos }" var="libros">
                         <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                            <td><img src="img/${libros.libro.nombre_archivo}" width="50" height="50"> </td>
                             <td>${libros.libro.nombre} </td>
                             
                             <td class="text-center">${libros.cantidad }</td>

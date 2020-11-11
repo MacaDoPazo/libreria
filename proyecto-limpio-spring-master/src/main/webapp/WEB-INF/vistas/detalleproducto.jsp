@@ -3,7 +3,7 @@
 	<div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-6 col-lg-4 d-flex justify-content-center">
-      <img src="https://www.w3schools.com/w3images/cherries.jpg"  style=" height:400px">
+     <img src="img/${libro.nombre_archivo}" alt="${libro.nombre_archivo}" style="width:100%">
     </div>
     <div class="col-sm-9 col-md-6 col-lg-8 shadow p-4 mb-4 bg-white">
       <div class="container">

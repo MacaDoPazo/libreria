@@ -73,7 +73,7 @@ public class ControladorResenia {
 	public ModelAndView guardarResenia(@RequestParam("idCliente") Long idCliente,
 			@RequestParam("idLibro") Long idLibro,
 			@RequestParam("comentario") String comentario,
-			@RequestParam("puntuacion") String puntuacion,
+			@RequestParam("puntuacion") Integer puntuacion,
 			@RequestParam("idPedido") Long idPedido){
 		Libro libro = servicioLibro.consultarLibroPorId(idLibro);
 		Usuario usuario = servicioUsuario.consultarUsuarioPorId(idCliente);

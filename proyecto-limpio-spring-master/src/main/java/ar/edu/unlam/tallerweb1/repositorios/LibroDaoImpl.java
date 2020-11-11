@@ -13,8 +13,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
+import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
 import ar.edu.unlam.tallerweb1.modelo.Resenia_Libros_Cliente;
 @Repository
@@ -55,11 +54,20 @@ public class LibroDaoImpl implements LibroDao {
 	}
 	
 	@Override
-	public List<Libro> listarLibrosGenero(Long idGenero) {
+	public List<Libro> listarLibrosGenero(Genero genero) {
 		// TODO Auto-generated method stub
 		return sesion.getCurrentSession().createCriteria(Libro.class)
 				.createAlias("genero", "generoLibro")
-				.add(Restrictions.eq("generoLibro.id",idGenero)).list();
+				.add(Restrictions.eq("generoLibro.id",genero.getId())).list();
+	}
+	@Override
+	public List<Resenia_Libros_Cliente> listarLibrosQueHizoReseniaElCliente(Long id) {
+		// TODO Auto-generated method stub
+		return sesion.getCurrentSession().createCriteria(Resenia_Libros_Cliente.class)
+				.createAlias("usuario", "cliente")
+				.createAlias("resenia", "clienteResenia")
+				.add(Restrictions.eq("cliente.id",id))
+				.add(Restrictions.ge("clienteResenia.puntuacion",4)).list();
 	}
 
 }

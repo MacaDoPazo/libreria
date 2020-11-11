@@ -14,7 +14,7 @@ public class Resenia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	private Long id;
-	private String puntuacion;
+	private Integer puntuacion;
 	private String comentario;
 		@ManyToOne
 	private Usuario cliente;
@@ -39,10 +39,10 @@ public class Resenia {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getPuntuacion() {
+	public Integer getPuntuacion() {
 		return puntuacion;
 	}
-	public void setPuntuacion(String puntuacion) {
+	public void setPuntuacion(Integer puntuacion) {
 		this.puntuacion = puntuacion;
 	}
 	public String getComentario() {

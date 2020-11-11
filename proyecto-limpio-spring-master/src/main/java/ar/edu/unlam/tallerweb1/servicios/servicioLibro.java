@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.List;
 
+import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
 
 public interface servicioLibro {
@@ -26,7 +27,11 @@ public interface servicioLibro {
 
 
 
-	List<Libro> listarLibrosGenero(Long idGenero);
+	List<Libro> listarLibrosGenero(Genero genero);
+
+
+
+	List<Libro> listarLibrosGeneroMayorPuntaje(Long id);
 
 
 

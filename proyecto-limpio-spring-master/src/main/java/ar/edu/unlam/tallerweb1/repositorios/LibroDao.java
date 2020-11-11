@@ -2,7 +2,9 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import java.util.List;
 
+import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
+import ar.edu.unlam.tallerweb1.modelo.Resenia_Libros_Cliente;
 
 public interface LibroDao {
 
@@ -16,7 +18,9 @@ public interface LibroDao {
 
 	void actualizarMeGusta(Long idLibro, Integer suma);
 
-	List<Libro> listarLibrosGenero(Long idGenero);
+	List<Libro> listarLibrosGenero(Genero genero);
+
+	List<Resenia_Libros_Cliente> listarLibrosQueHizoReseniaElCliente(Long id);
 
 	
 

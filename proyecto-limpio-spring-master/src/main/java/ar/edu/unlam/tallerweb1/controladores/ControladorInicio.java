@@ -35,12 +35,13 @@ public class ControladorInicio {
 	
 	@RequestMapping(path="/pantalla-inicial"/*, method = RequestMethod.POST*/)
 	public ModelAndView irAlInicio(HttpServletRequest request) {
-		
+		Long id = (long) 1;
 		List<Libro> listalibros = servicioLibro.listarLibros();
+		List<Libro> listarLibrosGeneroMayorPuntaje = servicioLibro.listarLibrosGeneroMayorPuntaje(id);
 		ModelMap modelo = new ModelMap();
 		
 		modelo.put("lista",listalibros);
-		
+		modelo.put("listaGenero",listarLibrosGeneroMayorPuntaje);
 		return new ModelAndView("pantallainicial",modelo);
 	}
 	

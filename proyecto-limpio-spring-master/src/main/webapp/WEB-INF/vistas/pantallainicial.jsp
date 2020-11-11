@@ -45,8 +45,40 @@
 	<div class="container">
 		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 		<h1 class="text-center">Tal vez te interesen estos titulos:</h1>
+		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+		 <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
+	 	<div class="container" id="food">
+	    <div class="card-deck">
+    <c:forEach items="${listaGenero}" var="libro" >
+    	   
+          <div class="w3-quarter col">
+      	   <a href="#" >
+      	   <img src="img/${libro.nombre_archivo}" alt="${libro.nombre_archivo}" style="width:100%">
+      	   </a>
+      		<div class="card-body">
+      			<h3 class="card-text">${libro.nombre}</h3>
+	      		<a href="#" style="text-decoration:none"><h6>${libro.autor.nombre} ${libro.autor.apellido}</h6></a>
+	      		<p class="card-text">$ ${libro.precio}<p> 
+	      		<div class="card-text d-flex justify-content-center"><a href="sumar-megusta?idLibro=${libro.id }"class="" id="botonlike"><i class="far fa-heart"></i> </a><p id="cantidadlikes"> &nbsp ${item.megusta}</p></div>
+	      		<form action="agregar-al-carrito" >
+	      		<input class="form-control mx-auto" type="number" id="cantidad" name="canitdad" placeholder="0" style="width:50px" min=1 required><br>
+	      		<input type="hidden" id="precio" name="idLibro" value= ${libro.id }>
+	     		 <input type="hidden" id="precio" name="precio" value= ${libro.precio }>
+	      		<input type="hidden" id="precio" name="idCliente" value=1>
+	     		 <input class="btn btn-success mx-auto"type="submit" value="Añadir al carrito">
+	      		</form>
+	      		<a href="detalle-producto?idLibro=${libro.id}" class=" mx-auto"><button type="button" class="btn btn-outline-dark">Comprar</button></a>
+	      	</div>
+      		
+   		 </div>           
+          </c:forEach>  
+      </div>     	
+  </div>
+  </div>
 	</c:otherwise>
 	</c:choose>	
+	<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+		<h1 class="text-center">Libros populares</h1>
 		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 	   <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
 	 	<div class="container" id="food">
