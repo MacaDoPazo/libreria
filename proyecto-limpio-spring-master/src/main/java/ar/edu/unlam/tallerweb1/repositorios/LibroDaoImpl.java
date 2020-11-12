@@ -32,6 +32,7 @@ public class LibroDaoImpl implements LibroDao {
 		return (Long) sesion.getCurrentSession().save(libro);
 	}
 	
+	
 	@Override
 	public List<Libro> listarLibros() {
 		
@@ -68,6 +69,11 @@ public class LibroDaoImpl implements LibroDao {
 				.createAlias("resenia", "clienteResenia")
 				.add(Restrictions.eq("cliente.id",id))
 				.add(Restrictions.ge("clienteResenia.puntuacion",4)).list();
+	}
+	@Override
+	public void actualizarLibro(Libro libro) {
+		// TODO Auto-generated method stub
+		 sesion.getCurrentSession().update(libro);
 	}
 
 }

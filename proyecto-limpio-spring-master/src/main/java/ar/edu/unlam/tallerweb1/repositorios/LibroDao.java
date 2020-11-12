@@ -11,6 +11,8 @@ public interface LibroDao {
 	Libro consultarLibroPorId(Long id);
 
 	Long guardarLibro(Libro libro);
+	
+	void actualizarLibro(Libro libro);
 
 	List<Libro> listarLibros();
 

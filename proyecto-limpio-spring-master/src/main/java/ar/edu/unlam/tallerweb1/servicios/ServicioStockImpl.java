@@ -37,7 +37,7 @@ public class ServicioStockImpl implements ServicioStock {
 			libro= cl.getLibro();
 			libro.getStock().setCantidad(libro.getStock().getCantidad()-cl.getCantidad());
 			
-			repositorioLibro.guardarLibro(libro);
+			repositorioLibro.actualizarLibro(libro);
 		}
 		
 			

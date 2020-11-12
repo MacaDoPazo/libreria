@@ -18,9 +18,9 @@ public class CantidadLibros {
 	private Long cantidad;
 	//@Transient
 	private Long precioTotal;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne//(cascade = CascadeType.ALL)
 	private Libro libro;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne//(cascade = CascadeType.ALL)
 	private Pedido pedido;
 	
 	
