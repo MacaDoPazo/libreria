@@ -25,4 +25,5 @@ insert into libro(megusta,nombre,paginas,precio,nombre_archivo,autor_id,stock_id
 (650,"La niebla",600,550,"la_niebla.jpg",1,4,4); 
 
 
-INSERT INTO usuario (DTYPE,id,apellido,email,nombre,password,rol,sexo) VALUES ('Usuario',1,'Pierotti','npierotti@alumno.unlam.edu.ar','Nahuel','135791','Cliente','m');
+INSERT INTO usuario (DTYPE,id,apellido,email,nombre,password,rol,sexo) VALUES ('Usuario',1,'Pierotti','npierotti@alumno.unlam.edu.ar','Nahuel','135791','Cliente','m'),
+('Usuario',2,'Do Pazo','maca@123.com','Macarena','123','Admin','f');

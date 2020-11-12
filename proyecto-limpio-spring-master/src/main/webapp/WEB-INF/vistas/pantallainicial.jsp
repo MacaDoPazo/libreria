@@ -44,7 +44,7 @@
 	<c:otherwise>
 	<div class="container">
 		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-		<h1 class="text-center">Tal vez te interesen estos titulos:</h1>
+		<h1 class="text-center">Por que te interesa el género ${generoSugerido }:</h1>
 		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 		 <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
 	 	<div class="container" id="food">

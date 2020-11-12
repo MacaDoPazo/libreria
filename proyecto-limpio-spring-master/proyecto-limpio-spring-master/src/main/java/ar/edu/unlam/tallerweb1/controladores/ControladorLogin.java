@@ -2,7 +2,6 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
-import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,10 +9,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
@@ -26,8 +23,6 @@ public class ControladorLogin {
 	// applicationContext.xml
 	private ServicioLogin servicioLogin;
 	
-	@Inject
-	private ServicioUsuario servicioUsuario;
 
 	@Autowired
 	public ControladorLogin(ServicioLogin servicioLogin){
@@ -59,10 +54,8 @@ public class ControladorLogin {
 		// hace una llamada a otro action a través de la URL correspondiente a ésta
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
 		if (usuarioBuscado != null) {
-			request.getSession().setAttribute("usuario_id", usuarioBuscado.getId());
-			request.getSession().setAttribute("usuario_nombre", usuarioBuscado.getNombre());
-			request.getSession().setAttribute("usuario_rol", usuarioBuscado.getRol());
-			return new ModelAndView("redirect:/pantalla-inicial");
+			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
+			return new ModelAndView("redirect:/home");
 		} else {
 			// si el usuario no existe agrega un mensaje de error en el modelo.
 			model.put("error", "Usuario o clave incorrecta");
@@ -70,53 +63,16 @@ public class ControladorLogin {
 		return new ModelAndView("login", model);
 	}
 
-	@RequestMapping(path = "/salir")
-	public ModelAndView cerrarSesion(HttpServletRequest request) {
-		
-			request.getSession().invalidate();
-			return new ModelAndView("redirect:/pantalla-inicial");
-		
-	}
 	// Escucha la URL /home por GET, y redirige a una vista.
 	@RequestMapping(path = "/home", method = RequestMethod.GET)
 	public ModelAndView irAHome() {
 		return new ModelAndView("home");
 	}
-	
-	@RequestMapping("/registroUsuario")
-	public ModelAndView registro() {
-		ModelMap modelo = new ModelMap();
-		return new ModelAndView("registroUsuario", modelo);
-	}
-	
-	@RequestMapping("/mostrarUsuarioRegistrado")
-	public ModelAndView usuarioRegistrado(
-			@RequestParam("nombre") String nombre,
-			@RequestParam("apellido") String apellido,
-			@RequestParam("sexo") String sexo,
-			@RequestParam("email") String email,
-			@RequestParam("password") String password,
-			@RequestParam("passwordRepetido") String passwordRepetido
-			) {
-		char sex=sexo.charAt(0);
-		Usuario usuario=new Usuario();
-		usuario.setNombre(nombre);
-		usuario.setApellido(apellido);
-		usuario.setSexo(sex);
-		usuario.setEmail(email);
-		usuario.setPassword(password);
-		usuario.setRol("Admin");
-		servicioUsuario.guardarUsuario(usuario);
-		ModelMap modelo = new ModelMap();
-		modelo.put("nombre", nombre);
-		modelo.put("apellido", apellido);
-		modelo.put("sexo", sexo);
-		modelo.put("email", email);
-		modelo.put("password", password);
-		modelo.put("passwordRepetido", passwordRepetido);
-	
-		return new ModelAndView("mostrarUsuarioRegistrado", modelo);
-		
+
+	// Escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la url /login directamente.
+	@RequestMapping(path = "/", method = RequestMethod.GET)
+	public ModelAndView inicio() {
+		return new ModelAndView("redirect:/login");
 	}
 	
 }

@@ -90,6 +90,9 @@
             </div>
 	    </li>
 		</ul>
+		<a class="dropdown-item" href="salir">
+                    <i class="fa fa-sign-in">
+                    </i> Salir</a>
 	</nav>
 	<%@include file="navAdministrador.jsp" %>  
 	</div>
@@ -123,6 +126,9 @@
                 </div>
             </div>
 	    </li>
+	    <a class="dropdown-item" href="salir">
+                    <i class="fa fa-sign-in">
+                    </i> Salir</a>
 		</ul>
 	</nav>
 	</div>

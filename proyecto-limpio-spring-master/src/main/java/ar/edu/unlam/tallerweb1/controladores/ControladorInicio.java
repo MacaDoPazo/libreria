@@ -39,7 +39,8 @@ public class ControladorInicio {
 		List<Libro> listalibros = servicioLibro.listarLibros();
 		List<Libro> listarLibrosGeneroMayorPuntaje = servicioLibro.listarLibrosGeneroMayorPuntaje(id);
 		ModelMap modelo = new ModelMap();
-		
+	//	Libro libro = listarLibrosGeneroMayorPuntaje.get(1);
+	//	modelo.put("generoSugerido",libro.getGenero());
 		modelo.put("lista",listalibros);
 		modelo.put("listaGenero",listarLibrosGeneroMayorPuntaje);
 		return new ModelAndView("pantallainicial",modelo);
