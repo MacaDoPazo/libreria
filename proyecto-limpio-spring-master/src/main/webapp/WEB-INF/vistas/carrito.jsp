@@ -14,6 +14,9 @@
                             <th scope="col"> </th>
                             <th scope="col">Producto</th>
                             
+							
+							<!-- holaa -->
+							
                             <th scope="col" class="text-center">Cantidad</th>
                             <th scope="col" class="text-center">Precio unitario</th>
                             <th scope="col" class="text-center">Precio total</th>
