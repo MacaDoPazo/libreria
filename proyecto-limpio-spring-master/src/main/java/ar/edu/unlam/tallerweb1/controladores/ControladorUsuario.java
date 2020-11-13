@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.inject.Inject;
@@ -31,6 +32,8 @@ public class ControladorUsuario {
 		usuario.setSexo(sexo);
 		usuario.setEmail(email);
 		usuario.setPassword(password);
+		Date today = Calendar.getInstance().getTime();
+		usuario.setFecha_ultimo_login(today);
 		Long idUsuario = servicioUsuario.guardarUsuario(usuario);
 		ModelMap modelo = new ModelMap();
 		modelo.put("nombre", nombre);

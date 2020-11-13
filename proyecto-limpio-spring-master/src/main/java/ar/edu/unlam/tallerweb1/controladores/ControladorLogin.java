@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -59,6 +62,9 @@ public class ControladorLogin {
 		// hace una llamada a otro action a través de la URL correspondiente a ésta
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
 		if (usuarioBuscado != null) {
+			Date today = Calendar.getInstance().getTime();
+			usuarioBuscado.setFecha_ultimo_login(today);
+			servicioUsuario.actualizarUsuario(usuarioBuscado);
 			request.getSession().setAttribute("usuario_id", usuarioBuscado.getId());
 			request.getSession().setAttribute("usuario_nombre", usuarioBuscado.getNombre());
 			request.getSession().setAttribute("usuario_rol", usuarioBuscado.getRol());

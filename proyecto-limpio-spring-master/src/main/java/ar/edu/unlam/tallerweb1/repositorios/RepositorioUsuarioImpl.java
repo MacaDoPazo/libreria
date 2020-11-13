@@ -7,6 +7,9 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -59,4 +62,17 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		return usuario;
 	}
 
+	@Override
+	public void actualizarUsuario(Usuario usuario) {
+		sessionFactory.getCurrentSession().update(usuario);
+
+	}
+
+	@Override
+	public ArrayList<Usuario> consultarUsuarios() {
+		
+		final Session session = sessionFactory.getCurrentSession();
+		ArrayList<Usuario> lista=(ArrayList<Usuario>)session.createCriteria(Usuario.class).list();
+		return lista;		
+	}
 }

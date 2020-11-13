@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +25,7 @@ public class Usuario {
 	private String email;
 	private String password;
 	private String rol;
+	private Date fecha_ultimo_login;
 	
 	public Long getId() {
 		return id;
@@ -68,5 +71,11 @@ public class Usuario {
 
 	public void setRol(String rol) {
 		this.rol = rol;
+	}
+	public Date getFecha_ultimo_login() {
+		return fecha_ultimo_login;
+	}
+	public void setFecha_ultimo_login(Date fecha_ultimo_login) {
+		this.fecha_ultimo_login = fecha_ultimo_login;
 	}
 }

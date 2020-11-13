@@ -36,10 +36,6 @@
 	    <span class="sr-only">Next</span>
 	  </a>
 	</div>
-	
-	<div class="container">
-		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-		<h1 class="text-center">Libros populares</h1>
 	</c:when>
 	<c:otherwise>
 	<div class="container">
@@ -75,11 +71,13 @@
       </div>     	
   </div>
   </div>
+  </div>
 	</c:otherwise>
 	</c:choose>	
-	<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-		<h1 class="text-center">Libros populares</h1>
+	<div class="container">
 		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+		<h1 class="text-center">Libros populares</h1>
+		<br>
 	   <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
 	 	<div class="container" id="food">
 	    <div class="card-deck">
