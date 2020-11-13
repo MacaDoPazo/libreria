@@ -58,18 +58,17 @@ public class servicioLibroImpl implements servicioLibro {
 		for (Resenia_Libros_Cliente resenia_Libros_Cliente : lista) {
 			generos.add(resenia_Libros_Cliente.getLibro().getGenero());
 		}
-		Set<Genero> totalGenero = new HashSet<Genero>(generos);
 		Integer ban = 0;
 		Integer maximaCantidad = 0;
 		Genero maximoGenero = new Genero();
-		for (Genero genero : totalGenero) {
+		for (Genero genero : generos) {
 			while(ban == 0)
 			{
-				maximaCantidad = Collections.frequency(totalGenero, genero);
+				maximaCantidad = Collections.frequency(generos, genero);
 				maximoGenero = genero;
 				ban = 1;
 			}
-			if (maximaCantidad < Collections.frequency(totalGenero, genero))
+			if (maximaCantidad < Collections.frequency(generos, genero))
 			{
 				maximoGenero = genero;
 			}

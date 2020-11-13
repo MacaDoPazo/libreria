@@ -41,7 +41,8 @@ public class ControladorResenia {
 	@RequestMapping(path="/registrar-resenia", method= RequestMethod.POST)
 	public ModelAndView IrAlRegistroDelaResenia(@RequestParam("idPedido") Long idPedido, HttpServletRequest request){		
 		
-		Usuario usuario = (Usuario) request.getAttribute("usuario_id");
+		Long usuario = (Long) request.getSession().getAttribute("usuario_id");
+		
 		List<CantidadLibros> librosComprados = servicioCantLibros.listarLibrosComprados(idPedido);
 		List<Resenia_Libros_Cliente> listaReseniaLibroCliente = servicioResenia.listarReseniasDelCliente(usuario);
 		Pedido pedido = servicioPedido.consultarPedidoPorId(idPedido);
@@ -53,13 +54,14 @@ public class ControladorResenia {
 	}
 	
 	@RequestMapping(path="/comentar-resenia", method= RequestMethod.POST)
-	public ModelAndView comentarResenia(@RequestParam("idCliente") Long idCliente,
+	public ModelAndView comentarResenia(HttpServletRequest request,
 			@RequestParam("idLibro") Long idLibro,
 			@RequestParam("idPedido") Long idPedido){
 		Libro libro = servicioLibro.consultarLibroPorId(idLibro);
 		Pedido pedido = servicioPedido.consultarPedidoPorId(idPedido);
-		Usuario usuario = servicioUsuario.consultarUsuarioPorId(idCliente);
-		List<Resenia_Libros_Cliente> listaReseniaLibroCliente = servicioResenia.listarReseniasDelCliente(usuario);
+		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
+		Usuario usuario = servicioUsuario.consultarUsuarioPorId(idUsuario);
+		List<Resenia_Libros_Cliente> listaReseniaLibroCliente = servicioResenia.listarReseniasDelCliente(idUsuario);
 		Resenia_Libros_Cliente reseniaLibroCliente = servicioResenia.consultarReseniaLibroCliente(libro,usuario);
 		ModelMap modelo = new ModelMap();
 		
@@ -70,13 +72,14 @@ public class ControladorResenia {
 	}
 	
 	@RequestMapping(path="/guardar-resenia", method= RequestMethod.POST)
-	public ModelAndView guardarResenia(@RequestParam("idCliente") Long idCliente,
+	public ModelAndView guardarResenia(HttpServletRequest request,
 			@RequestParam("idLibro") Long idLibro,
 			@RequestParam("comentario") String comentario,
 			@RequestParam("puntuacion") Integer puntuacion,
 			@RequestParam("idPedido") Long idPedido){
 		Libro libro = servicioLibro.consultarLibroPorId(idLibro);
-		Usuario usuario = servicioUsuario.consultarUsuarioPorId(idCliente);
+		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
+		Usuario usuario = servicioUsuario.consultarUsuarioPorId(idUsuario);
 		
 		Resenia resenia = new Resenia();
 		resenia.setCliente(usuario);
@@ -89,7 +92,7 @@ public class ControladorResenia {
 		reseniaLibroCliente.setLibro(libro);
 		reseniaLibroCliente.setUsuario(usuario);
 		servicioResenia.guardarReseniaLibrosCliente(reseniaLibroCliente);
-		List<Resenia_Libros_Cliente> listaReseniaLibroCliente = servicioResenia.listarReseniasDelCliente(usuario);
+		List<Resenia_Libros_Cliente> listaReseniaLibroCliente = servicioResenia.listarReseniasDelCliente(idUsuario);
 		List<CantidadLibros> librosComprados = servicioCantLibros.listarLibrosComprados(idPedido);	
 		Pedido pedido = servicioPedido.consultarPedidoPorId(idPedido);
 		ModelMap modelo = new ModelMap();

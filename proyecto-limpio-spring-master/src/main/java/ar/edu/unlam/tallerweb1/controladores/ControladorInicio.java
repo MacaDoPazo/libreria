@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -35,15 +36,39 @@ public class ControladorInicio {
 	
 	@RequestMapping(path="/pantalla-inicial"/*, method = RequestMethod.POST*/)
 	public ModelAndView irAlInicio(HttpServletRequest request) {
-		Long id = (long) 1;
-		List<Libro> listalibros = servicioLibro.listarLibros();
-		List<Libro> listarLibrosGeneroMayorPuntaje = servicioLibro.listarLibrosGeneroMayorPuntaje(id);
-		ModelMap modelo = new ModelMap();
-	//	Libro libro = listarLibrosGeneroMayorPuntaje.get(1);
-	//	modelo.put("generoSugerido",libro.getGenero());
-		modelo.put("lista",listalibros);
-		modelo.put("listaGenero",listarLibrosGeneroMayorPuntaje);
-		return new ModelAndView("pantallainicial",modelo);
+		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
+		
+	if(idUsuario != null)
+		{
+			List<Libro> listalibros = servicioLibro.listarLibros();
+			List<Libro> listarLibrosGeneroMayorPuntaje = servicioLibro.listarLibrosGeneroMayorPuntaje(idUsuario);
+			if(listarLibrosGeneroMayorPuntaje.size() != 0)
+			{
+				Libro libro = listarLibrosGeneroMayorPuntaje.get(0);
+				ModelMap modelo = new ModelMap();
+				modelo.put("generoSugerido",libro.getGenero().getNombre());
+				modelo.put("lista",listalibros);
+				modelo.put("listaGenero",listarLibrosGeneroMayorPuntaje);
+				return new ModelAndView("pantallainicial",modelo);
+			}
+			else
+			{
+				ModelMap modelo = new ModelMap();
+				modelo.put("lista",listalibros);
+				modelo.put("listaGenero",listarLibrosGeneroMayorPuntaje);
+				return new ModelAndView("pantallainicial",modelo);
+			}
+			
+		}
+		else
+		{
+			List<Libro> listalibros = servicioLibro.listarLibros();
+			ModelMap modelo = new ModelMap();
+			modelo.put("lista",listalibros);
+			return new ModelAndView("pantallainicial",modelo);
+		}
+		
+		
 	}
 	
 	@RequestMapping(path="/detalle-producto", method=RequestMethod.GET)
@@ -58,12 +83,13 @@ public class ControladorInicio {
 		}
 	@RequestMapping(path="/ver-pedido")
 	
-		public ModelAndView verPedido(@RequestParam(value="idCliente", required = true)Long idCliente)
+		public ModelAndView verPedido(HttpServletRequest request)
 		{
-		Pedido pedido =servicioPedido.buscarPedidoArmando(idCliente, "armando");
+		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
+		Pedido pedido =servicioPedido.buscarPedidoArmando(idUsuario, "armando");
 		if(pedido != null)
 		{
-			List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idCliente,"armando");
+			List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idUsuario,"armando");
 			Long subtotal = servicioCantLibros.subtotalDeTodosLosLibros(librosPedidos);
 			ModelMap modelo = new ModelMap();
 			modelo.put("subtotal",subtotal);
@@ -82,14 +108,15 @@ public class ControladorInicio {
 		public ModelAndView irAlCarrito(
 			@RequestParam(value="cantidad",required = false)Long cantidad ,
 			@RequestParam(value="idLibroSolicitado", required = false)Long idLibroSolicitado,
-			@RequestParam(value="idCliente", required = true)Long idCliente) {		
-		Pedido pedidoArmando = servicioPedido.buscarPedidoArmando(idCliente,"armando");
+			HttpServletRequest request) {		
+		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
+		Pedido pedidoArmando = servicioPedido.buscarPedidoArmando(idUsuario,"armando");
 		
 		if(pedidoArmando == null)
 		{
 			Pedido pedido = new Pedido();
 			pedido.setEstado("armando");
-			pedido.setCliente(idCliente);
+			pedido.setCliente(idUsuario);
 			Long idPedido =servicioPedido.guardarPedido(pedido);
 			Pedido pedidoCliente = servicioPedido.consultarPedidoPorId(idPedido);
 			Libro libroPedir = servicioLibro.consultarLibroPorId(idLibroSolicitado);
@@ -130,7 +157,7 @@ public class ControladorInicio {
 			
 		}
 		
-		List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idCliente,"armando");
+		List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idUsuario,"armando");
 		Long subtotal = servicioCantLibros.subtotalDeTodosLosLibros(librosPedidos);
 		ModelMap modelo = new ModelMap();
 		modelo.put("subtotal",subtotal);

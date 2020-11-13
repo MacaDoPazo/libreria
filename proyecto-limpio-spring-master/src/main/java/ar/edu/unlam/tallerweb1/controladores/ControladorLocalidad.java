@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -53,9 +54,10 @@ public class ControladorLocalidad {
 	}
 	@RequestMapping(path="/buscar-localidad")
 	public ModelAndView buscarLibroPorId(@RequestParam(value="cp")Integer cp,
-			@RequestParam(value="idCliente")Long idCliente)
+			HttpServletRequest request)
 	{
-		List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idCliente,"armando");
+		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
+		List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idUsuario,"armando");
 		Long subtotal = servicioCantLibros.subtotalDeTodosLosLibros(librosPedidos);
 		Localidad localidadEncontrada = servicioLocalidad.consultarLocalidadPorCP(cp);
 		Long total=localidadEncontrada.getPrecio()+subtotal;

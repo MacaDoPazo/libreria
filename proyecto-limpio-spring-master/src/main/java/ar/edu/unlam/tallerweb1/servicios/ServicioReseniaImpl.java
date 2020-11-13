@@ -53,7 +53,7 @@ public class ServicioReseniaImpl implements ServicioResenia {
 	}
 
 	@Override
-	public List<Resenia_Libros_Cliente> listarReseniasDelCliente(Usuario usuario) {
+	public List<Resenia_Libros_Cliente> listarReseniasDelCliente(Long usuario) {
 		// TODO Auto-generated method stub
 		return repositorioResenia.listarReseniasDelCliente(usuario);
 	}

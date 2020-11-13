@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -40,15 +41,16 @@ public class ControladorPedido {
 	@RequestMapping("/agregar-al-carrito")
 	public ModelAndView agregarAlCarrito (@RequestParam("idLibro") Long idLibro,
 			@RequestParam("canitdad") Long cantidad,
-			@RequestParam("precio") Long precio,@RequestParam("idCliente") Long idCliente)
+			@RequestParam("precio") Long precio, HttpServletRequest request)
 	{
-		Pedido pedidoArmando = servicioPedido.buscarPedidoArmando(idCliente,"armando");
+		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
+		Pedido pedidoArmando = servicioPedido.buscarPedidoArmando(idUsuario,"armando");
 		
 		if(pedidoArmando == null)
 		{
 			Pedido pedido = new Pedido();
 			pedido.setEstado("armando");
-			pedido.setCliente(idCliente);
+			pedido.setCliente(idUsuario);
 			Long idPedido =servicioPedido.guardarPedido(pedido);
 			Pedido pedidoCliente = servicioPedido.consultarPedidoPorId(idPedido);
 			Libro libroPedir = servicioLibro.consultarLibroPorId(idLibro);

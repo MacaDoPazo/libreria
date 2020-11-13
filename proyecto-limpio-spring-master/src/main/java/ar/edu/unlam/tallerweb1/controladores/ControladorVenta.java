@@ -49,7 +49,7 @@ public class ControladorVenta {
 	private ServicioLocalidad servicioLocalidad;
 	@RequestMapping(path= "/guardar-venta", method= RequestMethod.POST)
 	public ModelAndView guardarVenta(
-			@RequestParam("idCliente") Long idCliente,
+			HttpServletRequest request,
 			@RequestParam("montoTotal") Long montoTotal,
 			@RequestParam("localidadEnvio") Integer localidadEnvio,
 			@RequestParam("nombreTitularTarjeta") String nombreTitularTarjeta,
@@ -58,12 +58,12 @@ public class ControladorVenta {
 			@RequestParam("fechaCaducidadTarjeta") String fechaCaducidadTarjeta,
 			@RequestParam("codigoSeguridadTarjeta") Integer codigoSeguridadTarjeta			
 			) {
-		
-		Pedido pedido = servicioPedido.buscarPedidoArmando(idCliente, "armando");
+		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
+		Pedido pedido = servicioPedido.buscarPedidoArmando(idUsuario, "armando");
 		Localidad localidad = servicioLocalidad.consultarLocalidadPorCP(localidadEnvio);
 		
 		Venta venta = new Venta();
-			venta.setIdCliente(idCliente);
+			venta.setIdCliente(idUsuario);
 			venta.setMontoTotal(montoTotal);
 			venta.setLocalidadEnvio(localidadEnvio);
 			venta.setNombreTitularTarjeta(nombreTitularTarjeta);
@@ -79,7 +79,7 @@ public class ControladorVenta {
 			venta.setFechaDeVenta(fechaVenta);
 			servicioVenta.guardarVenta(venta);
 			servicioPedido.actualizarPedido(pedido);
-			List <CantidadLibros> listaLibrosVendidos= servicioCantidadLibros.listarLibrosPedidoDelCliente(idCliente, "armando");
+			List <CantidadLibros> listaLibrosVendidos= servicioCantidadLibros.listarLibrosPedidoDelCliente(idUsuario, "armando");
 			servicioStock.descontarStock(listaLibrosVendidos);
 			
 			pedido.setEstado("facturado");
@@ -88,7 +88,7 @@ public class ControladorVenta {
 		
 	ModelMap modelo = new ModelMap();
 		
-		modelo.put("idCliente", idCliente);
+		modelo.put("idCliente", idUsuario);
 		modelo.put("montoTotal", montoTotal);
 		modelo.put("localidadEnvio", localidadEnvio);
 		modelo.put("nombreTitularTarjeta", nombreTitularTarjeta);
@@ -118,13 +118,13 @@ public class ControladorVenta {
 	
 	@RequestMapping(path="/listaVentasAlCliente", method= RequestMethod.GET)
 	public ModelAndView listarVentasAlCliente(
-			@RequestParam("idCliente") Long idCliente) {
-	
-		List <Venta> listadoVentasRealizadasAlCliente = servicioVenta.listarVentasAlCliente(idCliente);
+			HttpServletRequest request) {
+		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
+		List <Venta> listadoVentasRealizadasAlCliente = servicioVenta.listarVentasAlCliente(idUsuario);
 		
 		ModelMap modelo = new ModelMap();
 		
-			modelo.put("idCliente", idCliente);
+			modelo.put("idCliente", idUsuario);
 			modelo.put("listadoVentasRealizadasAlCliente", listadoVentasRealizadasAlCliente);
 			
 			return new ModelAndView ("ventasAlCliente", modelo);

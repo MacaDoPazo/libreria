@@ -24,7 +24,6 @@
 			  <div class="form-group">
 		<textarea rows="10" name="comentario" style="width:100%;"></textarea>
 			</div>
-		   	 <input type="hidden" id="idCliente" name="idCliente" value= "${sessionScope.usuario_id}">
 		   	 <input type="hidden" id="idLibro" name="idLibro" value= "${libro.id }">
 		   	 <input type="hidden" id="idPedido" name="idPedido" value= "${pedido.id}">
           	 

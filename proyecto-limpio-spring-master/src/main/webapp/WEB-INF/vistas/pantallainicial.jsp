@@ -36,6 +36,10 @@
 	    <span class="sr-only">Next</span>
 	  </a>
 	</div>
+	
+	<div class="container">
+		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+		<h1 class="text-center">Libros populares</h1>
 	</c:when>
 	<c:otherwise>
 	<div class="container">
@@ -60,10 +64,9 @@
 	      		<input class="form-control mx-auto" type="number" id="cantidad" name="canitdad" placeholder="0" style="width:50px" min=1 required><br>
 	      		<input type="hidden" id="precio" name="idLibro" value= ${libro.id }>
 	     		 <input type="hidden" id="precio" name="precio" value= ${libro.precio }>
-	      		<input type="hidden" id="precio" name="idCliente" value=1>
-	     		 <input class="btn btn-success mx-auto"type="submit" value="Añadir al carrito">
+	      		 <input class="btn btn-success mx-auto"type="submit" value="Añadir al carrito">
 	      		</form>
-	      		<a href="detalle-producto?idLibro=${libro.id}" class=" mx-auto"><button type="button" class="btn btn-outline-dark">Comprar</button></a>
+	      		<a href="detalle-producto?idLibro=${libro.id}" class=" mx-auto"><button type="button" class="btn btn-outline-dark">+ info</button></a>
 	      	</div>
       		
    		 </div>           
@@ -71,13 +74,11 @@
       </div>     	
   </div>
   </div>
-  </div>
 	</c:otherwise>
 	</c:choose>	
-	<div class="container">
-		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+	<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 		<h1 class="text-center">Libros populares</h1>
-		<br>
+		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 	   <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
 	 	<div class="container" id="food">
 	    <div class="card-deck">
@@ -96,10 +97,9 @@
 	      		<input class="form-control mx-auto" type="number" id="cantidad" name="canitdad" placeholder="0" style="width:50px" min=1 required><br>
 	      		<input type="hidden" id="precio" name="idLibro" value= ${item.id }>
 	     		 <input type="hidden" id="precio" name="precio" value= ${item.precio }>
-	      		<input type="hidden" id="precio" name="idCliente" value=1>
-	     		 <input class="btn btn-success mx-auto"type="submit" value="Añadir al carrito">
+	      		 <input class="btn btn-success mx-auto"type="submit" value="Añadir al carrito">
 	      		</form>
-	      		<a href="detalle-producto?idLibro=${item.id}" class=" mx-auto"><button type="button" class="btn btn-outline-dark">Comprar</button></a>
+	      		<a href="detalle-producto?idLibro=${item.id}" class=" mx-auto"><button type="button" class="btn btn-outline-dark">+ info</button></a>
 	      	</div>
       		
    		 </div>           

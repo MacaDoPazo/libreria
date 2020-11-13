@@ -46,8 +46,7 @@
                             <td>
                             <form action="buscar-localidad">
                             		 <input class="form-control" type="number" id="cp" name="cp"><br>
-   								   <input type="hidden" id="idCliente" name="idCliente" value= 1>
-     						  		<input class="btn btn-success "type="submit" value="Calcular">
+   								   	<input class="btn btn-success "type="submit" value="Calcular">
      						</form>  		
                             	</td>
                             <td>${localidad.nombre }</td>
@@ -74,9 +73,7 @@
         
        <form action="guardar-venta" class="container" method="POST" >  <!-- modelAttribute="venta" -->
             <input type="hidden" id="montoTotal" name="montoTotal" value= ${total }>
-            <br>
-       			<input type="hidden" id="idCliente" name="idCliente" value= 1>	
-            <br>
+               <br>
                <input type="hidden" id="localidadEnvio" name="localidadEnvio" value= ${localidad.cp }>            
 			 <div class="form-group row">
 	            <label for="" class="text-secondary col-sm-2 col-form-label">Nombre:</label>
