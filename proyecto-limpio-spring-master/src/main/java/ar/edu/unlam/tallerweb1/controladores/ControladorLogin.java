@@ -111,7 +111,9 @@ public class ControladorLogin {
 		usuario.setSexo(sex);
 		usuario.setEmail(email);
 		usuario.setPassword(password);
-		usuario.setRol("Admin");
+		usuario.setRol("Cliente");
+		Date today = Calendar.getInstance().getTime();
+		usuario.setFecha_ultimo_login(today);
 		servicioUsuario.guardarUsuario(usuario);
 		ModelMap modelo = new ModelMap();
 		modelo.put("nombre", nombre);

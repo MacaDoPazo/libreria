@@ -57,7 +57,7 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 		String body="<html><h3>Te Extrañamos</h3><br>";
 		while(i.hasNext()) {
 			Usuario u=(Usuario)i.next();
-			if(u.getFecha_ultimo_login().compareTo(hoy)>2) {
+			if(u.getFecha_ultimo_login().compareTo(hoy)>2 && u.getRol().equals("Cliente")) {
 				body+="<p>No te vemos hace tiempo <strong>"+u.getNombre()+"</strong>"+
 					" y creemos que tenemos nuevos titulos que te pueden interesar.</p><br>"+
 					"</html>";	
