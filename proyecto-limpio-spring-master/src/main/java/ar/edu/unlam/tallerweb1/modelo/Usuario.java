@@ -23,6 +23,7 @@ public class Usuario {
 	private String apellido;
 	private char sexo;
 	private String email;
+	private Date fechaNac;
 	private String password;
 	private String rol;
 	private Date fecha_ultimo_login;
@@ -57,6 +58,12 @@ public class Usuario {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public Date getFechaNac() {
+		return fechaNac;
+	}
+	public void setFechaNac(Date fechaNac) {
+		this.fechaNac = fechaNac;
 	}
 	public String getPassword() {
 		return password;
