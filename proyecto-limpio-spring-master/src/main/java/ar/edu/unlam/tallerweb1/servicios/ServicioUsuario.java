@@ -12,4 +12,5 @@ public interface ServicioUsuario {
 	void actualizarUsuario(Usuario usuario);
 	ArrayList<Usuario> consultarUsuarios();
 	void teExtraniamos() throws Exception;
+	Integer calcularEdad(Usuario usuario);
 }
