@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,7 +29,7 @@ public class Pedido {
 	private List <CantidadLibros> cantidadLibros;
 	@OneToOne
 	private Venta venta;
-	
+	private Date fechaEntrega;
 
 	public List<CantidadLibros> getCantidadLibros() {
 		return cantidadLibros;
@@ -65,6 +66,12 @@ public class Pedido {
 	}
 	public void setVenta(Venta venta) {
 		this.venta = venta;
+	}
+	public Date getFechaEntrega() {
+		return fechaEntrega;
+	}
+	public void setFechaEntrega(Date fechaEntrega) {
+		this.fechaEntrega = fechaEntrega;
 	}
 	
 	

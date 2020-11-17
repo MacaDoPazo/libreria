@@ -41,32 +41,29 @@ public class ControladorInicio {
 	if(idUsuario != null)
 		{
 			List<Libro> listalibros = servicioLibro.listarLibros();
-			List<Libro> listarLibrosGeneroMayorPuntaje = servicioLibro.listarLibrosGeneroMayorPuntaje(idUsuario);
-			if(listarLibrosGeneroMayorPuntaje.size() != 0)
-			{
+			ModelMap modelo = new ModelMap();
+			try {
+				List<Libro> listarLibrosGeneroMayorPuntaje = servicioLibro.listarLibrosGeneroMayorPuntaje(idUsuario);
 				Libro libro = listarLibrosGeneroMayorPuntaje.get(0);
-				ModelMap modelo = new ModelMap();
+				
 				modelo.put("generoSugerido",libro.getGenero().getNombre());
 				modelo.put("lista",listalibros);
 				modelo.put("listaGenero",listarLibrosGeneroMayorPuntaje);
-				return new ModelAndView("pantallainicial",modelo);
-			}
-			else
-			{
-				ModelMap modelo = new ModelMap();
+			}catch (Exception e) {
+				String error= e.getMessage();
+				modelo.put("error",error);
 				modelo.put("lista",listalibros);
-				modelo.put("listaGenero",listarLibrosGeneroMayorPuntaje);
-				return new ModelAndView("pantallainicial",modelo);
+				
 			}
-			
+			return new ModelAndView("pantallainicial",modelo);
+						
 		}
-		else
-		{
+		
 			List<Libro> listalibros = servicioLibro.listarLibros();
 			ModelMap modelo = new ModelMap();
 			modelo.put("lista",listalibros);
 			return new ModelAndView("pantallainicial",modelo);
-		}
+		
 		
 		
 	}
@@ -87,6 +84,10 @@ public class ControladorInicio {
 		{
 		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
 		Pedido pedido =servicioPedido.buscarPedidoArmando(idUsuario, "armando");
+		while (idUsuario == null)
+		{
+			return new ModelAndView("login");
+		}
 		if(pedido != null)
 		{
 			List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idUsuario,"armando");

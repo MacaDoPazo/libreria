@@ -68,7 +68,7 @@ public class LibroDaoImpl implements LibroDao {
 				.createAlias("usuario", "cliente")
 				.createAlias("resenia", "clienteResenia")
 				.add(Restrictions.eq("cliente.id",id))
-				.add(Restrictions.ge("clienteResenia.puntuacion",4)).list();
+				.list();
 	}
 	@Override
 	public void actualizarLibro(Libro libro) {

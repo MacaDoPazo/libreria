@@ -50,13 +50,14 @@
      						</form>  		
                             	</td>
                             <td>${localidad.nombre }</td>
+                            
                             <td>Envio</td>
                             <td class="text-center">${localidad.precio }$</td>
                         </tr>
                         <tr>
+                            <th>Fecha de Entrga:</th>
                             <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>${fechaEntrega }</td>
                             <td></td>
                             <td><strong>Total</strong></td>
                             <td class="text-center"><strong>${total } $</strong></td>
@@ -104,7 +105,8 @@
 	            <div class="col-sm-4">
 	                <input type="number" name="codigoSeguridadTarjeta" class="form-control">
 	            </div>
-	        </div>	             
+	        </div>
+	        <input type="hidden" name="fechaEntrega" value="${fechaEntrega }">	             
             <input id="submit-button" name="enviar" class="btn btn-success float-right btn-lg" type="submit" value="Finalizar Compra">
          
         </form>

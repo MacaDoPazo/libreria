@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -29,8 +31,18 @@ public class ServicioLocalidadImpl implements ServicioLocalidad {
 
 	@Override
 	public Localidad consultarLocalidadPorCP(Integer cp) {
-		// TODO Auto-generated method stub
+		
 		return repositorioLocalidad.buscarLocalidadPorCp(cp);
+	}
+
+	@Override
+	public Date calcularTiempoDeEntrega(Localidad localidadEncontrada) {
+		java.sql.Date fechaVenta = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+		Calendar calendario = Calendar.getInstance();
+		calendario.setTime(fechaVenta);
+		calendario.add(Calendar.DAY_OF_YEAR,localidadEncontrada.getDiasAEntregar());
+		
+		return new java.sql.Date(calendario.getTimeInMillis());
 	}
 
 }

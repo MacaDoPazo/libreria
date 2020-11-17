@@ -48,7 +48,7 @@
 	  	</a>
 		<ul class="nav justify-content-end">
 		<li class="nav-item">
-		<a href="login" class="nav-link" ><button class="btn btn-sm btn-success">Mi pedido<i class="fa fa-shopping-cart"></i></button></a> 
+		<a href="ver-pedido" class="nav-link" ><button class="btn btn-sm btn-success">Mi pedido<i class="fa fa-shopping-cart"></i></button></a> 
 		</li>
 	  	<li class="nav-item">
 	    	<a class="nav-link" href="login">Iniciar Sesión</a>

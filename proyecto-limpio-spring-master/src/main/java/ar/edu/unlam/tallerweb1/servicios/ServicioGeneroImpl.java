@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -36,5 +37,8 @@ public class ServicioGeneroImpl implements ServicioGenero {
 	public List<Genero> listarGeneros() {
 		return repositorioGenero.listarGeneros();
 	}
-
+	public Genero elegirGeneroRandom(List<Genero> generos) {
+		Collections.shuffle(generos);
+		return generos.get(0);
+	}
 }

@@ -13,6 +13,7 @@ public class Localidad {
 	private Integer cp;
 	private String nombre;
 	private Long precio;
+	private Integer diasAEntregar;
 	public Long getId() {
 		return id;
 	}
@@ -36,6 +37,12 @@ public class Localidad {
 	}
 	public void setPrecio(Long precio) {
 		this.precio = precio;
+	}
+	public Integer getDiasAEntregar() {
+		return diasAEntregar;
+	}
+	public void setDiasAEntregar(Integer diasAEntregar) {
+		this.diasAEntregar = diasAEntregar;
 	}
 	
 	

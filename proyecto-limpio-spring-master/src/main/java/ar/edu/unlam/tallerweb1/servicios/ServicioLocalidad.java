@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.sql.Date;
 import java.util.List;
 
 import ar.edu.unlam.tallerweb1.modelo.Libro;
@@ -12,5 +13,7 @@ public interface ServicioLocalidad {
 	List<Localidad> listarLocalidades();
 
 	Localidad consultarLocalidadPorCP(Integer cp);
+
+	Date calcularTiempoDeEntrega(Localidad localidadEncontrada);
 
 }

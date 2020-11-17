@@ -8,6 +8,7 @@
         <th>fecha</th>
         <th>id pedido</th>
         <th>estado</th>
+        <th>Fecha de Entrega </th>
         <th>monto</th>
       </tr>
     </thead>
@@ -17,6 +18,7 @@
         <td> ${venta.fechaDeVenta }</td>
         <td> ${venta.pedido.id }</td>
         <th> ${venta.pedido.estado }</th>
+        <th> ${venta.pedido.fechaEntrega }</th>
         <th>$${venta.montoTotal }</th>
         <td class="text-right"><a href="detalle-venta?pedidoId=${venta.pedido.id}&ventaId=${venta.id } "class="btn btn-sm btn-secondary"><i class="fa fa-tasks"></i> </a> </td>
       </tr>

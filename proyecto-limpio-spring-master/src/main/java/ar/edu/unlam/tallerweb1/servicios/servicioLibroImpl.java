@@ -21,6 +21,8 @@ import ar.edu.unlam.tallerweb1.repositorios.LibroDao;
 public class servicioLibroImpl implements servicioLibro {
 	@Inject
 	private LibroDao libroDao;
+	@Inject
+	private ServicioGenero servicioGenero;
 	public Libro consultarLibroPorId(Long id) {
 		
 		// TODO Auto-generated method stub
@@ -52,29 +54,40 @@ public class servicioLibroImpl implements servicioLibro {
 		return libroDao.listarLibrosGenero(genero);
 	}
 	@Override
-	public List<Libro> listarLibrosGeneroMayorPuntaje(Long id) {
+	public List<Libro> listarLibrosGeneroMayorPuntaje(Long id) throws Exception {
 		List<Resenia_Libros_Cliente> lista = libroDao.listarLibrosQueHizoReseniaElCliente(id);
-		List <Genero> generos = new ArrayList<Genero>();
-		for (Resenia_Libros_Cliente resenia_Libros_Cliente : lista) {
-			generos.add(resenia_Libros_Cliente.getLibro().getGenero());
-		}
-		Integer ban = 0;
-		Integer maximaCantidad = 0;
-		Genero maximoGenero = new Genero();
-		for (Genero genero : generos) {
-			while(ban == 0)
-			{
-				maximaCantidad = Collections.frequency(generos, genero);
-				maximoGenero = genero;
-				ban = 1;
-			}
-			if (maximaCantidad < Collections.frequency(generos, genero))
-			{
-				maximoGenero = genero;
-			}
+		if (lista.size() == 0)
+		{
+			throw new Exception("Queremos saber tu opnion y suma puntos!");
 		}
 		
-		return libroDao.listarLibrosGenero(maximoGenero);
+		List <Genero> generos = new ArrayList<Genero>();
+		for (Resenia_Libros_Cliente resenia_Libros_Cliente : lista) {
+			if(resenia_Libros_Cliente.getResenia().getPuntuacion() >= 4)
+			{
+				generos.add(resenia_Libros_Cliente.getLibro().getGenero());
+			}
+			
+		}
+		Genero random = servicioGenero.elegirGeneroRandom(generos);
+//		Integer ban = 0;
+//		Integer maximaCantidad = 0;
+//		Genero maximoGenero = new Genero();
+//		for (Genero genero : generos) {
+//			while(ban == 0)
+//			{
+//				maximaCantidad = Collections.frequency(generos, genero);
+//				maximoGenero = genero;
+//				ban = 1;
+//			}
+//			if (maximaCantidad <= Collections.frequency(generos, genero))
+//			{
+//				maximoGenero = genero;
+//			}
+//		}
+		
+		return libroDao.listarLibrosGenero(random);
 	}
+	
 
 }

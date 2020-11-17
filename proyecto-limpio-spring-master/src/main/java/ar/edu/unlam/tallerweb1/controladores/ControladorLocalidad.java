@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -60,9 +61,11 @@ public class ControladorLocalidad {
 		List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idUsuario,"armando");
 		Long subtotal = servicioCantLibros.subtotalDeTodosLosLibros(librosPedidos);
 		Localidad localidadEncontrada = servicioLocalidad.consultarLocalidadPorCP(cp);
+		Date fecha_entrega = servicioLocalidad.calcularTiempoDeEntrega(localidadEncontrada);
 		Long total=localidadEncontrada.getPrecio()+subtotal;
 		ModelMap model = new ModelMap();
 		model.put("localidad", localidadEncontrada);
+		model.put("fechaEntrega", fecha_entrega);
 		model.put("total",total);
 		model.put("subtotal",subtotal);
 		model.put("librosPedidos",librosPedidos);

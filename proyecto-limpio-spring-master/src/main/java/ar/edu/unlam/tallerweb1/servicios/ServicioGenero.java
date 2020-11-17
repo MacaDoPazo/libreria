@@ -8,5 +8,6 @@ public interface ServicioGenero {
 	public Genero consultarGeneroPorId(Long id);
 	public void eliminarGeneroPorId(Long idGenero);
 	List<Genero> listarGeneros();
+	public Genero elegirGeneroRandom(List<Genero> generos);
 
 }

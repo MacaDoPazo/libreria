@@ -1,5 +1,8 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -37,6 +40,19 @@ public class ServicioVentaImpl implements ServicioVenta {
 	@Override
 	public List<Venta> listarVentasAlCliente(Long idCliente) {
 		return repositorioVenta.listarVentasAlCliente(idCliente);
+	}
+
+	@Override
+	public List<Venta> listarVentasSinEntregarATiempo(List<Venta> listadoVentasRealizadasAlCliente) {
+		Date hoy=Calendar.getInstance().getTime();
+		List<Venta>listaFueraDeFecha = new ArrayList<Venta>();
+		for (Venta venta : listadoVentasRealizadasAlCliente) {
+			if(venta.getPedido().getFechaEntrega().compareTo(hoy) >= 1)
+			{
+				listaFueraDeFecha.add(venta);
+			}
+		}
+		return listaFueraDeFecha;
 	}
 
 }

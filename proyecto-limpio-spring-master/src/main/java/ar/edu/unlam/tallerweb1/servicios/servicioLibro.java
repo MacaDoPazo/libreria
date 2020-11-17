@@ -31,7 +31,7 @@ public interface servicioLibro {
 
 
 
-	List<Libro> listarLibrosGeneroMayorPuntaje(Long id);
+	List<Libro> listarLibrosGeneroMayorPuntaje(Long id) throws Exception;
 
 
 

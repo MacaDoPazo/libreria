@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
 
@@ -56,7 +57,8 @@ public class ControladorVenta {
 			@RequestParam("apellidoTitularTarjeta") String apellidoTitularTarjeta,
 			@RequestParam("numeroTarjeta") Long numeroTarjeta,
 			@RequestParam("fechaCaducidadTarjeta") String fechaCaducidadTarjeta,
-			@RequestParam("codigoSeguridadTarjeta") Integer codigoSeguridadTarjeta			
+			@RequestParam("codigoSeguridadTarjeta") Integer codigoSeguridadTarjeta,
+			@RequestParam("fechaEntrega") Date fechaEntrega
 			) {
 		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
 		Pedido pedido = servicioPedido.buscarPedidoArmando(idUsuario, "armando");
@@ -75,6 +77,7 @@ public class ControladorVenta {
 			venta.setPedido(pedido);
 			pedido.setVenta(venta);
 			pedido.setLocalidad(localidad);
+			pedido.setFechaEntrega(fechaEntrega);
 			java.sql.Date fechaVenta = new java.sql.Date(Calendar.getInstance().getTime().getTime()); 
 			venta.setFechaDeVenta(fechaVenta);
 			servicioVenta.guardarVenta(venta);
@@ -121,13 +124,23 @@ public class ControladorVenta {
 			HttpServletRequest request) {
 		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
 		List <Venta> listadoVentasRealizadasAlCliente = servicioVenta.listarVentasAlCliente(idUsuario);
-		
+		List <Venta> listaDeVentasSinEntregarEnTiempo = servicioVenta.listarVentasSinEntregarATiempo(listadoVentasRealizadasAlCliente);
 		ModelMap modelo = new ModelMap();
-		
+		if(listaDeVentasSinEntregarEnTiempo == null)
+		{
+			
 			modelo.put("idCliente", idUsuario);
 			modelo.put("listadoVentasRealizadasAlCliente", listadoVentasRealizadasAlCliente);
-			
+			return new ModelAndView ("ventasAlCliente", modelo);	
+		}
+		else
+		{
+			modelo.put("idCliente", idUsuario);
+			modelo.put("listadoVentasRealizadasAlCliente", listadoVentasRealizadasAlCliente);
+			modelo.put("EntregasAtrasadas",listaDeVentasSinEntregarEnTiempo);
 			return new ModelAndView ("ventasAlCliente", modelo);
+		}
+		
 	}
 	
 	

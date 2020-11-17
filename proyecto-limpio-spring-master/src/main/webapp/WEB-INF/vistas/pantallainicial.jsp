@@ -43,9 +43,11 @@
 	</c:when>
 	<c:otherwise>
 	<div class="container">
+	<c:if test="${empty error}">
 		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 		<h1 class="text-center">Por que te interesa el género ${generoSugerido }:</h1>
 		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+	</c:if>	
 		 <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
 	 	<div class="container" id="food">
 	    <div class="card-deck">
@@ -104,7 +106,12 @@
       		
    		 </div>           
           </c:forEach>  
-      </div>     	
+      </div> 
+      <c:if test="${not empty error}">
+		<br>
+		<div class="alert alert-danger">${error}</div>
+		<br>
+		</c:if>	    	
   </div>
   </div>
   </div>
