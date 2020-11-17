@@ -33,5 +33,6 @@ insert into libro(megusta,nombre,paginas,precio,nombre_archivo,autor_id,stock_id
 (250,"Amigos por el viento",700,890,"amigos_por_el_viento.jpg",4,7,8); 
 
 
-INSERT INTO usuario (DTYPE,id,apellido,email,nombre,password,rol,sexo) VALUES ('Usuario',1,'Pierotti','npierotti@alumno.unlam.edu.ar','Nahuel','135791','Cliente','m'),
-('Usuario',2,'Do Pazo','maca@123.com','Macarena','123','Admin','f');
+INSERT INTO usuario (DTYPE,id,apellido,email,fechaNac,nombre,password,rol,sexo) VALUES ('Usuario',1,'Pierotti','npierotti@alumno.unlam.edu.ar','1990-03-21','Nahuel','135791','Cliente','m'),
+																				('Usuario',2,'Do Pazo','maca@123.com','1998-02-15','Macarena','123','Admin','f'),
+                                                                                ('Usuario',3,'Tries','ian_tries@hotmail.com','1994-05-14','Ian','1234','Admin','m');
