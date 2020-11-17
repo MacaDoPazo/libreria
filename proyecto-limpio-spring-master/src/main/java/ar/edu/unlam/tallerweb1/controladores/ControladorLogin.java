@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -101,6 +103,7 @@ public class ControladorLogin {
 			@RequestParam("apellido") String apellido,
 			@RequestParam("sexo") String sexo,
 			@RequestParam("email") String email,
+			@RequestParam("fechaNac") String fechaNac,
 			@RequestParam("password") String password,
 			@RequestParam("passwordRepetido") String passwordRepetido
 			) {
@@ -110,6 +113,15 @@ public class ControladorLogin {
 		usuario.setApellido(apellido);
 		usuario.setSexo(sex);
 		usuario.setEmail(email);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar calendar = Calendar.getInstance();
+		try {
+			calendar.setTime(sdf.parse(fechaNac));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		usuario.setFechaNac(calendar.getTime());
 		usuario.setPassword(password);
 		usuario.setRol("Cliente");
 		Date today = Calendar.getInstance().getTime();
