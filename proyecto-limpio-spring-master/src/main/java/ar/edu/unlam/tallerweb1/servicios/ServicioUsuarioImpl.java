@@ -67,4 +67,17 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 
 	}
 
+	@Override
+	public Integer calcularEdad(Usuario usuario) {
+		Date fechaActual = Calendar.getInstance().getTime();
+		Date fechaNacimiento = usuario.getFechaNac();
+		
+		Integer edad = fechaActual.getYear() - fechaNacimiento.getYear();
+		
+		return edad;
+	}
+	
+	
+	
+
 }
