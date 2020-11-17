@@ -21,6 +21,9 @@
 			<label for="email">Email:</label>
 			<input class="form-control col-xs-12" type="text" name="email" id="email" required>
 			<br>
+			<label for="fechaNac">Fecha de nacimiento: </label>
+            <input class="form-control col-xs-12" type="date" name="fechaNac" id="fechaNac">
+            <br>
 			<label for="password">Contraseña: </label>
 			<input class="form-control col-xs-12" type="password" name="password" id="password" required>
 			<br>
