@@ -27,6 +27,7 @@ public class Usuario {
 	private String password;
 	private String rol;
 	private Date fecha_ultimo_login;
+	private Date fecha_ultimo_recordatorio;
 	
 	public Long getId() {
 		return id;
@@ -84,5 +85,11 @@ public class Usuario {
 	}
 	public void setFecha_ultimo_login(Date fecha_ultimo_login) {
 		this.fecha_ultimo_login = fecha_ultimo_login;
+	}
+	public Date getFecha_ultimo_recordatorio() {
+		return fecha_ultimo_recordatorio;
+	}
+	public void setFecha_ultimo_recordatorio(Date fecha_ultimo_recordatorio) {
+		this.fecha_ultimo_recordatorio = fecha_ultimo_recordatorio;
 	}
 }

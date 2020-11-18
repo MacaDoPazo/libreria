@@ -11,6 +11,7 @@ public interface ServicioUsuario {
 	Usuario consultarUsuarioPorId(Long id);
 	void actualizarUsuario(Usuario usuario);
 	ArrayList<Usuario> consultarUsuarios();
-	void teExtraniamos() throws Exception;
+	ArrayList<Usuario> consultarUsuariosNoFrecuentes();
+	String enviarEmailUsuariosNoFrecuentes(ArrayList<Usuario> lista_usuarios) throws Exception;
 	Integer calcularEdad(Usuario usuario);
 }

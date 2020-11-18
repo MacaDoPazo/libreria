@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -7,6 +8,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,6 +47,31 @@ public class ControladorUsuario {
 	
 		return new ModelAndView("mostrarUsuarioRegistrado", modelo);
 		
+	}
+	
+	@RequestMapping("/usuarios_no_frecuentes")
+	public ModelAndView consultarUsuariosNoFrecuentes() {
+
+		ModelMap modelo = new ModelMap();
+		
+		ArrayList<Usuario> lista=servicioUsuario.consultarUsuariosNoFrecuentes();
+		modelo.put("lista_usuarios", lista);
+		return new ModelAndView("listaUsuariosNoFrecuentes", modelo);
+	}
+	
+	@RequestMapping("/enviar_recordatorios")
+	public ModelAndView enviarRecordatoriosMasivo() {
+
+		ModelMap modelo = new ModelMap();
+		String resultado="";
+		ArrayList<Usuario> lista=servicioUsuario.consultarUsuariosNoFrecuentes();
+		try {
+			resultado=servicioUsuario.enviarEmailUsuariosNoFrecuentes(lista).equals("ok")? "El envio de correos fue exitoso!":"Revise el log";
+		}catch (Exception e) {
+			resultado=e.getMessage();
+		}
+		modelo.put("mensaje", resultado);
+		return new ModelAndView("listaUsuariosNoFrecuentes", modelo);
 	}
 	
 	

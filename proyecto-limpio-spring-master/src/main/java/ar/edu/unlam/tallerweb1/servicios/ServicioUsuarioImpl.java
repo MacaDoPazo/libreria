@@ -6,7 +6,7 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
-import org.hsqldb.lib.Iterator;
+import java.util.Iterator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +19,9 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 	@Inject
 	private RepositorioUsuario repositorioUsuario;
 
+	@Inject 
+	private ServicioEmail servicioEmail;
+	
 	@Override
 	public Long guardarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
@@ -49,23 +52,37 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 	}
 
 	@Override
-	public void teExtraniamos() throws Exception{
+	public ArrayList<Usuario> consultarUsuariosNoFrecuentes(){
 		Date hoy=Calendar.getInstance().getTime();
 		ArrayList<Usuario>lista=consultarUsuarios();
-		Iterator i=(Iterator) lista.iterator();
-		ServicioEmailImpl servicio_email=new ServicioEmailImpl();
-		String body="<html><h3>Te Extrañamos</h3><br>";
+		ArrayList<Usuario>no_frecuentes=new ArrayList<Usuario>();
+		Iterator<Usuario> i= lista.iterator();
+
 		while(i.hasNext()) {
-			Usuario u=(Usuario)i.next();
-			if(u.getFecha_ultimo_login().compareTo(hoy)>2 && u.getRol().equals("Cliente")) {
-				body+="<p>No te vemos hace tiempo <strong>"+u.getNombre()+"</strong>"+
-					" y creemos que tenemos nuevos titulos que te pueden interesar.</p><br>"+
-					"</html>";	
-				servicio_email.enviarEmail(u.getEmail(), "WE MISS U", body);
+			Usuario u=i.next();
+			int dias_sin_ingreso=0;
+			if(u.getFecha_ultimo_login()!=null) {
+				dias_sin_ingreso=(int) ((u.getFecha_ultimo_login().getTime()-
+					hoy.getTime())/86400000)*(-1);
+				
+			}
+			int dias_ultimo_recordatorio=0;
+			if(u.getFecha_ultimo_recordatorio()!=null) {
+				dias_ultimo_recordatorio=(int) ((u.getFecha_ultimo_recordatorio().getTime()-
+					hoy.getTime())/86400000)*(-1);
+			}
+			
+			if(dias_sin_ingreso > 2 && dias_ultimo_recordatorio > 4 
+					&& u.getRol().equals("Cliente")) {
+				no_frecuentes.add(u);
+
 			}
 		}
+		return no_frecuentes;
 
 	}
+	
+	
 
 	@Override
 	public Integer calcularEdad(Usuario usuario) {
@@ -75,6 +92,25 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 		Integer edad = fechaActual.getYear() - fechaNacimiento.getYear();
 		
 		return edad;
+	}
+
+	@Override
+	public String enviarEmailUsuariosNoFrecuentes(ArrayList<Usuario> lista_usuarios) throws Exception{
+		String ret="ok";
+		String subject="WE MISS U";
+		String body="Hace mucho no te vemos ";
+		Date hoy=Calendar.getInstance().getTime();
+		Iterator<Usuario> i= lista_usuarios.iterator();
+		while(i.hasNext()) {
+			Usuario u=(Usuario)i.next();
+			body+=u.getNombre()+", y creemos que nuestros nuevos titulos pueden interesarte.";
+			ret=servicioEmail.enviarEmail(u.getEmail(), subject, body);
+			u.setFecha_ultimo_recordatorio(hoy);
+			actualizarUsuario(u);
+			
+		}
+		
+		return ret;
 	}
 	
 	

@@ -29,6 +29,9 @@
 	  	<li class="nav-item">
 	    	<a class="nav-link" href="listar-pedidos-clientes">Pedidos Clientes</a>
 	  	</li>
+  	    <li class="nav-item">
+  	    	<a class="nav-link" href="usuarios_no_frecuentes">Usuarios No Frecuentes</a>
+	  	</li>
 		</ul>
 	</nav>
 </div>
