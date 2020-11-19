@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
@@ -14,4 +15,5 @@ public interface ServicioUsuario {
 	ArrayList<Usuario> consultarUsuariosNoFrecuentes();
 	String enviarEmailUsuariosNoFrecuentes(ArrayList<Usuario> lista_usuarios) throws Exception;
 	Integer calcularEdad(Usuario usuario);
+	Date transformarFechaDeStringADate(String fechaComoString); // formato yyyy-MM-dd
 }
