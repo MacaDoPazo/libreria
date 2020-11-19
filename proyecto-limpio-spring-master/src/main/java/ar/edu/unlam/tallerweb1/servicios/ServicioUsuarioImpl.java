@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -112,7 +114,20 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 		
 		return ret;
 	}
-	
+
+	@Override
+	public Date transformarFechaDeStringADate(String fechaComoString) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar calendar = Calendar.getInstance();
+		try {
+			calendar.setTime(sdf.parse(fechaComoString));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return calendar.getTime();
+	}
+
+
 	
 	
 
