@@ -55,29 +55,14 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 
 	@Override
 	public ArrayList<Usuario> consultarUsuariosNoFrecuentes(){
-		Date hoy=Calendar.getInstance().getTime();
 		ArrayList<Usuario>lista=consultarUsuarios();
 		ArrayList<Usuario>no_frecuentes=new ArrayList<Usuario>();
 		Iterator<Usuario> i= lista.iterator();
 
 		while(i.hasNext()) {
 			Usuario u=i.next();
-			int dias_sin_ingreso=0;
-			if(u.getFecha_ultimo_login()!=null) {
-				dias_sin_ingreso=(int) ((u.getFecha_ultimo_login().getTime()-
-					hoy.getTime())/86400000)*(-1);
-				
-			}
-			int dias_ultimo_recordatorio=0;
-			if(u.getFecha_ultimo_recordatorio()!=null) {
-				dias_ultimo_recordatorio=(int) ((u.getFecha_ultimo_recordatorio().getTime()-
-					hoy.getTime())/86400000)*(-1);
-			}
-			
-			if(dias_sin_ingreso > 2 && dias_ultimo_recordatorio > 4 
-					&& u.getRol().equals("Cliente")) {
+			if(esUsuarioNoFrecuente(u)) {
 				no_frecuentes.add(u);
-
 			}
 		}
 		return no_frecuentes;
@@ -125,6 +110,32 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 			e.printStackTrace();
 		}
 		return calendar.getTime();
+	}
+
+	@Override
+	public Boolean esUsuarioNoFrecuente(Usuario usuario) {
+		
+		Boolean esNoFrecuente=false;
+		Date hoy=Calendar.getInstance().getTime();
+		int dias_sin_ingreso=0;
+		if(usuario.getFecha_ultimo_login()!=null) {
+			dias_sin_ingreso=(int) ((usuario.getFecha_ultimo_login().getTime()-
+				hoy.getTime())/86400000)*(-1);
+			
+		}
+		int dias_ultimo_recordatorio=0;
+		if(usuario.getFecha_ultimo_recordatorio()!=null) {
+			dias_ultimo_recordatorio=(int) ((usuario.getFecha_ultimo_recordatorio().getTime()-
+				hoy.getTime())/86400000)*(-1);
+		}
+		
+		if(dias_sin_ingreso > 2 && dias_ultimo_recordatorio > 4 
+				&& usuario.getRol().equals("Cliente")) {
+			esNoFrecuente=true;
+
+		}
+		
+		return esNoFrecuente;
 	}
 
 

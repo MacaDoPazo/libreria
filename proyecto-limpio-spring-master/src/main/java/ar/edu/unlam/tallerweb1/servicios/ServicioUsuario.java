@@ -16,4 +16,5 @@ public interface ServicioUsuario {
 	String enviarEmailUsuariosNoFrecuentes(ArrayList<Usuario> lista_usuarios) throws Exception;
 	Integer calcularEdad(Usuario usuario);
 	Date transformarFechaDeStringADate(String fechaComoString); // formato yyyy-MM-dd
+	Boolean esUsuarioNoFrecuente(Usuario usuario);
 }
