@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <!-- taglib para el formato de las fechas -->
 <%@include file="header.jsp" %>
 	<h1 id="login-title">Listado de Usuarios No Frecuentes</h1>
 	 <div class="container"> 
@@ -17,16 +18,16 @@
 			    <thead>
 			      <tr>
 			        <th>Apellido y Nombre</th>
-			        <th>Fecha Ultimo Login</th>
-			        <th>Fecha Ultimo Recordatorio</th>
+			        <th>Fecha Último Login</th>
+			        <th>Fecha Último Recordatorio</th>
 			      </tr>
 			    </thead>
 			    <tbody>
 			      <c:forEach items="${lista_usuarios}" var="usuario">
 			      <tr>
 			        <td> ${usuario.apellido }, ${usuario.nombre }</td>
-			        <td> ${usuario.fecha_ultimo_login }</td>
-			        <td> ${usuario.fecha_ultimo_recordatorio }</td>
+			        <td><fmt:formatDate value="${usuario.fecha_ultimo_login}" pattern="dd-MM-yyyy HH:mm" /> hs.</td>
+			        <td><fmt:formatDate value="${usuario.fecha_ultimo_recordatorio}" pattern="dd-MM-yyyy HH:mm" /> hs.</td>
 			      </tr>
 			       </c:forEach>
 			      

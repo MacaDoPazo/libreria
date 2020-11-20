@@ -1,9 +1,13 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <!-- taglib para el formato de las fechas -->
 <%@include file="header.jsp" %>
 <h1 id="login-title" class="text-center">¡Registre la reseña de los libros que ha comprado!</h1>
 	<h3 id="login-subtitle" class="text-center">Su aporte nos ayuda a conocer sus preferencias y nos permite recomendarle contenido de su interés</h3>
 	<div class="container"> 
-	      <h3>fecha: ${pedido.venta.fechaDeVenta}</h3>
-	      <h3>N° de pedido: ${pedido.id}</h3> 
+	      
+	      <br>
+	      <h3>Fecha en que realizó el pedido: <fmt:formatDate value="${pedido.venta.fechaDeVenta}" pattern="dd-MM-yyyy" /></h3>
+	      <h3>N° de pedido: ${pedido.id}</h3>
+	      <br> 
 	   
 	      
 		<table class="table table-hover">

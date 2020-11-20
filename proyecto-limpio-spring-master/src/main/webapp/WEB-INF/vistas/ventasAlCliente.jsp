@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <!-- taglib para el formato de las fechas -->
 <%@include file="header.jsp" %>
 <h1 id="login-title" class="text-center">Detalle de sus compras</h1>
  	<div class="container mb-4"> 
@@ -18,7 +19,7 @@
 				      <c:forEach items="${listadoVentasRealizadasAlCliente }" var="venta">
 				      <tr>
 				        <td>${venta.id }</td>
-				        <td>${venta.fechaDeVenta }</td>
+				        <td><fmt:formatDate value="${venta.fechaDeVenta}" pattern="dd-MM-yyyy" /></td>
 				        <td>$${venta.montoTotal }</td>
 				        <td>${venta.pedido.estado }</td>
 				        <td><c:choose>
