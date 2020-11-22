@@ -45,7 +45,7 @@
 	<div class="container">
 	<c:if test="${empty error}">
 		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-		<h1 class="text-center">Por que te interesa el género ${generoSugerido }:</h1>
+		<h1 class="text-center">Porque te interesa el género ${generoSugerido }:</h1>
 		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 	</c:if>	
 		 <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
@@ -59,11 +59,11 @@
       	   </a>
       		<div class="card-body">
       			<h3 class="card-text">${libro.nombre}</h3>
-	      		<a href="#" style="text-decoration:none"><h6>${libro.autor.nombre} ${libro.autor.apellido}</h6></a>
+	      		<a href="listar-libros-autor?autor_id=${libro.autor.id}" style="text-decoration:none">${libro.autor.nombre} ${libro.autor.apellido}</a>
 	      		<p class="card-text">$ ${libro.precio}<p> 
-	      		<div class="card-text d-flex justify-content-center"><a href="sumar-megusta?idLibro=${libro.id }"class="" id="botonlike"><i class="far fa-heart"></i> </a><p id="cantidadlikes"> &nbsp ${item.megusta}</p></div>
+	      		<%-- <div class="card-text d-flex justify-content-center"><a href="sumar-megusta?idLibro=${libro.id }"class="" id="botonlike"><i class="far fa-heart"></i> </a><p id="cantidadlikes"> &nbsp ${item.megusta}</p></div> --%>
 	      		<form action="agregar-al-carrito" >
-	      		<input class="form-control mx-auto" type="number" id="cantidad" name="canitdad" placeholder="0" style="width:50px" min=1 required><br>
+	      		<input class="form-control " type="number" id="cantidad" name="canitdad" placeholder="0" style="width:50px" min=1 required><br>
 	      		<input type="hidden" id="precio" name="idLibro" value= ${libro.id }>
 	     		 <input type="hidden" id="precio" name="precio" value= ${libro.precio }>
 	      		 <input class="btn btn-success mx-auto"type="submit" value="Añadir al carrito">
@@ -92,11 +92,12 @@
       	   </a>
       		<div class="card-body">
       			<h3 class="card-text">${item.nombre}</h3>
-	      		<a href="#" style="text-decoration:none"><h6>${item.autor.nombre} ${item.autor.apellido}</h6></a>
+	      		<%-- <a href="#" style="text-decoration:none"><h6>${item.autor.nombre} ${item.autor.apellido}</h6></a> --%>
+	      		<a href="listar-libros-autor?autor_id=${item.autor.id}" style="text-decoration:none"><h6>${item.autor.nombre} ${item.autor.apellido}</h6></a>
 	      		<p class="card-text">$ ${item.precio}<p> 
-	      		<div class="card-text d-flex justify-content-center"><a href="sumar-megusta?idLibro=${item.id }"class="" id="botonlike"><i class="far fa-heart"></i> </a><p id="cantidadlikes"> &nbsp ${item.megusta}</p></div>
+	      		<%-- <div class="card-text d-flex justify-content-center"><a href="sumar-megusta?idLibro=${item.id }"class="" id="botonlike"><i class="far fa-heart"></i> </a><p id="cantidadlikes"> &nbsp ${item.megusta}</p></div> --%>
 	      		<form action="agregar-al-carrito" >
-	      		<input class="form-control mx-auto" type="number" id="cantidad" name="canitdad" placeholder="0" style="width:50px" min=1 required><br>
+	      		<input class="form-control" type="number" id="cantidad" name="canitdad" placeholder="0" style="width:50px" min=1 required><br>
 	      		<input type="hidden" id="precio" name="idLibro" value= ${item.id }>
 	     		 <input type="hidden" id="precio" name="precio" value= ${item.precio }>
 	      		 <input class="btn btn-success mx-auto"type="submit" value="Añadir al carrito">

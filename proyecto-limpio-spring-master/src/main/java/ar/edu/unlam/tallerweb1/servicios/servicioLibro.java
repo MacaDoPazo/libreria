@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.List;
 
+import ar.edu.unlam.tallerweb1.modelo.Autor;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
 
@@ -34,7 +35,7 @@ public interface servicioLibro {
 	List<Libro> listarLibrosGeneroMayorPuntaje(Long id) throws Exception;
 
 
-
+	List<Libro> listarLibrosDeUnAutor(Long autor_id);
 	
 
 

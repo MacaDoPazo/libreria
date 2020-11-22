@@ -113,4 +113,20 @@ public class ControladorLibros {
 		modelo.put("lista",listalibros);
 		return new ModelAndView("pantallainicial",modelo);
     }
+    
+    
+    @RequestMapping(path="/listar-libros-autor", method=RequestMethod.GET)
+    public ModelAndView listaLibrosDelAutor (@RequestParam(value="autor_id")Long autor_id)
+    {
+
+    	List<Libro> listalibros = servicioLibro.listarLibrosDeUnAutor(autor_id);
+    	Autor autor = servicioAutor.consultarAutorPorId(autor_id);
+    	String nombreYApellidoDelAutor= autor.getNombre() + " " + autor.getApellido();
+    	
+		ModelMap modelo = new ModelMap();
+		modelo.put("lista",listalibros);
+		modelo.put("nombreYApellidoDelAutor", nombreYApellidoDelAutor);
+		return new ModelAndView("listaLibrosDelAutor",modelo);
+    }
+    
 }

@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unlam.tallerweb1.modelo.Autor;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
 import ar.edu.unlam.tallerweb1.modelo.Resenia_Libros_Cliente;
@@ -87,6 +88,11 @@ public class servicioLibroImpl implements servicioLibro {
 //		}
 		
 		return libroDao.listarLibrosGenero(random);
+	}
+	@Override
+	public List<Libro> listarLibrosDeUnAutor(Long autor_id) {
+		
+		return libroDao.listarLibrosDeUnAutor(autor_id);
 	}
 	
 

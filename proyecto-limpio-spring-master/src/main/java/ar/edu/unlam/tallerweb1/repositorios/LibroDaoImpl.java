@@ -13,6 +13,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unlam.tallerweb1.modelo.Autor;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
 import ar.edu.unlam.tallerweb1.modelo.Resenia_Libros_Cliente;
@@ -74,6 +75,13 @@ public class LibroDaoImpl implements LibroDao {
 	public void actualizarLibro(Libro libro) {
 		// TODO Auto-generated method stub
 		 sesion.getCurrentSession().update(libro);
+	}
+	@Override
+	public List<Libro> listarLibrosDeUnAutor(Long autor_id) {
+		return sesion.getCurrentSession().createCriteria(Libro.class)
+				.createAlias("autor", "autorBuscado")
+				.add(Restrictions.eq("autorBuscado.id", autor_id))
+				.list();
 	}
 
 }

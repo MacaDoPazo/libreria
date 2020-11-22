@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import java.util.List;
 
+import ar.edu.unlam.tallerweb1.modelo.Autor;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
 import ar.edu.unlam.tallerweb1.modelo.Resenia_Libros_Cliente;
@@ -24,6 +25,7 @@ public interface LibroDao {
 
 	List<Resenia_Libros_Cliente> listarLibrosQueHizoReseniaElCliente(Long id);
 
+	List<Libro> listarLibrosDeUnAutor(Long autor_id);
 	
 
 	
