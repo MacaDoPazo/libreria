@@ -75,8 +75,11 @@ public class ControladorInicio {
 		ModelMap model = new ModelMap();
 
 		Libro libroEncontrado = servicioLibro.consultarLibroPorId(idLibro);
+		
+		List<Libro> librosRelacionados = servicioLibro.listarLibrosConMismoGeneroOMismoAutor(idLibro);
 
 		model.put("libro", libroEncontrado);
+		model.put("listaLibrosRelacionados", librosRelacionados);
 			return new ModelAndView("detalleproducto",model);
 		}
 	@RequestMapping(path="/ver-pedido")

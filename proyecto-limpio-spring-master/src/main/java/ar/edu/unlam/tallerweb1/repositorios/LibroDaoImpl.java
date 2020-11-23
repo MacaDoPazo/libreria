@@ -90,5 +90,19 @@ public class LibroDaoImpl implements LibroDao {
 				.add(Restrictions.eq("generoBuscado.id", genero_id))
 				.list();
 	}
+	
+	@Override
+	public List<Libro> listarLibrosConMismoGeneroOMismoAutor(Long idLibroAComparar) {
+		Libro libro = consultarLibroPorId(idLibroAComparar);
+		return sesion.getCurrentSession().createCriteria(Libro.class)
+				.createAlias("genero", "generoLibro")
+				.createAlias("autor", "autorLibro")				
+			    .add( Restrictions.or(
+			            Restrictions.eq("generoLibro.id",libro.getGenero().getId()),
+			            Restrictions.eq("autorLibro.id",libro.getAutor().getId())
+			        ) )
+			    .add(Restrictions.ne("id", libro.getId()))
+				.list();
+	}
 
 }

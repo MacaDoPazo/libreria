@@ -99,5 +99,10 @@ public class servicioLibroImpl implements servicioLibro {
 		return libroDao.listarLibrosDeUnGenero(genero_id);
 	}
 	
+	@Override
+	public List<Libro> listarLibrosConMismoGeneroOMismoAutor(Long idLibroAComparar) {
+		return libroDao.listarLibrosConMismoGeneroOMismoAutor(idLibroAComparar);
+	}
+	
 
 }

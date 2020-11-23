@@ -29,6 +29,8 @@ public interface LibroDao {
 	
 	List<Libro> listarLibrosDeUnGenero(Long genero_id);
 	
+	List<Libro> listarLibrosConMismoGeneroOMismoAutor(Long idLibroAComparar);
+	
 
 	
 }
