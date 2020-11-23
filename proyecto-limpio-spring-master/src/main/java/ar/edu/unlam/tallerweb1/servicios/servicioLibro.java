@@ -37,6 +37,8 @@ public interface servicioLibro {
 
 	List<Libro> listarLibrosDeUnAutor(Long autor_id);
 	
+	List<Libro> listarLibrosDeUnGenero(Long genero_id);
+	
 
 
 

@@ -83,5 +83,12 @@ public class LibroDaoImpl implements LibroDao {
 				.add(Restrictions.eq("autorBuscado.id", autor_id))
 				.list();
 	}
+	@Override
+	public List<Libro> listarLibrosDeUnGenero(Long genero_id) {
+		return sesion.getCurrentSession().createCriteria(Libro.class)
+				.createAlias("genero", "generoBuscado")
+				.add(Restrictions.eq("generoBuscado.id", genero_id))
+				.list();
+	}
 
 }

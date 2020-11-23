@@ -45,7 +45,10 @@
 	<div class="container">
 	<c:if test="${empty error}">
 		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-		<h1 class="text-center">Porque te interesa el género ${generoSugerido }:</h1>
+		<h1 class="text-center">Porque te interesa el género <a href="listar-libros-genero?genero_id=${idGeneroSugerido}" style="text-decoration:none">${generoSugerido }</a></h1>
+		
+		<%-- <a href="listar-libros-autor?autor_id=${item.autor.id}" style="text-decoration:none"><h6>${item.autor.nombre} ${item.autor.apellido}</h6></a> --%>
+		
 		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 	</c:if>	
 		 <div class="w3-row-padding w3-padding-16 w3-center row" id="food">

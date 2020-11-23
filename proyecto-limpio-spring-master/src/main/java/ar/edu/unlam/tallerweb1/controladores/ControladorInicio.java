@@ -46,6 +46,7 @@ public class ControladorInicio {
 				List<Libro> listarLibrosGeneroMayorPuntaje = servicioLibro.listarLibrosGeneroMayorPuntaje(idUsuario);
 				Libro libro = listarLibrosGeneroMayorPuntaje.get(0);
 				
+				modelo.put("idGeneroSugerido",libro.getGenero().getId());
 				modelo.put("generoSugerido",libro.getGenero().getNombre());
 				modelo.put("lista",listalibros);
 				modelo.put("listaGenero",listarLibrosGeneroMayorPuntaje);

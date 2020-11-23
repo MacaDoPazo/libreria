@@ -129,4 +129,18 @@ public class ControladorLibros {
 		return new ModelAndView("listaLibrosDelAutor",modelo);
     }
     
+    @RequestMapping(path="/listar-libros-genero", method=RequestMethod.GET)
+    public ModelAndView listaLibrosDelGenero (@RequestParam(value="genero_id")Long genero_id)
+    {
+
+    	List<Libro> listalibros = servicioLibro.listarLibrosDeUnGenero(genero_id);
+    	Genero genero = servicioGenero.consultarGeneroPorId(genero_id);
+    	String nombreDelGenero= genero.getNombre();
+    	
+		ModelMap modelo = new ModelMap();
+		modelo.put("lista",listalibros);
+		modelo.put("nombreDelGenero", nombreDelGenero);
+		return new ModelAndView("listaLibrosDelGenero",modelo);
+    }
+    
 }
