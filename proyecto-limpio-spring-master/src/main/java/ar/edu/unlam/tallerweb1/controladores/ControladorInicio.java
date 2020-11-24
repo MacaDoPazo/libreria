@@ -17,11 +17,13 @@ import ar.edu.unlam.tallerweb1.modelo.CantidadLibros;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
 import ar.edu.unlam.tallerweb1.modelo.Pedido;
+import ar.edu.unlam.tallerweb1.modelo.Resenia;
 import ar.edu.unlam.tallerweb1.modelo.Resenia_Libros_Cliente;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCantLibros;
 import ar.edu.unlam.tallerweb1.servicios.ServicioGenero;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPedido;
+import ar.edu.unlam.tallerweb1.servicios.ServicioResenia;
 import ar.edu.unlam.tallerweb1.servicios.servicioLibro;
 
 @Controller
@@ -33,6 +35,8 @@ public class ControladorInicio {
 	@Inject
 	private ServicioPedido servicioPedido;
 	@Inject ServicioGenero servicioGenero;
+	@Inject
+	private ServicioResenia servicioResenia;
 	
 	@RequestMapping(path="/pantalla-inicial"/*, method = RequestMethod.POST*/)
 	public ModelAndView irAlInicio(HttpServletRequest request) {
@@ -76,9 +80,11 @@ public class ControladorInicio {
 
 		Libro libroEncontrado = servicioLibro.consultarLibroPorId(idLibro);
 		
+		List<Resenia> reseniasDelLibro = servicioResenia.listarReseniasDelLibro(idLibro); 
 		List<Libro> librosRelacionados = servicioLibro.listarLibrosConMismoGeneroOMismoAutor(idLibro);
 
 		model.put("libro", libroEncontrado);
+		model.put("listaReseniasDelLibro", reseniasDelLibro);
 		model.put("listaLibrosRelacionados", librosRelacionados);
 			return new ModelAndView("detalleproducto",model);
 		}

@@ -27,9 +27,49 @@
     </div>
   </div>
 </div>
+
 <div class="container">
 <h3>Reseñas del libro: </h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+    	<div class="w3-row-padding w3-padding-16 w3-center row" id="food">
+	 	<div class="container" id="food">
+	    <div class="card-deck">
+	    
+	    
+       <c:forEach items="${listaReseniasDelLibro}" var="item"> 		
+ 		<div class="card">
+  		<div class="card-header">
+          			<c:choose>
+				        		<c:when test="${item.puntuacion == 1}">
+									<h6 class="card-subtitle mb-2 text-muted">1 estrella <i class="fas fa-star"></i></h6>
+				        		</c:when>
+				        		<c:when test="${item.puntuacion == 2}">
+									<h6 class="card-subtitle mb-2 text-muted">2 estrellas <i class="fas fa-star"></i> <i class="fas fa-star"></i></h6>
+				        		</c:when>
+				        		<c:when test="${item.puntuacion == 3}">
+									<h6 class="card-subtitle mb-2 text-muted">3 estrellas <i class="fas fa-star"></i><i class="fas fa-star"></i> <i class="fas fa-star"></i></h6>
+				        		</c:when>
+				        		<c:when test="${item.puntuacion == 4}">
+									<h6 class="card-subtitle mb-2 text-muted">4 estrellas <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <i class="fas fa-star"></i></h6>
+				        		</c:when>
+				        		<c:when test="${item.puntuacion == 5}">
+									<h6 class="card-subtitle mb-2 text-muted">5 estrellas <i class="fas fa-star"></i> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></h6>
+				        		</c:when>
+					</c:choose>
+		  </div>
+		  <div class="card-body">
+		    <blockquote class="blockquote mb-0">
+		      <p>${item.comentario}</p>
+		      <footer class="blockquote-footer"> <cite title="Source Title">Cliente ${item.cliente.id}</cite></footer>
+		    </blockquote>
+		  </div>
+		</div>
+ 	</c:forEach>
+
+	</div>
+	</div>
+	</div>
+
 </div>
 <div class="container">
 <h3>Otros títulos disponibles que pertenecen a ${libro.autor.nombre} ${libro.autor.apellido } o al género ${libro.genero.nombre }: </h3>

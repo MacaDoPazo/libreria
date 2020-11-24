@@ -29,7 +29,7 @@ insert into libro(megusta,nombre,paginas,precio,nombre_archivo,autor_id,stock_id
 (500,"It",800,900,"it.jpg",1,3,4),
 (650,"La niebla",600,550,"la_niebla.jpg",1,4,4),
 (900,"Papeles en el viento",800,500,"papeles_en_el_viento.jpg",3,5,7),
-(550,"La pregunta de sus ojos",900,450,"la_pregunta_de_sus_ojos.jpg",3,6,7),
+(550,"La pregunta de sus ojos",900,450,"la_pregunta.jpg",3,6,7),
 (250,"Amigos por el viento",700,890,"amigos_por_el_viento.jpg",4,7,8); 
 
 
@@ -38,3 +38,7 @@ INSERT INTO usuario (DTYPE,id,apellido,email,fechaNac,nombre,password,rol,sexo) 
 																				('Usuario',2,'Do Pazo','maca@123.com','1998-02-15','Macarena','123','Admin','f'),
                                                                                 ('Usuario',3,'Tries','ian_tries@hotmail.com','1994-05-14','Ian','1234','Admin','m'),
                                                                                 ('Usuario',4,'Milito','nahuelpierotti@gmail.com','1980-06-12','Diego Alberto','135791','Cliente','m');
+                                                                                
+INSERT INTO resenia(comentario,puntuacion,cliente_id,libro_id) VALUES
+("El libro resultó muy interesante",5,3,3),
+("El libro no fue lo que esperaba",1,2,3);                                                                                

@@ -58,4 +58,9 @@ public class ServicioReseniaImpl implements ServicioResenia {
 		return repositorioResenia.listarReseniasDelCliente(usuario);
 	}
 
+	@Override
+	public List<Resenia> listarReseniasDelLibro(Long libro_id) {
+		return repositorioResenia.listarReseniasDelLibro(libro_id);
+	}
+
 }

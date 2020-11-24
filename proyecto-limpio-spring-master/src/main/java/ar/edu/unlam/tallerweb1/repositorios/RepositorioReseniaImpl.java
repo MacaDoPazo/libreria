@@ -71,4 +71,12 @@ public class RepositorioReseniaImpl implements RepositorioResenia {
 				.list();
 	}
 
+	@Override
+	public List<Resenia> listarReseniasDelLibro(Long libro_id) {
+		return sessionFactory.getCurrentSession().createCriteria(Resenia.class)
+				.createAlias("libro", "libroBuscado")
+				.add(Restrictions.eq("libroBuscado.id", libro_id))
+				.list();
+	}
+	
 }

@@ -16,6 +16,7 @@ public interface RepositorioResenia {
 	public void guardarReseniaLibrosCliente(Resenia_Libros_Cliente reseniaLibroCliente);
 	public Resenia_Libros_Cliente consultarReseniaLibroCliente(Libro libro, Usuario usuario);
 	public List<Resenia_Libros_Cliente> listarReseniasDelCliente(Long usuario);
+	public List<Resenia> listarReseniasDelLibro(Long libro_id);
 
 
 }
