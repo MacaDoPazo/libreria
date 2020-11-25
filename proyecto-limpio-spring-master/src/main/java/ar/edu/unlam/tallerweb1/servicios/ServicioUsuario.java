@@ -17,4 +17,5 @@ public interface ServicioUsuario {
 	Integer calcularEdad(Usuario usuario);
 	Date transformarFechaDeStringADate(String fechaComoString); // formato yyyy-MM-dd
 	Boolean esUsuarioNoFrecuente(Usuario usuario);
+	String hardcodearCadena(String cadena);
 }

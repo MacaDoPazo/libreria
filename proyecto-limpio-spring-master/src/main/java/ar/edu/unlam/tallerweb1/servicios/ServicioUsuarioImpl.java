@@ -27,12 +27,15 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 	@Override
 	public Long guardarUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
+		String passwordHardcodeada=hardcodearCadena(usuario.getPassword());
+		usuario.setPassword(passwordHardcodeada);
 		return repositorioUsuario.guardarUsuario(usuario);
 	}
 
 	@Override
 	public Usuario consultarUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
+		String passwordHardcodeada=hardcodearCadena(usuario.getPassword());
+		usuario.setPassword(passwordHardcodeada);
 		return repositorioUsuario.consultarUsuario(usuario);
 	}
 
@@ -136,6 +139,11 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 		}
 		
 		return esNoFrecuente;
+	}
+
+	@Override
+	public String hardcodearCadena(String cadena) {
+		return org.apache.commons.codec.digest.DigestUtils.sha256Hex(cadena);	
 	}
 
 

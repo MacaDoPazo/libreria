@@ -34,10 +34,10 @@ insert into libro(megusta,nombre,paginas,precio,nombre_archivo,autor_id,stock_id
 
 
 
-INSERT INTO usuario (DTYPE,id,apellido,email,fechaNac,nombre,password,rol,sexo) VALUES ('Usuario',1,'Pierotti','npierotti@alumno.unlam.edu.ar','1990-03-21','Nahuel','135791','Admin','m'),
-																				('Usuario',2,'Do Pazo','maca@123.com','1998-02-15','Macarena','123','Admin','f'),
-                                                                                ('Usuario',3,'Tries','ian_tries@hotmail.com','1994-05-14','Ian','1234','Admin','m'),
-                                                                                ('Usuario',4,'Milito','nahuelpierotti@gmail.com','1980-06-12','Diego Alberto','135791','Cliente','m');
+INSERT INTO usuario (DTYPE,id,apellido,email,fechaNac,nombre,password,rol,sexo) VALUES ('Usuario',1,'Pierotti','npierotti@alumno.unlam.edu.ar','1990-03-21','Nahuel','24b9c03e63a17b45300ada6411ec4b7d178b1c78052a1f9cacce1f75e530f784','Admin','m'),
+																				('Usuario',2,'Do Pazo','maca@123.com','1998-02-15','Macarena','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','Admin','f'),
+                                                                                ('Usuario',3,'Tries','ian_tries@hotmail.com','1994-05-14','Ian','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','Admin','m'),
+                                                                                ('Usuario',4,'Milito','nahuelpierotti@gmail.com','1980-06-12','Diego Alberto','24b9c03e63a17b45300ada6411ec4b7d178b1c78052a1f9cacce1f75e530f784','Cliente','m');
                                                                                 
 INSERT INTO resenia(comentario,puntuacion,cliente_id,libro_id) VALUES
 ("El libro resultó muy interesante",5,3,3),

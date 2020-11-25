@@ -62,6 +62,8 @@ public class ControladorLogin {
 
 		// invoca el metodo consultarUsuario del servicio y hace un redirect a la URL /home, esto es, en lugar de enviar a una vista
 		// hace una llamada a otro action a través de la URL correspondiente a ésta
+		String passwordHardcodeada=servicioUsuario.hardcodearCadena(usuario.getPassword());
+		usuario.setPassword(passwordHardcodeada);
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
 		if (usuarioBuscado != null) {
 			Date today = Calendar.getInstance().getTime();
