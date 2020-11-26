@@ -14,14 +14,18 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unlam.tallerweb1.modelo.Autor;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
+import ar.edu.unlam.tallerweb1.modelo.Resenia;
 import ar.edu.unlam.tallerweb1.modelo.Resenia_Libros_Cliente;
 import ar.edu.unlam.tallerweb1.repositorios.LibroDao;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioResenia;
 
 @Service
 @Transactional
 public class servicioLibroImpl implements servicioLibro {
 	@Inject
 	private LibroDao libroDao;
+	@Inject
+	private RepositorioResenia repositorioResenia;
 	@Inject
 	private ServicioGenero servicioGenero;
 	public Libro consultarLibroPorId(Long id) {
@@ -103,6 +107,32 @@ public class servicioLibroImpl implements servicioLibro {
 	public List<Libro> listarLibrosConMismoGeneroOMismoAutor(Long idLibroAComparar) {
 		return libroDao.listarLibrosConMismoGeneroOMismoAutor(idLibroAComparar);
 	}
+	@Override
+	public List<Integer> listarPromedioDeReseniaPorCadaLibro(List<Libro> listaLibros)  {
+		List<Integer> listaPromedio = new ArrayList<Integer>();
+		
+		for (Libro libro : listaLibros) {
+			List<Resenia> listaResenia = repositorioResenia.listarReseniasDelLibro(libro.getId());
+			if(listaResenia.isEmpty())
+			{
+				listaPromedio.add(0);
+			}
+			else
+			{
+				
+				Integer sumaPuntuacion = 0;
+				for (Resenia resenia : listaResenia) {
+					sumaPuntuacion += resenia.getPuntuacion();
+				}
+				
+				listaPromedio.add(sumaPuntuacion/listaResenia.size());	
+			}
+			
+		}
+		return listaPromedio;
+	}
+	
+
 	
 
 }

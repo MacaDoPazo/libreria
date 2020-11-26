@@ -115,8 +115,22 @@
 		<br>
 		<div class="alert alert-danger">${error}</div>
 		<br>
-		</c:if>	    	
+		<%
+			java.util.ArrayList<Integer> l=(java.util.ArrayList<Integer>)request.getAttribute("listaPromedio");
+			java.util.Iterator i=l.iterator();
+			while(i.hasNext()){
+				Integer indice=(Integer)i.next();
+				%>
+			<h1>Promedio: <%=indice%></h1>		
+				<%
+			}
+		%>
+		</c:if>	 
+		<c:forEach items="${listaPromedio }" var="promedio">
+		<h3>${promedio.promedio }</h3>
+		</c:forEach>  	
   </div>
   </div>
   </div>
  <%@include file="footer.jsp" %>
+  

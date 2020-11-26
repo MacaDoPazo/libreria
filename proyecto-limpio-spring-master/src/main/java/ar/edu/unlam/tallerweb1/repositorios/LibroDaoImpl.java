@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unlam.tallerweb1.modelo.Autor;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
+import ar.edu.unlam.tallerweb1.modelo.Resenia;
 import ar.edu.unlam.tallerweb1.modelo.Resenia_Libros_Cliente;
 @Repository
 @Transactional
@@ -104,5 +105,5 @@ public class LibroDaoImpl implements LibroDao {
 			    .add(Restrictions.ne("id", libro.getId()))
 				.list();
 	}
-
+	
 }

@@ -40,7 +40,8 @@ public interface servicioLibro {
 	List<Libro> listarLibrosDeUnGenero(Long genero_id);
 	
 	List<Libro> listarLibrosConMismoGeneroOMismoAutor(Long idLibroAComparar);
-
+	
+	List<Integer> listarPromedioDeReseniaPorCadaLibro(List<Libro> listaLibros) ;
 
 
 	

@@ -38,13 +38,14 @@ public class ControladorInicio {
 	@Inject
 	private ServicioResenia servicioResenia;
 	
-	@RequestMapping(path="/pantalla-inicial"/*, method = RequestMethod.POST*/)
+	@RequestMapping(path="/pantalla-inicial"/*, method = RequestMethod.POST*/)//servicio libro promedio
 	public ModelAndView irAlInicio(HttpServletRequest request) {
 		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
 		
 	if(idUsuario != null)
 		{
 			List<Libro> listalibros = servicioLibro.listarLibros();
+			List<Integer> listaPromedio = servicioLibro.listarPromedioDeReseniaPorCadaLibro(listalibros);
 			ModelMap modelo = new ModelMap();
 			try {
 				List<Libro> listarLibrosGeneroMayorPuntaje = servicioLibro.listarLibrosGeneroMayorPuntaje(idUsuario);
@@ -54,26 +55,33 @@ public class ControladorInicio {
 				modelo.put("generoSugerido",libro.getGenero().getNombre());
 				modelo.put("lista",listalibros);
 				modelo.put("listaGenero",listarLibrosGeneroMayorPuntaje);
+				modelo.put("listaPromedio",listaPromedio);
 			}catch (Exception e) {
 				String error= e.getMessage();
+				Libro libro = listalibros.get(0);
+				
+				
 				modelo.put("error",error);
 				modelo.put("lista",listalibros);
 				
 			}
+			modelo.put("listaPromedio",listaPromedio);
 			return new ModelAndView("pantallainicial",modelo);
 						
 		}
 		
 			List<Libro> listalibros = servicioLibro.listarLibros();
+			List<Integer> listaPromedio = servicioLibro.listarPromedioDeReseniaPorCadaLibro(listalibros);
 			ModelMap modelo = new ModelMap();
 			modelo.put("lista",listalibros);
+			modelo.put("listaPromedio",listaPromedio);
 			return new ModelAndView("pantallainicial",modelo);
 		
 		
 		
 	}
 	
-	@RequestMapping(path="/detalle-producto", method=RequestMethod.GET)
+	@RequestMapping(path="/detalle-producto", method=RequestMethod.GET)//servicio libro promedio
 	
 		public ModelAndView irADetalleProducto(@RequestParam(value="idLibro")Long idLibro) {
 		ModelMap model = new ModelMap();

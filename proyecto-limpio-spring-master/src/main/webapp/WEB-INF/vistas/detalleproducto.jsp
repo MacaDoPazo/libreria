@@ -60,7 +60,7 @@
 		  <div class="card-body">
 		    <blockquote class="blockquote mb-0">
 		      <p>${item.comentario}</p>
-		      <footer class="blockquote-footer"> <cite title="Source Title">Cliente ${item.cliente.id}</cite></footer>
+		      <footer class="blockquote-footer"> <cite title="Source Title">${item.cliente.apellido} ${item.cliente.nombre}</cite></footer>
 		    </blockquote>
 		  </div>
 		</div>
