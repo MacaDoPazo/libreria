@@ -49,6 +49,7 @@ public class ControladorInicio {
 			ModelMap modelo = new ModelMap();
 			try {
 				List<Libro> listarLibrosGeneroMayorPuntaje = servicioLibro.listarLibrosGeneroMayorPuntaje(idUsuario);
+				List<Integer> listaPromedioMayorPuntaje = servicioLibro.listarPromedioDeReseniaPorCadaLibro(listarLibrosGeneroMayorPuntaje);
 				Libro libro = listarLibrosGeneroMayorPuntaje.get(0);
 				
 				modelo.put("idGeneroSugerido",libro.getGenero().getId());
@@ -56,6 +57,7 @@ public class ControladorInicio {
 				modelo.put("lista",listalibros);
 				modelo.put("listaGenero",listarLibrosGeneroMayorPuntaje);
 				modelo.put("listaPromedio",listaPromedio);
+				modelo.put("promedioMayorPuntaje",listaPromedioMayorPuntaje);
 			}catch (Exception e) {
 				String error= e.getMessage();
 				Libro libro = listalibros.get(0);
@@ -83,7 +85,8 @@ public class ControladorInicio {
 	
 	@RequestMapping(path="/detalle-producto", method=RequestMethod.GET)//servicio libro promedio
 	
-		public ModelAndView irADetalleProducto(@RequestParam(value="idLibro")Long idLibro) {
+		public ModelAndView irADetalleProducto(@RequestParam(value="idLibro")Long idLibro,
+				@RequestParam("promedio") Integer promedio) {
 		ModelMap model = new ModelMap();
 
 		Libro libroEncontrado = servicioLibro.consultarLibroPorId(idLibro);
@@ -92,6 +95,7 @@ public class ControladorInicio {
 		List<Libro> librosRelacionados = servicioLibro.listarLibrosConMismoGeneroOMismoAutor(idLibro);
 
 		model.put("libro", libroEncontrado);
+		model.put("promedio", promedio);
 		model.put("listaReseniasDelLibro", reseniasDelLibro);
 		model.put("listaLibrosRelacionados", librosRelacionados);
 			return new ModelAndView("detalleproducto",model);

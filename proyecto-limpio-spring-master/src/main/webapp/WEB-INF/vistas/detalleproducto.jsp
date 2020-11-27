@@ -7,7 +7,7 @@
     </div>
     <div class="col-sm-9 col-md-6 col-lg-8 shadow p-4 mb-4 bg-white">
       <div class="container">
-      <h2>${libro.nombre }</h2>
+      <h2>${libro.nombre }</h2> <b>${promedio }/5 <i class="fas fa-star"></i></b>
       <h3>Autor:</h3><a href="listar-libros-autor?autor_id=${libro.autor.id}" class=" mx-auto">${libro.autor.nombre} ${libro.autor.apellido }</a>
       <h3>Género:</h3><a href="listar-libros-genero?genero_id=${libro.genero.id}" style="text-decoration:none">${libro.genero.nombre }</a>
       <h3>Precio:</h3><span style="font-size:40px">$${libro.precio}</span>

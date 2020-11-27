@@ -54,7 +54,7 @@
 		 <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
 	 	<div class="container" id="food">
 	    <div class="card-deck">
-    <c:forEach items="${listaGenero}" var="libro" >
+    <c:forEach items="${listaGenero}" var="libro" varStatus="loop" >
     	   
           <div class="w3-quarter col">
       	   <a href="#" >
@@ -65,6 +65,7 @@
 	      		<a href="listar-libros-autor?autor_id=${libro.autor.id}" style="text-decoration:none">${libro.autor.nombre} ${libro.autor.apellido}</a>
 	      		<p class="card-text">$ ${libro.precio}<p> 
 	      		<%-- <div class="card-text d-flex justify-content-center"><a href="sumar-megusta?idLibro=${libro.id }"class="" id="botonlike"><i class="far fa-heart"></i> </a><p id="cantidadlikes"> &nbsp ${item.megusta}</p></div> --%>
+	      		<b>${promedioMayorPuntaje[loop.index] }/5 <i class="fas fa-star"></i></b>
 	      		<form action="agregar-al-carrito" >
 	      		<input class="form-control " type="number" id="cantidad" name="canitdad" placeholder="0" style="width:50px" min=1 required><br>
 	      		<input type="hidden" id="precio" name="idLibro" value= ${libro.id }>
@@ -87,7 +88,7 @@
 	   <div class="w3-row-padding w3-padding-16 w3-center row" id="food">
 	 	<div class="container" id="food">
 	    <div class="card-deck">
-    <c:forEach items="${lista}" var="item" >
+    <c:forEach items="${lista}" var="item" varStatus="loop" >
     	   
           <div class="w3-quarter col">
       	   <a href="#" >
@@ -99,13 +100,14 @@
 	      		<a href="listar-libros-autor?autor_id=${item.autor.id}" style="text-decoration:none"><h6>${item.autor.nombre} ${item.autor.apellido}</h6></a>
 	      		<p class="card-text">$ ${item.precio}<p> 
 	      		<%-- <div class="card-text d-flex justify-content-center"><a href="sumar-megusta?idLibro=${item.id }"class="" id="botonlike"><i class="far fa-heart"></i> </a><p id="cantidadlikes"> &nbsp ${item.megusta}</p></div> --%>
+	      		<b>${listaPromedio[loop.index] }/5 <i class="fas fa-star"></i></b>
 	      		<form action="agregar-al-carrito" >
 	      		<input class="form-control" type="number" id="cantidad" name="canitdad" placeholder="0" style="width:50px" min=1 required><br>
 	      		<input type="hidden" id="precio" name="idLibro" value= ${item.id }>
 	     		 <input type="hidden" id="precio" name="precio" value= ${item.precio }>
 	      		 <input class="btn btn-success mx-auto"type="submit" value="Añadir al carrito">
 	      		</form>
-	      		<a href="detalle-producto?idLibro=${item.id}" class=" mx-auto"><button type="button" class="btn btn-outline-dark">+ info</button></a>
+	      		<a href="detalle-producto?idLibro=${item.id}&promedio=${listaPromedio[loop.index] }" class=" mx-auto"><button type="button" class="btn btn-outline-dark">+ info</button></a>
 	      	</div>
       		
    		 </div>           
@@ -115,20 +117,9 @@
 		<br>
 		<div class="alert alert-danger">${error}</div>
 		<br>
-		<%
-			java.util.ArrayList<Integer> l=(java.util.ArrayList<Integer>)request.getAttribute("listaPromedio");
-			java.util.Iterator i=l.iterator();
-			while(i.hasNext()){
-				Integer indice=(Integer)i.next();
-				%>
-			<h1>Promedio: <%=indice%></h1>		
-				<%
-			}
-		%>
+		
 		</c:if>	 
-		<c:forEach items="${listaPromedio }" var="promedio">
-		<h3>${promedio.promedio }</h3>
-		</c:forEach>  	
+		
   </div>
   </div>
   </div>
