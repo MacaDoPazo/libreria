@@ -3,14 +3,14 @@
  <div class="container"> 
        
 	<table class="table table-hover">
-    <thead>
+    <thead class="bg-dark text-light">
       <tr>
         <th>Nombre</th>
         <th>cp</th>
         <th>Precio envío</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="bg-light">
       <c:forEach items="${listaLocalidades }" var="localidad">
       <tr>
         <td> ${localidad.nombre }</td>

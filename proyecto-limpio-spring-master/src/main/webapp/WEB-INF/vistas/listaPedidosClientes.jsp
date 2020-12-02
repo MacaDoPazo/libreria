@@ -4,7 +4,7 @@
  <div class="container"> 
        
 	<table class="table table-hover">
-    <thead>
+    <thead class="bg-dark text-light">
       <tr>
         <th>Fecha</th>
         <th>Id pedido</th>
@@ -13,7 +13,7 @@
         <th>Monto</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="bg-light">
       <c:forEach items="${listaPedidosCliente}" var="venta">
       <tr>
 		<td><fmt:formatDate value="${venta.fechaDeVenta}" pattern="dd-MM-yyyy" /></td>

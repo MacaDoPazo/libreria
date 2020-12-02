@@ -2,14 +2,16 @@
 
 	<section>
 	<div class="container mb-5">
+	<c:if test="${not empty mensaje }">
 	<div class="alert alert-danger" role="alert">
   ${mensaje }
 </div>
+</c:if>
     <div class="row">
         <div class="col-16">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
+            <div class="table-responsive ">
+                <table class="table table-striped mt-2">
+                    <thead class="bg-dark text-light">
                         <tr>
                             <th scope="col"> </th>
                             <th scope="col">Producto</th>
@@ -20,7 +22,7 @@
                             <th> </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="bg-light">
                         <c:forEach items="${librosPedidos }" var="libros">
                         <tr>
                             <td><img src="img/${libros.libro.nombre_archivo}" width="50" height="50"> </td>
@@ -63,45 +65,45 @@
                             <td class="text-center"><strong>${total } $</strong></td>
                             
                         </tr>
-                        <a href="pantalla-inicial"><button type="button" class="btn btn-outline-dark float-right  btn-lg">Continuar comprando</button></a>
+                        <a href="pantalla-inicial"><button type="button" class="btn btn-outline-warning float-right  btn-lg mx-2 my-2">Continuar comprando</button></a>
                     </tbody>
                 </table>
             </div>
         </div>
         
         
-        <h2 class="text-primary mt-6 mb-3 col-sm-12  col-md-12">Ya es hora de generar el pago con tu tarjeta:</h2>
+        <h2 class=" mt-6 mb-3 col-sm-12  col-md-12 titulos">Ya es hora de generar el pago con tu tarjeta:</h2>
         
        <form action="guardar-venta" class="container" method="POST" >  <!-- modelAttribute="venta" -->
             <input type="hidden" id="montoTotal" name="montoTotal" value= ${total }>
                <br>
                <input type="hidden" id="localidadEnvio" name="localidadEnvio" value= ${localidad.cp }>            
 			 <div class="form-group row">
-	            <label for="" class="text-secondary col-sm-2 col-form-label">Nombre:</label>
+	            <label for="" class="text-secondary text-light col-sm-2 col-form-label">Nombre:</label>
 	            <div class="col-sm-4">
 	                <input type="text" name="nombreTitularTarjeta" class="form-control">
 	            </div>
 	        </div>	        
 	        <div class="form-group row">
-	            <label for="" class="text-secondary col-sm-2 col-form-label">Apellido:</label>
+	            <label for="" class="text-secondary text-light col-sm-2 col-form-label">Apellido:</label>
 	            <div class="col-sm-4">
 	                <input type="text" name="apellidoTitularTarjeta" class="form-control">
 	            </div>
 	        </div>	        
 	        <div class="form-group row">
-	            <label for="" class="text-secondary col-sm-2 col-form-label">N° de tarjeta:</label>
+	            <label for="" class="text-secondary text-light col-sm-2 col-form-label">N° de tarjeta:</label>
 	            <div class="col-sm-4">
 	                <input type="text" name="numeroTarjeta" class="form-control border" id="numeroTarjeta">
 	            </div>
         	</div>        	
         	<div class="form-group row">
-	            <label for="" class="text-secondary col-sm-2 col-form-label">Fecha de caducidad:</label>
+	            <label for="" class="text-secondary text-light col-sm-2 col-form-label">Fecha de caducidad:</label>
 	            <div class="col-sm-4">
 	                <input type="text" name="fechaCaducidadTarjeta" class="form-control" id="fechaCaducidadTarjeta">
 	            </div>
 	        </div>
 	        <div class="form-group row">
-	            <label for="" class="text-secondary col-sm-2 col-form-label">Cod. de seguridad:</label>
+	            <label for="" class="text-secondary text-light col-sm-2 col-form-label">Cod. de seguridad:</label>
 	            <div class="col-sm-4">
 	                <input type="number" name="codigoSeguridadTarjeta" class="form-control">
 	            </div>

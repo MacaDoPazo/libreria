@@ -12,7 +12,7 @@
  <div class="container"> 
        
 	<table class="table table-hover">
-    <thead>
+    <thead class="bg-dark text-light">
       <tr>
         <th>Nombre</th>
         <th>Autor</th>
@@ -21,7 +21,7 @@
         <th>Precio</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="bg-light">
       <c:forEach items="${lista }" var="libro">
       <tr>
         <td> ${libro.nombre }</td>

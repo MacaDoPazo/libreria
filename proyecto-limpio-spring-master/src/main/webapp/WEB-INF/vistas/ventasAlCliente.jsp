@@ -6,7 +6,7 @@
    		<div class="col-12">
            	<div class="table-responsive">
 				<table class="table table-hover">
-				    <thead>
+				    <thead class="bg-dark text-light">
 				      <tr>
 				        <th>ID</th>
 				        <th>Fecha</th>
@@ -15,7 +15,7 @@
 				        <th>Reseña</th>
 				      </tr>
 				    </thead>
-				    <tbody>
+				    <tbody class="bg-light">
 				      <c:forEach items="${listadoVentasRealizadasAlCliente }" var="venta">
 				      <tr>
 				        <td>${venta.id }</td>

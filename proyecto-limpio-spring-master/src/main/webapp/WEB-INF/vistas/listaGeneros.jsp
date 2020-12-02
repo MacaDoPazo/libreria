@@ -3,13 +3,13 @@
 	 <div class="container"> 
 	       
 		<table class="table table-hover">
-	    <thead>
+	    <thead class="bg-dark text-light">
 	      <tr>
 	        <th>Id</th>
 	        <th>Nombre</th>
 	      </tr>
 	    </thead>
-	    <tbody>
+	    <tbody class="bg-light">
 	      <c:forEach items="${lista}" var="genero">
 	      <tr>
 	        <td> ${genero.id }</td>
