@@ -105,11 +105,12 @@ public class ControladorInicio {
 		public ModelAndView verPedido(HttpServletRequest request)
 		{
 		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
-		Pedido pedido =servicioPedido.buscarPedidoArmando(idUsuario, "armando");
+		
 		while (idUsuario == null)
 		{
-			return new ModelAndView("login");
+			return new ModelAndView("redirect:/login");
 		}
+		Pedido pedido =servicioPedido.buscarPedidoArmando(idUsuario, "armando");
 		if(pedido != null)
 		{
 			List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idUsuario,"armando");
