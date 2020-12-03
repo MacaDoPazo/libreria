@@ -1,7 +1,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <!-- taglib para el formato de las fechas -->
 <%@include file="header.jsp" %>
 <h1 id="login-title" class="text-center">Detalle de sus compras</h1>
- 	<div class="container mb-4"> 
+ 	<div class="container mb-4 mt-2"> 
    	<div class="row">   
    		<div class="col-12">
            	<div class="table-responsive">
@@ -29,7 +29,7 @@
 				        			
 				        			       <form action="registrar-resenia" method="post">
 				   							 <input type="hidden" id="idPedido" name="idPedido" value= ${venta.pedido.id }> 
-				     						  	<input class="btn btn-success "type="submit" value="Registrar reseña">
+				     						  	<input class="btn btn-warning "type="submit" value="Registrar reseña">
 				     						</form>
 				        			
 				        		</c:when>

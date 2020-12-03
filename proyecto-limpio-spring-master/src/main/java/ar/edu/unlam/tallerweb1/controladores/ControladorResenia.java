@@ -92,15 +92,27 @@ public class ControladorResenia {
 		reseniaLibroCliente.setLibro(libro);
 		reseniaLibroCliente.setUsuario(usuario);
 		servicioResenia.guardarReseniaLibrosCliente(reseniaLibroCliente);
-		List<Resenia_Libros_Cliente> listaReseniaLibroCliente = servicioResenia.listarReseniasDelCliente(idUsuario);
-		List<CantidadLibros> librosComprados = servicioCantLibros.listarLibrosComprados(idPedido);	
-		Pedido pedido = servicioPedido.consultarPedidoPorId(idPedido);
-		ModelMap modelo = new ModelMap();
-		modelo.put("listaResenia",listaReseniaLibroCliente);
-		modelo.put("librosComprados",librosComprados);
-		modelo.put("pedido",pedido);
 		
-		return new ModelAndView("registrarResenia",modelo);			
+		
+		return new ModelAndView("redirect:/pantalla-inicial");		
+	}
+	
+	@RequestMapping("/listar-resenias-cliente")
+	
+	public ModelAndView listarReseniasDelCliente (HttpServletRequest request) {
+		
+		if(request.getSession().getAttribute("usuario_id") != null)
+		{
+			List<Resenia_Libros_Cliente> listaResenia =servicioResenia.listarReseniasDelCliente((Long) request.getSession().getAttribute("usuario_id"));
+			ModelMap model = new ModelMap();
+			model.put("listaResenia",listaResenia);
+			return new ModelAndView("reseniasCliente",model);
+		}
+		else
+		{
+			return new ModelAndView("redirect:/pantalla-inicial");	
+		}
+		
 	}
 
 }

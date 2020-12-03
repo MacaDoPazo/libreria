@@ -16,7 +16,7 @@
 	        <th>Libro</th>
 	        <th>Autor</th>
 	        <th>Género</th>
-	        
+	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody class="bg-light">
@@ -38,7 +38,7 @@
 			   	 <input type="hidden" id="idLibro" name="idLibro" value= "${libro.libro.id }">
 			   	 <input type="hidden" id="idPedido" name="idPedido" value= "${pedido.id}">
 	          	 
-	   			 <input class="btn btn-success "type="submit" value="Reseña" disabled>
+	   			 <input class="btn btn-warning "type="submit" value="Reseña" disabled>
 	     	</form>
 	     			
 			        </c:when>

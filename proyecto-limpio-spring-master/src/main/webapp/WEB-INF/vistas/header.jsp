@@ -99,12 +99,12 @@
 	    </li>
 		</ul -->
 		<ul class="navbar-nav">
-		<li class="nav-item dropdown">
+		<li class="nav-item dropdown position-relative">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-user"></i>
           Bienvenido <c:out value="${sessionScope.usuario_nombre}"></c:out>
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <div class="dropdown-menu position-absolute" aria-labelledby="navbarDropdownMenuLink">
         	<form action="listaVentasAlCliente" method="GET" modelAttribute="usuario">
 	           <button class="btn btn-sm btn-default"><i class="fa fa-shopping-cart"></i> Mis pedidos realizados</button>
 	       	</form>
@@ -117,6 +117,7 @@
 				<i class="fa fa-envelope"></i> 
 				Mensajes <span class="badge badge-light"><strong><c:out value="${sessionScope.mensajes.size()}" ></c:out></strong> </span>
 		 </a>
+		 <a class="dropdown-item" href="listar-resenias-cliente"><i class="fa fa-align-left" aria-hidden="true"></i>Mis Resenias</a>
 		 <a class="dropdown-item" href="salir">
             <i class="fa fa-sign-in">
             </i> Salir

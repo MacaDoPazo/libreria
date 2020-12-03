@@ -41,7 +41,7 @@
 	<div class="container-fluid">
 	<c:if test="${empty error}">
 		<hr style="height:2px;border-width:0;color:gray;background-color:white">
-		<h1 class="text-center">Porque te interesa el género <a href="listar-libros-genero?genero_id=${idGeneroSugerido}" style="text-decoration:none">${generoSugerido }</a></h1>
+		<h1 class="text-center">Porque te interesa el género <a class="titulos" href="listar-libros-genero?genero_id=${idGeneroSugerido}" style="text-decoration:none">${generoSugerido }</a></h1>
 		
 		<%-- <a href="listar-libros-autor?autor_id=${item.autor.id}" style="text-decoration:none"><h6>${item.autor.nombre} ${item.autor.apellido}</h6></a> --%>
 		
@@ -51,7 +51,7 @@
 	    <div class="container mx-auto  row d-flex justify-content-center">
     <c:forEach items="${listaGenero}" var="libro" varStatus="loop" >
     	   
-          <div class="w3-quarter col-3 bg-light my-2 mx-2 p-2">
+          <div class="container col-lg-3 col-md-5 my-md-1 mx-md-1 bg-light my-2 mx-2 p-md-2 w-md-25">
       	   <a href="#" class="d-flex justify-content-center mt-1" >
       	   <img class="img-thumbnail" src="img/${libro.nombre_archivo}" alt="${libro.nombre_archivo}" style="width:40%;height: 40%">
       	   </a>
@@ -65,7 +65,7 @@
 	      		<input class="form-control col-lg-4 text-right mx-2 my-2" type="number" id="cantidad" name="canitdad" placeholder="0" min=1 required>
 	      		<input type="hidden" id="precio" name="idLibro" value= ${libro.id }>
 	     		 <input type="hidden" id="precio" name="precio" value= ${libro.precio }>
-	      		 <input class="btn btn-warning mx-auto col mx-2 my-2 "type="submit" value="Añadir al carrito">
+	      		 <button class="btn btn-warning  mx-auto col-lg-6 mx-2 my-2" ><i class="fa fa-shopping-cart"></i>Añadir</button>
 	      		</form>
 	      		
 	      	</div>
@@ -83,7 +83,7 @@
 	    <div class="container mx-auto  row d-flex justify-content-center">
     <c:forEach items="${lista}" var="libro" varStatus="loop" >
     	   
-          <div class="w3-quarter col-3 bg-light my-2 mx-2 p-2">
+          <div class="w3-quarter col-lg-3 col-md-5 my-md-1 mx-md-1 bg-light my-2 mx-2 p-md-2 w-md-25">
       	  <a href="#" class="d-flex justify-content-center mt-1" >
       	   <img class="img-thumbnail" src="img/${libro.nombre_archivo}" alt="${libro.nombre_archivo}" style="width:40%;height: 40%">
       	   </a>
@@ -97,7 +97,7 @@
 	      		<input class="form-control col-lg-4 text-right mx-2 my-2" type="number" id="cantidad" name="canitdad" placeholder="0" min=1 required>
 	      		<input type="hidden" id="precio" name="idLibro" value= ${libro.id }>
 	     		 <input type="hidden" id="precio" name="precio" value= ${libro.precio }>
-	      		 <button class="btn btn-warning  mx-auto col mx-2 my-2" ><i class="fa fa-shopping-cart"></i>Añadir</button>
+	      		 <button class="btn btn-warning  mx-auto col-lg-6 col-md-6 mx-2 my-2" ><i class="fa fa-shopping-cart"></i>Añadir</button>
 	      		</form>
 	      		
 	      	</div>
