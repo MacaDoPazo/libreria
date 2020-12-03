@@ -1,6 +1,6 @@
 <%@include file="header.jsp" %>
 <section>
-	<div class="container mx-auto ">
+	<div class="container mt-2 ">
   <div class="row ">
     <div class="col-sm-3 col-md-6 col-lg-4 d-flex justify-content-center ">
      <img class="img-thumbnail" src="img/${libro.nombre_archivo}" alt="${libro.nombre_archivo}" style="width:90%;height: 95%">
@@ -30,7 +30,7 @@
       <input class="form-control col-lg-12" type="hidden" id="idLibroSolicitado" name="idLibroSolicitado" value= ${libro.id }>
        <input class="form-control col-lg-12" type="hidden" id="idCliente" name="idCliente" value= "${sessionScope.usuario_id}">
       <input class="form-control col-lg-3 text-right py-2" type="number" id="cantidad" name="cantidad" placeholder="0"  min=1 required><br>
-      <input class="btn btn-success col-lg-6 mx-2 mb-3"type="submit" value="Añadir al carrito">
+      <input class="btn btn-danger col-lg-6 mx-2 mb-3"type="submit" value="Añadir al carrito">
       </form>
       </div>
       </div>
@@ -82,24 +82,24 @@
 
 </div>
 <div class="container row  my-3 mx-auto">
-<h3>Otros títulos disponibles que pertenecen a ${libro.autor.nombre} ${libro.autor.apellido } o al género ${libro.genero.nombre }: </h3>
+<h3>Otros títulos disponibles que pertenecen a <b class="titulos">${libro.autor.nombre} ${libro.autor.apellido }</b> o al género <b class="titulos">${libro.genero.nombre }</b>: </h3>
 
     	
        <c:forEach items="${listaLibrosRelacionados}" var="item">
     
       	   
-          <div class="w3-quarter col-lg-4 bg-light mx-2">
+          <div class="w3-quarter col-lg-4 bg-light mx-2 ">
 	      	   <a href="#" class="d-flex justify-content-center mt-1">
 	      	   <img class="img-thumbnail" src="img/${item.nombre_archivo}" alt="${item.nombre_archivo}" style="width:150px; height:200px">
 	      	   </a>
-      		<div class="card-body">
-      			<h3 class="card-text titulos">${item.nombre}</h3>
-	      		<p class="card-text">$ ${item.precio}<p> 
-		      		<form action="agregar-al-carrito" >
-			      		<input class="form-control " type="number" id="cantidad" name="canitdad" placeholder="0" style="width:50px" min=1 required><br>
+      		<div class="card-body ">
+      			<h3 class="card-text text-center titulos">${item.nombre}</h3>
+	      		<p class="card-text text-center">$ ${item.precio}<p> 
+		      		<form action="agregar-al-carrito" class="row d-flex justify-content-center" >
+			      		<input class="form-control col-lg-3 text-right py-2 mx-2 " type="number" id="cantidad" name="canitdad" placeholder="0" style="width:50px" min=1 required><br>
 			      		<input type="hidden" id="precio" name="idLibro" value= ${item.id }>
 			     		 <input type="hidden" id="precio" name="precio" value= ${item.precio }>
-			      		 <input class="btn btn-success mx-auto"type="submit" value="Añadir al carrito">
+			      		 <input class="btn btn-warning mx-2"type="submit" value="Añadir al carrito">
 		      		</form>
 	      	</div>      		
    		 </div>
