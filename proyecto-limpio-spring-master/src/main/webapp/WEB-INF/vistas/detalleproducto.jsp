@@ -20,16 +20,17 @@
       
      
       </div>
-      <div class="container mt-3 ml-1 bg-warning col-lg-9">
-      <form action="carrito-compras row ">
-      <label  class="mt-3" for="cantidad" >Cantidad:</label>
-      <small id="passwordHelpBlock" class="form-text text-muted">
+      <div class="container mt-3 ml-1 bg-warning col-lg-6 ">
+      <form action="carrito-compras " class="row d-flex justify-content-center">
+      <small id="passwordHelpBlock" class="form-text text-muted  col-lg-12">
   		Disponible ${libro.stock.cantidad } unidades
 		</small>
+      <label  class="mt-3 col-lg-3 py-1" for="cantidad" >Cantidad:</label>
+      
       <input class="form-control col-lg-12" type="hidden" id="idLibroSolicitado" name="idLibroSolicitado" value= ${libro.id }>
-       <input class="form-control col-lg-12" type="hidden" id="idCliente" name="idCliente" value= 1>
-      <input class="form-control col-lg-4 text-right" type="number" id="cantidad" name="cantidad" placeholder="0"  min=1 required><br>
-      <input class="btn btn-success col-lg-4  mb-3"type="submit" value="Añadir al carrito">
+       <input class="form-control col-lg-12" type="hidden" id="idCliente" name="idCliente" value= "${sessionScope.usuario_id}">
+      <input class="form-control col-lg-3 text-right py-2" type="number" id="cantidad" name="cantidad" placeholder="0"  min=1 required><br>
+      <input class="btn btn-success col-lg-6 mx-2 mb-3"type="submit" value="Añadir al carrito">
       </form>
       </div>
       </div>

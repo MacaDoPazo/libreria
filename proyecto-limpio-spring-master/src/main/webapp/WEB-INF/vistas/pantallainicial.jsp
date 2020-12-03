@@ -8,6 +8,7 @@
 	</c:if>
 	<c:choose>
 	<c:when test="${sessionScope.usuario_nombre ==null}">
+	
 	<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
 		  <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -37,9 +38,7 @@
 	  </a>
 	</div>
 	
-	<div class="container">
-		<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-		<h1 class="text-center">Libros populares</h1>
+	
 	</c:when>
 	<c:otherwise>
 	<div class="container-fluid">
@@ -65,11 +64,11 @@
 	      		<p class="card-text col-12">$ ${libro.precio}<p> 
 	      		<%-- <div class="card-text d-flex justify-content-center"><a href="sumar-megusta?idLibro=${libro.id }"class="" id="botonlike"><i class="far fa-heart"></i> </a><p id="cantidadlikes"> &nbsp ${item.megusta}</p></div> --%>
 	      		<div class="col-12 mx-2 my-2 "><a href="detalle-producto?idLibro=${libro.id}&promedio=${promedioMayorPuntaje[loop.index] }" ><button type="button" class="btn btn-outline-dark mx-auto col-lg-8 mx-2 my-2">+ info</button></a></div>
-	      		<form action="agregar-al-carrito " >
-	      		<input class="form-control col-lg-6 text-right mx-2 my-2" type="number" id="cantidad" name="canitdad" placeholder="0" min=1 required>
+	      		<form action="agregar-al-carrito " class="d-flex justify-content-center px-2" >
+	      		<input class="form-control col-lg-4 text-right mx-2 my-2" type="number" id="cantidad" name="canitdad" placeholder="0" min=1 required>
 	      		<input type="hidden" id="precio" name="idLibro" value= ${libro.id }>
 	     		 <input type="hidden" id="precio" name="precio" value= ${libro.precio }>
-	      		 <input class="btn btn-warning mx-auto col mx-2 my-2"type="submit" value="Añadir al carrito">
+	      		 <input class="btn btn-warning mx-auto col mx-2 my-2 "type="submit" value="Añadir al carrito">
 	      		</form>
 	      		
 	      	</div>
@@ -91,14 +90,14 @@
       	  <a href="#" class="d-flex justify-content-center mt-1" >
       	   <img class="img-thumbnail" src="img/${libro.nombre_archivo}" alt="${libro.nombre_archivo}" style="width:40%;height: 40%">
       	   </a>
-      		<div class="card-body row  ml-4">
+      		<div class="card-body row  mx-2 ml-4  px-2">
       			<b class="card-text col-6 titulos ">${libro.nombre}</b><div class="col-6"><b>${listaPromedio[loop.index] }/5 <i class="fas fa-star text-warning"></i></b></div>
 	      		<a class="card-text col-12" href="listar-libros-autor?autor_id=${libro.autor.id}" style="text-decoration:none">${libro.autor.nombre} ${libro.autor.apellido}</a>
 	      		<p class="card-text col-12">$ ${libro.precio}<p> 
 	      		<%-- <div class="card-text d-flex justify-content-center"><a href="sumar-megusta?idLibro=${libro.id }"class="" id="botonlike"><i class="far fa-heart"></i> </a><p id="cantidadlikes"> &nbsp ${item.megusta}</p></div> --%>
 	      		<div class="col-12 mx-2 my-2 "><a href="detalle-producto?idLibro=${libro.id}&promedio=${listaPromedio[loop.index] }" ><button type="button" class="btn btn-outline-dark mx-auto col-lg-8 mx-2 my-2">+ info</button></a></div>
-	      		<form action="agregar-al-carrito " >
-	      		<input class="form-control col-lg-6 text-right mx-2 my-2" type="number" id="cantidad" name="canitdad" placeholder="0" min=1 required>
+	      		<form action="agregar-al-carrito "  class="d-flex justify-content-center px-2" >
+	      		<input class="form-control col-lg-4 text-right mx-2 my-2" type="number" id="cantidad" name="canitdad" placeholder="0" min=1 required>
 	      		<input type="hidden" id="precio" name="idLibro" value= ${libro.id }>
 	     		 <input type="hidden" id="precio" name="precio" value= ${libro.precio }>
 	      		 <input class="btn btn-warning  mx-auto col mx-2 my-2"type="submit" value="Añadir al carrito">
