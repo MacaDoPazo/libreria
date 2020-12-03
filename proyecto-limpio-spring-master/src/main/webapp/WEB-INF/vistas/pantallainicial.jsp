@@ -2,10 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@include file="header.jsp" %>
 	<br>
-	<c:if test="${cerro!=null}">
-	<div class="alert alert-info">Ha salido del sistema</div>
-	<br>
-	</c:if>
+	
 	<c:choose>
 	<c:when test="${sessionScope.usuario_nombre ==null}">
 	
@@ -100,7 +97,7 @@
 	      		<input class="form-control col-lg-4 text-right mx-2 my-2" type="number" id="cantidad" name="canitdad" placeholder="0" min=1 required>
 	      		<input type="hidden" id="precio" name="idLibro" value= ${libro.id }>
 	     		 <input type="hidden" id="precio" name="precio" value= ${libro.precio }>
-	      		 <input class="btn btn-warning  mx-auto col mx-2 my-2"type="submit" value="Añadir al carrito">
+	      		 <button class="btn btn-warning  mx-auto col mx-2 my-2" ><i class="fa fa-shopping-cart"></i>Añadir</button>
 	      		</form>
 	      		
 	      	</div>

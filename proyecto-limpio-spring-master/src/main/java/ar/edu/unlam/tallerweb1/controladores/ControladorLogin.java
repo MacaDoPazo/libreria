@@ -20,6 +20,7 @@ import java.util.Date;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class ControladorLogin {
@@ -72,6 +73,7 @@ public class ControladorLogin {
 			request.getSession().setAttribute("usuario_id", usuarioBuscado.getId());
 			request.getSession().setAttribute("usuario_nombre", usuarioBuscado.getNombre());
 			request.getSession().setAttribute("usuario_rol", usuarioBuscado.getRol());
+			request.getSession().setAttribute("mensajes", servicioUsuario.obtenerMensajesUsuario(usuarioBuscado.getId()));
 			return new ModelAndView("redirect:/pantalla-inicial");
 		} else {
 			// si el usuario no existe agrega un mensaje de error en el modelo.
@@ -82,8 +84,12 @@ public class ControladorLogin {
 
 	@RequestMapping(path = "/salir")
 	public ModelAndView cerrarSesion(HttpServletRequest request) {
-		
-			request.getSession().invalidate();
+		HttpSession session=request.getSession();
+		session.removeAttribute("usuario_id");
+		session.removeAttribute("usuario_nombre");
+		session.removeAttribute("usuario_rol");
+		session.removeAttribute("mensajes");
+	    session.invalidate();
 			return new ModelAndView("redirect:/pantalla-inicial");
 		
 	}

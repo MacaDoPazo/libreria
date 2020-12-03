@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -54,5 +55,20 @@ public class ServicioVentaImpl implements ServicioVenta {
 		}
 		return listaFueraDeFecha;
 	}
+	
+	@Override
+	public ArrayList<Venta> listarVentasAReseniar(Long idCliente) {
+		ArrayList<Venta> lista=new ArrayList<Venta>();
+		List<Venta> ventas=this.listarVentasAlCliente(idCliente);
+		Iterator <Venta> i=ventas.iterator();
+		while(i.hasNext()) {
+			Venta venta=i.next();
+			if(venta.getPedido().getEstado().equals("entregado")) {
+				lista.add(venta);
+			}
+		}
+		return lista;
+	}
+
 
 }

@@ -94,12 +94,5 @@ public class ControladorDePaginas {
 			return new ModelAndView("redirect:/pantalla-inicial");
 		}
 		
-		@RequestMapping(path = "/salir", method = RequestMethod.GET)
-		public ModelAndView inicial( HttpServletRequest request) {
-			HttpSession session=request.getSession();
-			session.removeAttribute("usuario_nombre");
-			ModelMap modelo = new ModelMap();
-			modelo.put("cerro", "cerro");
-			return new ModelAndView("redirect:/pantalla-inicial",modelo);
-		}
+
 }

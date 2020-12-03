@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 import java.util.ArrayList;
 import java.util.Date;
 
+import ar.edu.unlam.tallerweb1.modelo.Mensaje;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 public interface ServicioUsuario {
@@ -18,4 +19,5 @@ public interface ServicioUsuario {
 	Date transformarFechaDeStringADate(String fechaComoString); // formato yyyy-MM-dd
 	Boolean esUsuarioNoFrecuente(Usuario usuario);
 	String hardcodearCadena(String cadena);
+	ArrayList<Mensaje> obtenerMensajesUsuario(Long id);
 }
