@@ -132,7 +132,10 @@ public class servicioLibroImpl implements servicioLibro {
 		return listaPromedio;
 	}
 	
-
+	@Override
+	public List<Libro> listarLibrosQueEnElNombreContengan(String busqueda) {
+		return libroDao.listarLibrosQueEnElNombreContengan(busqueda);
+	}
 	
 
 }

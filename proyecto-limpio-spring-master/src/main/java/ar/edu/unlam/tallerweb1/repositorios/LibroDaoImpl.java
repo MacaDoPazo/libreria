@@ -106,4 +106,12 @@ public class LibroDaoImpl implements LibroDao {
 				.list();
 	}
 	
+	@Override
+	public List<Libro> listarLibrosQueEnElNombreContengan(String busqueda) {
+		String criterio = "%"+busqueda+"%";
+		return sesion.getCurrentSession()
+				.createCriteria(Libro.class)
+				.add(Restrictions.like("nombre", criterio))
+				.list();
+	}
 }

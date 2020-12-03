@@ -38,6 +38,27 @@
 	
 	</c:when>
 	<c:otherwise>
+	
+	<div class="container">
+	<div class="row margin_top40">
+		<div class="col-md-12">
+			<h1 class=" text-center">Buscar libro</h1>
+		</div>
+	</div>
+	
+	<form action="busqueda-libro" class="margin_top40">
+		  <div class="row ">
+			<label class="col-md-3 text-right h5">Datos del libro a buscar:</label>
+		    <div  class="col-md-5">
+		    	<input type="text"  class="form-control" name="busqueda"  placeholder="Ingrese nombre del libro buscado" >
+			</div>
+			<div class="col-md-2">
+				<input type="submit" value="Buscar" class="btn btn-primary">
+			</div>
+		  </div>
+	</div>
+ 	</form>	
+	
 	<div class="container-fluid">
 	<c:if test="${empty error}">
 		<hr style="height:2px;border-width:0;color:gray;background-color:white">

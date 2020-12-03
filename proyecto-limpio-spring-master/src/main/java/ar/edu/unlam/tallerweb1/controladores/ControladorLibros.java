@@ -143,4 +143,16 @@ public class ControladorLibros {
 		return new ModelAndView("listaLibrosDelGenero",modelo);
     }
     
+    @RequestMapping(path="/busqueda-libro", method=RequestMethod.GET)
+    public ModelAndView listaLibrosQueEnElNombreContengan (@RequestParam(value="busqueda")String busqueda)
+    {
+    	List<Libro> listalibros = servicioLibro.listarLibrosQueEnElNombreContengan(busqueda);
+   	
+    	ModelMap modelo = new ModelMap();
+    	modelo.put("busqueda", busqueda);
+		modelo.put("lista",listalibros);
+		return new ModelAndView("listaLibrosQueEnElNombreContengan",modelo);
+    }
+    
+    
 }

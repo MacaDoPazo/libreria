@@ -31,4 +31,6 @@ public interface LibroDao {
 	
 	List<Libro> listarLibrosConMismoGeneroOMismoAutor(Long idLibroAComparar);
 	
+	List<Libro> listarLibrosQueEnElNombreContengan(String busqueda);
+	
 }

@@ -41,7 +41,9 @@ public interface servicioLibro {
 	
 	List<Libro> listarLibrosConMismoGeneroOMismoAutor(Long idLibroAComparar);
 	
-	List<Integer> listarPromedioDeReseniaPorCadaLibro(List<Libro> listaLibros) ;
+	List<Integer> listarPromedioDeReseniaPorCadaLibro(List<Libro> listaLibros);
+	
+	List<Libro> listarLibrosQueEnElNombreContengan(String busqueda);
 
 
 	
