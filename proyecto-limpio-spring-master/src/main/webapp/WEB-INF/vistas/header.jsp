@@ -109,11 +109,10 @@
 	           <button class="btn btn-sm btn-default"><i class="fa fa-shopping-cart"></i> Mis pedidos realizados</button>
 	       	</form>
           <a class="dropdown-item" href="ver-pedido"> Mi Pedido</a>
-          <a class="dropdown-item" style="color: currentColor;
+          <a class="dropdown-item" href="mensajes"><!-- style="color: currentColor;
   cursor: not-allowed;
   opacity: 0.5;
-  text-decoration: none;"
-          href="mensajes">
+  text-decoration: none;" -->
 				<i class="fa fa-envelope"></i> 
 				Mensajes <span class="badge badge-light"><strong><c:out value="${sessionScope.mensajes.size()}" ></c:out></strong> </span>
 		 </a>
