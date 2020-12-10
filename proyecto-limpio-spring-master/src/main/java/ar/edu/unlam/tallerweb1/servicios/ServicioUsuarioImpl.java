@@ -16,6 +16,7 @@ import ar.edu.unlam.tallerweb1.modelo.CantidadLibros;
 import ar.edu.unlam.tallerweb1.modelo.Mensaje;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.modelo.Venta;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioMensaje;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 @Service
 @Transactional
@@ -23,12 +24,12 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 
 	@Inject
 	private RepositorioUsuario repositorioUsuario;
-
+		
 	@Inject 
 	private ServicioEmail servicioEmail;
 	
 	@Inject 
-	private ServicioVenta servicioVenta;
+	private ServicioMensaje servicioMensaje;
 	
 	@Override
 	public Long guardarUsuario(Usuario usuario) {
@@ -154,20 +155,8 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 
 	@Override
 	public ArrayList<Mensaje> obtenerMensajesUsuario(Long id) {
-		ArrayList<Venta> lista_ventas=servicioVenta.listarVentasAReseniar(id);
-		Iterator<Venta> i=lista_ventas.iterator();
-		ArrayList<Mensaje> lista_mensajes=new ArrayList<Mensaje>();
-		while(i.hasNext()) {
-			Venta v=i.next();
-			String cuerpo="Podes Reseñar Los siguientes Titulos:\n";
-			Iterator<CantidadLibros> it_lib=v.getPedido().getCantidadLibros().iterator();
-			while(it_lib.hasNext()) {
-				CantidadLibros cl=it_lib.next();
-				cuerpo+="-"+cl.getLibro().getNombre()+" \n";
-			}
-			Mensaje m=new Mensaje("Reseña Disponible",cuerpo,false);
-			lista_mensajes.add(m);
-		}
+		ArrayList<Mensaje> lista_mensajes=servicioMensaje.consultarMensajesUsuario(id);
+		
 		return lista_mensajes;
 	}
 	

@@ -89,6 +89,7 @@ public class ControladorLogin {
 		session.removeAttribute("usuario_nombre");
 		session.removeAttribute("usuario_rol");
 		session.removeAttribute("mensajes");
+		session.removeAttribute("mensajes_leidos");
 	    session.invalidate();
 			return new ModelAndView("redirect:/pantalla-inicial");
 		

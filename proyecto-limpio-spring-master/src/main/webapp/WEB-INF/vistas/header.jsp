@@ -114,7 +114,7 @@
   opacity: 0.5;
   text-decoration: none;" -->
 				<i class="fa fa-envelope"></i> 
-				Mensajes <span class="badge badge-light"><strong><c:out value="${sessionScope.mensajes.size()}" ></c:out></strong> </span>
+				Mensajes <span class="badge badge-light"><strong><c:out value="${no_leidos}" ></c:out></strong> </span>
 		 </a>
 		 <a class="dropdown-item" href="listar-resenias-cliente"><i class="fa fa-align-left" aria-hidden="true"></i>Mis Resenias</a>
 		 <a class="dropdown-item" href="salir">
