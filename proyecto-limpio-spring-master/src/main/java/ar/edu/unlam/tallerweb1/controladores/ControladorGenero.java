@@ -12,15 +12,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.servicios.ServicioGenero;
+import ar.edu.unlam.tallerweb1.servicios.ServicioVenta;
 
 @Controller
 public class ControladorGenero {
 	@Inject
 	private ServicioGenero servicioGenero;
-	
+	@Inject
+	private ServicioVenta servicioVenta;
 	@RequestMapping(path="/registrar-genero")
 	public ModelAndView IrAlRegistroDelGenero() {		
-				return new ModelAndView("registrarGenero");		
+		Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
+		ModelMap modelo = new ModelMap();
+		modelo.put("alertaFacturados",alertaFacturados);
+		return new ModelAndView("registrarGenero");		
 	}
 	
 	@RequestMapping("/guardar-genero")
@@ -29,26 +34,32 @@ public class ControladorGenero {
 		Genero genero = new Genero();
 		genero.setNombre(nombre);
 		servicioGenero.guardarGenero(genero);
-		
-		ModelMap modelo = new ModelMap();		
+		Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
+		ModelMap modelo = new ModelMap();	
+		modelo.put("alertaFacturados",alertaFacturados);
 		return new ModelAndView("registrarGenero",modelo);		
 	}
 	
 	@RequestMapping("/borrar-genero")
 	public ModelAndView borrarGenero(@RequestParam(value="id")Long idGenero)
 	{
+		Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
 		servicioGenero.eliminarGeneroPorId(idGenero);
+		ModelMap modelo = new ModelMap();	
+		modelo.put("alertaFacturados",alertaFacturados);
 		return new ModelAndView("listaGeneros");
 	}
 	
 	@RequestMapping("/lista-generos")
 	public ModelAndView listarGeneros() {
 		List<Genero> listaGeneros = servicioGenero.listarGeneros();
+		Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
 		ModelMap modelo = new ModelMap();
 		modelo.put("lista",listaGeneros);
 		ModelAndView mivista =new ModelAndView();
 		mivista.addAllObjects(modelo);
 		mivista.setViewName("listaGeneros");
+		modelo.put("alertaFacturados",alertaFacturados);
 		return mivista;
 	}
 

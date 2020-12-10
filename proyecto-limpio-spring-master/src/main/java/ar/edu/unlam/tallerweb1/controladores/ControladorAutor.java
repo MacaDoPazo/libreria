@@ -13,18 +13,24 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.modelo.Autor;
 import ar.edu.unlam.tallerweb1.modelo.Libro;
 import ar.edu.unlam.tallerweb1.servicios.ServicioAutor;
+import ar.edu.unlam.tallerweb1.servicios.ServicioVenta;
 
 @Controller
 public class ControladorAutor {
 
 	@Inject
 	private ServicioAutor servicioAutor;
+	@Inject
+	private ServicioVenta servicioVenta;
 
 	@RequestMapping(path="/registrar-autor")
 	
 	public ModelAndView irAregistrarAutor()
 	{
-			return new ModelAndView("registrarAutor");
+		Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
+		ModelMap modelo = new ModelMap();
+		modelo.put("alertaFacturados",alertaFacturados);	
+		return new ModelAndView("registrarAutor");
 	}
 	
 	@RequestMapping("/guardar-autor")
@@ -35,11 +41,12 @@ public class ControladorAutor {
 		autor.setApellido(apellido);
 		autor.setSexo(sexo);
 		Long id=servicioAutor.guardarAutor(autor);
+		Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
 		ModelMap modelo = new ModelMap();
 		modelo.put("nombre",nombre);
 		modelo.put("apellido",apellido);
 		modelo.put("sexo",sexo);
-		
+		modelo.put("alertaFacturados",alertaFacturados);	
 		return new ModelAndView("registrarAutor",modelo);
 		
 	}
@@ -53,8 +60,10 @@ public class ControladorAutor {
 	@RequestMapping("/catalogo-autores")
 	public ModelAndView listarLibros() {
 		List<Autor> listaAutores = servicioAutor.listarAutores();
+		Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
 		ModelMap modelo = new ModelMap();
 		modelo.put("lista",listaAutores);
+		modelo.put("alertaFacturados",alertaFacturados);
 		ModelAndView mivista =new ModelAndView();
 		mivista.addAllObjects(modelo);
 		mivista.setViewName("catalogoAutores");

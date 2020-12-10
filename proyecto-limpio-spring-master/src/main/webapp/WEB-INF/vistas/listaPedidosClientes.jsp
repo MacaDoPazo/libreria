@@ -11,6 +11,7 @@
         <th>Estado</th>
         <th>Fecha de Entrega </th>
         <th>Monto</th>
+        <th></th>
       </tr>
     </thead>
     <tbody class="bg-light">

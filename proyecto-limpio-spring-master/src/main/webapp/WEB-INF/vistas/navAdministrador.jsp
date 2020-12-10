@@ -27,7 +27,7 @@
 	    	<a class="nav-link text-light" href="lista-localidades">Lista Localidades</a>
 	  	</li>
 	  	<li class="nav-item">
-	    	<a class="nav-link text-light" href="listar-pedidos-clientes">Pedidos Clientes</a>
+	    	<a class="nav-link text-light" href="listar-pedidos-clientes">Pedidos Clientes ${alertaFacturados }</a>
 	  	</li>
   	    <li class="nav-item">
   	    	<a class="nav-link text-light" href="usuarios_no_frecuentes">Usuarios No Frecuentes</a>

@@ -43,6 +43,10 @@ public interface servicioLibro {
 	
 	List<Integer> listarPromedioDeReseniaPorCadaLibro(List<Libro> listaLibros);
 	
+	
+
+
+
 	List<Libro> listarLibrosQueEnElNombreContengan(String busqueda);
 
 

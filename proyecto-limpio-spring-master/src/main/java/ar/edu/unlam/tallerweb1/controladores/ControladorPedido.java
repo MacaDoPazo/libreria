@@ -92,15 +92,24 @@ public class ControladorPedido {
 		List<Libro> listalibros = servicioLibro.listarLibros();
 		ModelMap modelo = new ModelMap();
 		modelo.put("lista",listalibros);
-		return new ModelAndView("pantallainicial",modelo);
+		List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idUsuario,"armando");
+		Long subtotal = servicioCantLibros.subtotalDeTodosLosLibros(librosPedidos);
+		Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
+		modelo.put("subtotal",subtotal);
+		modelo.put("cantidadLibrosPedidos",librosPedidos.size());
+		modelo.put("librosPedidos",librosPedidos);
+		modelo.put("alertaFacturados",alertaFacturados);
+		return new ModelAndView("carrito", modelo);
 	}
 
 	@RequestMapping("/listar-pedidos-clientes")
 	public ModelAndView listarPedidosClientes()
 	{
 		List<Venta> listaPedidos = servicioVenta.listarPedidosFacturados();
+		Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
 		ModelMap modelo = new ModelMap();
 		modelo.put("listaPedidosCliente",listaPedidos);
+		modelo.put("alertaFacturados",alertaFacturados);
 		return new ModelAndView("listaPedidosClientes",modelo);
 	}
 	
@@ -113,11 +122,13 @@ public class ControladorPedido {
 		List<CantidadLibros> librosComprados = servicioCantLibros.listarLibrosComprados(idPedido);
 		Pedido pedido = servicioPedido.consultarPedidoPorId(idPedido);
 		Venta venta = servicioVenta.consultarVentaPorId(idVenta);
+		Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
 		ModelMap modelo = new ModelMap();
 		
 		modelo.put("librosComprados",librosComprados);
 		modelo.put("venta",venta);
 		modelo.put("pedido",pedido);
+		modelo.put("alertaFacturados",alertaFacturados);
 		return new ModelAndView("detalleVenta",modelo);
 	}
 }

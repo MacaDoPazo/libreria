@@ -143,6 +143,7 @@ public class ControladorLibros {
 		return new ModelAndView("listaLibrosDelGenero",modelo);
     }
     
+   
     @RequestMapping(path="/busqueda-libro", method=RequestMethod.GET)
     public ModelAndView listaLibrosQueEnElNombreContengan (@RequestParam(value="busqueda")String busqueda)
     {
@@ -153,6 +154,5 @@ public class ControladorLibros {
 		modelo.put("lista",listalibros);
 		return new ModelAndView("listaLibrosQueEnElNombreContengan",modelo);
     }
-    
     
 }

@@ -33,7 +33,7 @@
 	           
 				 })
 		</script>
-		<title>Inicio - Cumelén</title>
+		<title>Inicio - Cumelen</title>
 	</head>
 	<body>
 	<header>
@@ -44,14 +44,14 @@
 	<nav class="navbar navbar-light bg-light sticky-float">
 	  	<a class="navbar-brand" href="pantalla-inicial">
 	    	<img src="img/logoc.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-	    	Cumelén
+	    	Cumel&eacute;n
 	  	</a>
 		<ul class="nav justify-content-end">
 		<li class="nav-item">
 		<a href="ver-pedido" class="dropdown-item" ><button class="btn btn-sm btn-default">Mi pedido<i class="fa fa-shopping-cart"></i></button></a> 
 		</li>
 	  	<li class="nav-item">
-	    	<a class="dropdown-item" href="login">Iniciar Sesión</a>
+	    	<a class="dropdown-item" href="login">Iniciar Sesi&oacute;n</a>
 	  	</li>
 	  	<li class="nav-item">
 	    	<a class="dropdown-item" href="registroUsuario">Registrarse</a>
@@ -66,7 +66,7 @@
 	<nav class="navbar navbar-light bg-light sticky-float">
 	  	<a class="navbar-brand" href="pantalla-inicial">
 	    	<img src="img/logoc.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-	    	Cumelén
+	    	Cumel&eacute;n
 	  	</a>
 		<!--  >ul class="nav justify-content-end">
 		<li class="nav-item">
@@ -108,7 +108,9 @@
         	<form action="listaVentasAlCliente" method="GET" modelAttribute="usuario">
 	           <button class="btn btn-sm btn-default"><i class="fa fa-shopping-cart"></i> Mis pedidos realizados</button>
 	       	</form>
-          <a class="dropdown-item" href="ver-pedido"> Mi Pedido</a>
+          <a class="dropdown-item" href="ver-pedido"> <c:choose><c:when test="${cantidadLibrosPedidos != '0' } ">Mi Pedido <p class="bg-danger">${cantidadLibrosPedidos }</p></c:when>
+          <c:otherwise>Mi Pedido ${cantidadLibrosPedidos }</c:otherwise>
+          </c:choose></a>
           <a class="dropdown-item" href="mensajes"><!-- style="color: currentColor;
   cursor: not-allowed;
   opacity: 0.5;

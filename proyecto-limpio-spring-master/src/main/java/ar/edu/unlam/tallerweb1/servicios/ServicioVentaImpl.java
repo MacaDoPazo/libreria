@@ -70,5 +70,18 @@ public class ServicioVentaImpl implements ServicioVenta {
 		return lista;
 	}
 
+	@Override
+	public Integer contarPedidosEstadoFacturado() {
+		List<Venta> listaVenta =repositorioVenta.listarPedidosFacturados();
+		Integer suma = 0;
+		for (Venta venta : listaVenta) {
+			if(venta.getPedido().getEstado().equals("facturado"))
+			{
+				suma++;
+			}
+		}
+		return suma;
+	}
+
 
 }

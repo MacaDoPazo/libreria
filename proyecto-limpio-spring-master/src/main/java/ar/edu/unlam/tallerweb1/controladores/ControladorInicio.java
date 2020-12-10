@@ -24,6 +24,7 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioCantLibros;
 import ar.edu.unlam.tallerweb1.servicios.ServicioGenero;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPedido;
 import ar.edu.unlam.tallerweb1.servicios.ServicioResenia;
+import ar.edu.unlam.tallerweb1.servicios.ServicioVenta;
 import ar.edu.unlam.tallerweb1.servicios.servicioLibro;
 
 @Controller
@@ -37,7 +38,8 @@ public class ControladorInicio {
 	@Inject ServicioGenero servicioGenero;
 	@Inject
 	private ServicioResenia servicioResenia;
-	
+	@Inject
+	private ServicioVenta servicioVenta;
 	@RequestMapping(path="/pantalla-inicial"/*, method = RequestMethod.POST*/)//servicio libro promedio
 	public ModelAndView irAlInicio(HttpServletRequest request) {
 		Long idUsuario = (Long) request.getSession().getAttribute("usuario_id");
@@ -46,12 +48,13 @@ public class ControladorInicio {
 		{
 			List<Libro> listalibros = servicioLibro.listarLibros();
 			List<Integer> listaPromedio = servicioLibro.listarPromedioDeReseniaPorCadaLibro(listalibros);
+			Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
 			ModelMap modelo = new ModelMap();
 			try {
 				List<Libro> listarLibrosGeneroMayorPuntaje = servicioLibro.listarLibrosGeneroMayorPuntaje(idUsuario);
 				List<Integer> listaPromedioMayorPuntaje = servicioLibro.listarPromedioDeReseniaPorCadaLibro(listarLibrosGeneroMayorPuntaje);
 				Libro libro = listarLibrosGeneroMayorPuntaje.get(0);
-				
+				modelo.put("alertaFacturados",alertaFacturados);
 				modelo.put("idGeneroSugerido",libro.getGenero().getId());
 				modelo.put("generoSugerido",libro.getGenero().getNombre());
 				modelo.put("lista",listalibros);
@@ -62,21 +65,28 @@ public class ControladorInicio {
 				String error= e.getMessage();
 				Libro libro = listalibros.get(0);
 				
-				
+				modelo.put("alertaFacturados",alertaFacturados);
 				modelo.put("error",error);
 				modelo.put("lista",listalibros);
 				
 			}
+			List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idUsuario,"armando");
+			modelo.put("cantidadLibrosPedidos",librosPedidos.size());
 			modelo.put("listaPromedio",listaPromedio);
+			modelo.put("alertaFacturados",alertaFacturados);
 			return new ModelAndView("pantallainicial",modelo);
 						
 		}
 		
 			List<Libro> listalibros = servicioLibro.listarLibros();
 			List<Integer> listaPromedio = servicioLibro.listarPromedioDeReseniaPorCadaLibro(listalibros);
+			List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idUsuario,"armando");
+			Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
 			ModelMap modelo = new ModelMap();
 			modelo.put("lista",listalibros);
 			modelo.put("listaPromedio",listaPromedio);
+			modelo.put("cantidadLibrosPedidos",librosPedidos.size());
+			modelo.put("alertaFacturados",alertaFacturados);
 			return new ModelAndView("pantallainicial",modelo);
 		
 		
@@ -93,11 +103,12 @@ public class ControladorInicio {
 		
 		List<Resenia> reseniasDelLibro = servicioResenia.listarReseniasDelLibro(idLibro); 
 		List<Libro> librosRelacionados = servicioLibro.listarLibrosConMismoGeneroOMismoAutor(idLibro);
-
+		Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
 		model.put("libro", libroEncontrado);
 		model.put("promedio", promedio);
 		model.put("listaReseniasDelLibro", reseniasDelLibro);
 		model.put("listaLibrosRelacionados", librosRelacionados);
+		model.put("alertaFacturados",alertaFacturados);
 			return new ModelAndView("detalleproducto",model);
 		}
 	@RequestMapping(path="/ver-pedido")
@@ -115,15 +126,21 @@ public class ControladorInicio {
 		{
 			List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idUsuario,"armando");
 			Long subtotal = servicioCantLibros.subtotalDeTodosLosLibros(librosPedidos);
+			Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
 			ModelMap modelo = new ModelMap();
 			modelo.put("subtotal",subtotal);
 			modelo.put("librosPedidos",librosPedidos);
+			modelo.put("cantidadLibrosPedidos",librosPedidos.size());
+			modelo.put("alertaFacturados",alertaFacturados);
 				return new ModelAndView("carrito", modelo);
 		}
 		else
 		{
+			Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
 			ModelMap modelo = new ModelMap();
+			modelo.put("alertaFacturados",alertaFacturados);
 			modelo.put("mensaje","no cargo ningun libro al carrito");
+			modelo.put("alertaFacturados",alertaFacturados);
 			return new ModelAndView("carrito",modelo);
 		}
 		}
@@ -183,10 +200,13 @@ public class ControladorInicio {
 		
 		List<CantidadLibros> librosPedidos=servicioCantLibros.listarLibrosPedidoDelCliente(idUsuario,"armando");
 		Long subtotal = servicioCantLibros.subtotalDeTodosLosLibros(librosPedidos);
+		Integer alertaFacturados = servicioVenta.contarPedidosEstadoFacturado();
 		ModelMap modelo = new ModelMap();
 		modelo.put("subtotal",subtotal);
 		modelo.put("librosPedidos",librosPedidos);
-			return new ModelAndView("carrito", modelo);
+		modelo.put("cantidadLibrosPedidos",librosPedidos.size());
+		modelo.put("alertaFacturados",alertaFacturados);
+		return new ModelAndView("carrito", modelo);
 
 	}
 
